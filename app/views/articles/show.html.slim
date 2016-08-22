@@ -30,7 +30,7 @@ section.container
                       = image_tag(@article.image, alt: "", class: "embed-responsive-item")
         div
           = @article.content.try(:html_safe)
-      - if user_signed_in? and (@interpellation.user == current_user or current_user.admin?)
+      - if user_signed_in? and current_user.admin?
         .row
           = link_to edit_admin_article_path(@article), '編輯本文', class: "btn btn-default"
       .row
