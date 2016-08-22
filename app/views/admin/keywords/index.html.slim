@@ -17,7 +17,7 @@ table.table
     - @keywords.each do |k|
       tr
         td = k.id
-        td = k.name
+        td = link_to k.name, keyword_path(k)
         td = "#{k.catalog.name} > #{k.category.name}"
         td
           = link_to '編輯', edit_admin_keyword_path(k), class: "btn radius btn-white btn-sm"
