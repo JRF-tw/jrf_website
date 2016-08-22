@@ -32,7 +32,7 @@ section.container
           = @article.content.try(:html_safe)
       - if user_signed_in? and current_user.admin?
         .row
-          = link_to edit_admin_article_path(@article), '編輯本文', class: "btn btn-default"
+          = link_to '編輯本文', edit_admin_article_path(@article), class: "btn btn-default"
       .row
         #disqus_thread
       aside.col-md-3
