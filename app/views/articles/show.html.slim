@@ -30,10 +30,8 @@ section.container
                       = image_tag(@article.image, alt: "", class: "embed-responsive-item")
         div
           = @article.content.try(:html_safe)
-      - if user_signed_in? and current_user.admin?
-        .row
-          = link_to '編輯本文', edit_admin_article_path(@article), class: "btn btn-default"
-      .row
+          .text-center
+            = link_to '編輯本文', edit_admin_article_path(@article), class: "btn btn-default"
         #disqus_thread
       aside.col-md-3
         .sidebar
