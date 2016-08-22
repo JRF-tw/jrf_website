@@ -9,7 +9,9 @@
     h1.title.text-center = @keyword.title
     .separator
     = @keyword.content.try(:html_safe)
-
+  - if user_signed_in? and current_user.admin?
+    .row.col-lg-10.col-lg-offset-1
+      = link_to edit_admin_keyword_path(@keyword), '編輯本文', class: "btn btn-default"
 
 - if @keyword.faqs.any?
   .container
