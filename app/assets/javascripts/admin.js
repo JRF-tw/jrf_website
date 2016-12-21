@@ -25,7 +25,7 @@
 //= require jquery.validate
 //= require template
 //= require custom
-//= require jquery-ui/datepicker
+//= require jquery-ui/widgets/datepicker
 //= require chosen-jquery
 //= require jquery.datetimepicker
 //= require html.sortable
