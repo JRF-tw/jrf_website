@@ -98,7 +98,8 @@ h6 {
 	padding-top: 20px;
 }
 p {
-	margin: 0 0 20px;
+	margin-top: 10px;
+    margin-bottom: 10px;
 }
 a {
 	color: #e84c3d;
