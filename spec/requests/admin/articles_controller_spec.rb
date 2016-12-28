@@ -165,14 +165,14 @@ describe "Admin/Article" do
           slides_attributes: [
             {
               id: slide.id,
-              image: File.open(File.join(Rails.root, 'spec', 'fixtures', 'test.jpg'))
+              image: File.open(File.join(Rails.root, 'spec', 'fixtures', 'test1.jpg'))
             }
           ]
         }
-        put "/admin/articles/#{slide.slideable.id}", article: update_slide_data
+        put "/admin/articles/#{slide.slideable_id}", article: update_slide_data
         expect(response).to be_redirect
         slide.reload
-        expect(slide.image.filename).to match('test.jpg')
+        expect(File.basename(slide.image.url)).to match('test1.jpg')
       end
     end
 

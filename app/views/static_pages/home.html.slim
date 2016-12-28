@@ -28,16 +28,13 @@
           .row.col-md-12
             .col-xs-4.col-sm-4.col-md-4
               .overlay-container
-                = image_tag('b-3.png', alt: "專案參與")
-                = link_to "https://jrf.neticrm.tw/civicrm/profile/create?gid=34&reset=1", target: "_blank"
+                = link_to image_tag('b-3.png', alt: "專案參與"), "https://jrf.neticrm.tw/civicrm/profile/create?gid=34&reset=1", target: "_blank"
             .col-xs-4.col-sm-4.col-md-4
               .overlay-container
-                = image_tag('b-1.png', alt: "捐款支持")
-                = link_to donate_path(anchor: "online")
+                = link_to image_tag('b-1.png', alt: "捐款支持"), donate_path(anchor: "online")
             .col-xs-4.col-sm-4.col-md-4
               .overlay-container
-                = image_tag('b-2.png', alt: "加入志工")
-                = link_to "https://jrf.neticrm.tw/civicrm/profile/create?gid=11&reset=1", target: "_blank"
+                = link_to image_tag('b-2.png', alt: "加入志工"), "https://jrf.neticrm.tw/civicrm/profile/create?gid=11&reset=1", target: "_blank"
 
 .white-bg.section
   .container
