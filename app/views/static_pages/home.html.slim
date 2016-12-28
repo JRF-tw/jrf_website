@@ -28,18 +28,18 @@
           .row.col-md-12
             .col-xs-4.col-sm-4.col-md-4
               .overlay-container
-                = image_tag('v_lawer.png', alt: "義務律師")
-                = link_to image_tag('v_lawer_word.png', class: "overlay img-circle"), "https://jrf.neticrm.tw/civicrm/profile/create?gid=34&reset=1", target: "_blank"
+                = image_tag('b-3.png', alt: "專案參與")
+                = link_to "https://jrf.neticrm.tw/civicrm/profile/create?gid=34&reset=1", target: "_blank"
             .col-xs-4.col-sm-4.col-md-4
               .overlay-container
-                = image_tag('v_donation.png', alt: "捐款支持")
-                = link_to image_tag('v_donation_word.png', class: "overlay img-circle"), donate_path(anchor: "online")
+                = image_tag('b-1.png', alt: "捐款支持")
+                = link_to donate_path(anchor: "online")
             .col-xs-4.col-sm-4.col-md-4
               .overlay-container
-                = image_tag('v_join.png', alt: "加入志工")
-                = link_to image_tag('v_join_word.png', class: "overlay img-circle"), "https://jrf.neticrm.tw/civicrm/profile/create?gid=11&reset=1", target: "_blank"
+                = image_tag('b-2.png', alt: "加入志工")
+                = link_to "https://jrf.neticrm.tw/civicrm/profile/create?gid=11&reset=1", target: "_blank"
 
-.white-bg.section.object-non-visible data-animation-effect="fadeInUpSmall" data-effect-delay="100" 
+.white-bg.section
   .container
     .row.col-md-12
       h2
@@ -55,7 +55,7 @@
         | 更多消息
         i.fa.fa-angle-right.pl-10
 
-.gray-bg.section.object-non-visible data-animation-effect="fadeInUpSmall" data-effect-delay="100" 
+.gray-bg.section 
   .container
     - if @epaper_article
       .row
