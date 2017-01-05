@@ -28,7 +28,7 @@ section.container
                   - else
                     .embed-responsive.embed-responsive-16by9
                       = image_tag(@article.image, alt: "", class: "embed-responsive-item")
-        div
+        div.text
           = @article.content.try(:html_safe)
           - if user_signed_in? and current_user.admin?
             .text-center
