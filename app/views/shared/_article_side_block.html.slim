@@ -8,7 +8,8 @@
       = link_to article_path(a), class: "overlay small" do
         i.fa.fa-link
         span 新聞稿
-    h2 = link_to a.title, article_path(a)
+    h2
+      = link_to a.title, article_path(a)
       br
       span.small = a.published_at.try(:strftime, '%Y/%m/%d')
 - elsif a.kind == 'activity'
@@ -21,7 +22,8 @@
       = link_to article_path(a), class: "overlay small" do
         i.fa.fa-link
         span 活動
-    h2 = link_to a.title, article_path(a)
+    h2
+      = link_to a.title, article_path(a)
       br
       span.small = a.published_at.try(:strftime, '%Y/%m/%d')
 - elsif a.kind == 'comments'
@@ -34,7 +36,8 @@
       = link_to article_path(a), class: "overlay small" do
         i.fa.fa-link
         span 評論
-    h2 = link_to a.title, article_path(a)
+    h2
+      = link_to a.title, article_path(a)
       br
       span.small = a.published_at.try(:strftime, '%Y/%m/%d')
 - elsif a.kind == 'epaper'
@@ -47,7 +50,8 @@
       = link_to article_path(a), class: "overlay small" do
         i.fa.fa-link
         span 電子報
-    h2 = link_to a.title, article_path(a)
+    h2
+      = link_to a.title, article_path(a)
       br
       span.small = a.published_at.try(:strftime, '%Y/%m/%d')
 - elsif a.kind == 'book'
@@ -60,7 +64,8 @@
       = link_to article_path(a), class: "overlay small" do
         i.fa.fa-link
         span 書籍
-    h2 = link_to a.title, article_path(a)
+    h2
+      = link_to a.title, article_path(a)
       br
       span.small = a.published_at.try(:strftime, '%Y/%m/%d')
 - else
@@ -73,6 +78,7 @@
       = link_to article_path(a), class: "overlay small" do
         i.fa.fa-link
         span
-    h2 = link_to a.title, article_path(a)
+    h2
+      = link_to a.title, article_path(a)
       br
       span.small = a.published_at.try(:strftime, '%Y/%m/%d')
