@@ -6,14 +6,12 @@ section.container
           .masonry-grid-item.col-xs-12
             article.clearfix.blogpost
               .blogpost-body
-                .post-info
-                  span.day = @article.published_at.strftime('%d')
-                  span.month = @article.published_at.strftime('%-m月 %Y')
                 .row
+                  span.submitted.small = @article.published_at.strftime('%Y-%-m-%d')
                   header
                     h2.title = @article.title
                     .submitted
-                      i.fa.fa-user.pr-1
+                      i.fa.fa-user.pr-5
                       = @article.author
                   - if @article.youtube_id
                     .embed-responsive.embed-responsive-16by9

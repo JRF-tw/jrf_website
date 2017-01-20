@@ -9,7 +9,8 @@
         i.fa.fa-link
         span 新聞稿
     h2 = link_to a.title, article_path(a)
-    p.small = a.published_at.try(:strftime, '%Y/%m/%d')
+      br
+      span.small = a.published_at.try(:strftime, '%Y/%m/%d')
 - elsif a.kind == 'activity'
   .list-with-image.jrf-activity
     .overlay-container
@@ -21,7 +22,8 @@
         i.fa.fa-link
         span 活動
     h2 = link_to a.title, article_path(a)
-    p.small = a.published_at.try(:strftime, '%Y/%m/%d')
+      br
+      span.small = a.published_at.try(:strftime, '%Y/%m/%d')
 - elsif a.kind == 'comments'
   .list-with-image.jrf-comments
     .overlay-container
@@ -33,7 +35,8 @@
         i.fa.fa-link
         span 評論
     h2 = link_to a.title, article_path(a)
-    p.small = a.published_at.try(:strftime, '%Y/%m/%d')
+      br
+      span.small = a.published_at.try(:strftime, '%Y/%m/%d')
 - elsif a.kind == 'epaper'
   .list-with-image.jrf-epaper
     .overlay-container
@@ -45,7 +48,8 @@
         i.fa.fa-link
         span 電子報
     h2 = link_to a.title, article_path(a)
-    p.small = a.published_at.try(:strftime, '%Y/%m/%d')
+      br
+      span.small = a.published_at.try(:strftime, '%Y/%m/%d')
 - elsif a.kind == 'book'
   .list-with-image.jrf-book
     .overlay-container
@@ -57,7 +61,8 @@
         i.fa.fa-link
         span 書籍
     h2 = link_to a.title, article_path(a)
-    p.small = a.published_at.try(:strftime, '%Y/%m/%d')
+      br
+      span.small = a.published_at.try(:strftime, '%Y/%m/%d')
 - else
   .list-with-image
     .overlay-container
@@ -69,4 +74,5 @@
         i.fa.fa-link
         span
     h2 = link_to a.title, article_path(a)
-    p.small = a.published_at.try(:strftime, '%Y/%m/%d')
+      br
+      span.small = a.published_at.try(:strftime, '%Y/%m/%d')
