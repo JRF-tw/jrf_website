@@ -4824,9 +4824,6 @@ ul.tweets li span {
 
 /* Isotope filtering
 ---------------------------------- */
-.isotope-container {
-	display: none;
-}
 .isotope-item {
 	margin-bottom: 30px;
 }
