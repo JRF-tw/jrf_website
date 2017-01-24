@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
     @keywords = Keyword.showed
     @articles = Article.includes(:keywords).published.page(params[:page]).per(6)
     @epaper_article = Article.epapers.first
-    @book_articles = Article.books
+    @book_articles = Article.books.first(6)
   end
 
   def search
