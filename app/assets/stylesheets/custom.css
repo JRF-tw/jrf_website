@@ -66,8 +66,10 @@ h2 i{
 .owl-controls .owl-pagination{
 	bottom: 0px;
 }
-.text h1,.text h2,.text h3,.text h4,.text h5,.text p,
-{
-	padding-top:80px;
-	margin-top:-80px;
+*[id]:before { 
+  display: block; 
+  content: " "; 
+  margin-top: -75px; // Set the Appropriate Height
+  height: 75px; // Set the Appropriate Height
+  visibility: hidden; 
 }
