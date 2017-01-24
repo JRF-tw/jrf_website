@@ -7,12 +7,15 @@ section.container
             article.clearfix.blogpost
               .blogpost-body
                 .row
-                  span.submitted.small = @article.published_at.strftime('%Y-%-m-%d')
                   header
                     h2.title = @article.title
                     .submitted
                       i.fa.fa-user.pr-5
                       = @article.author
+                      br
+                      span 
+                        i.fa.fa-clock-o.pr-5
+                        = @article.published_at.strftime('%Y-%-m-%d')
                   - if @article.youtube_id
                     .embed-responsive.embed-responsive-16by9
                       iframe.embed-responsive-item src="//www.youtube.com/embed/#{@article.youtube_id}?rel=0&wmode=opaque"

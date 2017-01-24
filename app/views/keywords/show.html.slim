@@ -107,6 +107,7 @@
                     span 不明
               h2
                 = link_to a.title, article_path(a)
-              p.small = a.published_at.try(:strftime, '%Y-%m-%d')
+                br
+                span.small = a.published_at.try(:strftime, '%Y-%m-%d')
         .text-center
           = paginate @articles, params: { anchor: 'more' }
