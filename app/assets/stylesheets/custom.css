@@ -69,7 +69,7 @@ h2 i{
 *[id]:before { 
   display: block; 
   content: " "; 
-  margin-top: -75px; // Set the Appropriate Height
-  height: 75px; // Set the Appropriate Height
+  margin-top: -80px;
+  height: 80px;
   visibility: hidden; 
 }
