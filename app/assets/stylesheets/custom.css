@@ -73,3 +73,6 @@ h2 i{
   height: 80px;
   visibility: hidden; 
 }
+#footer:before {
+	display: none;
+}
