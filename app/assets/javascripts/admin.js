@@ -24,7 +24,6 @@
 //= require jquery.parallax
 //= require jquery.validate
 //= require template
-//= require custom
 //= require jquery-ui/widgets/datepicker
 //= require chosen-jquery
 //= require jquery.datetimepicker

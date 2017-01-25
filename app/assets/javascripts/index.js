@@ -24,7 +24,6 @@
 //= require jquery.parallax
 //= require jquery.validate
 //= require template
-//= require custom
 //= require gtm
 
 var ready_ran = 0;
