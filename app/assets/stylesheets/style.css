@@ -4825,6 +4825,7 @@ ul.tweets li span {
 ---------------------------------- */
 .isotope-item {
 	margin-bottom: 30px;
+	height: 60px;
 }
 .grid-space-20 .isotope-item {
 	margin-bottom: 20px;
