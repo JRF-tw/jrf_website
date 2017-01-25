@@ -73,6 +73,9 @@ h2 i{
   height: 80px;
   visibility: hidden; 
 }
-#footer:before {
-	display: none;
+#footer:before,#navbar-collapse-1:before {
+  content: " "; 
+  margin-top: 0px;
+  height: 0px;
+  visibility: hidden; 
 }
