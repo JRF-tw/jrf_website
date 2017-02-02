@@ -330,7 +330,6 @@ tbody {
 	padding: 10px 0;
 }
 .banner {
-	background-color: #f1f1f1;
 	border-bottom: 1px solid #eaeaea;
 }
 .page-intro {
@@ -347,7 +346,7 @@ tbody {
 	z-index: 2;
 }
 .page-top {
-	padding: 40px 0;
+	padding: 80px 0;
 }
 .main-container {
 	padding: 40px 0;
@@ -4826,6 +4825,7 @@ ul.tweets li span {
 ---------------------------------- */
 .isotope-item {
 	margin-bottom: 30px;
+	height: 60px;
 }
 .grid-space-20 .isotope-item {
 	margin-bottom: 20px;
