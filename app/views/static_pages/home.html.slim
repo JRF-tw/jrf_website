@@ -62,7 +62,7 @@
             | 電子報
           .separator-2
           h3 = link_to @epaper_article.title, article_path(@epaper_article)
-          = display_shorter(@epaper_article.content, 100)
+          = display_shorter(@epaper_article.description, 100)
           h4.text-left
             = link_to "更多電子報", epapers_articles_path, class: "btn btn-default"
             = link_to "訂閱電子報", "https://jrf.neticrm.tw/civicrm/profile/create?gid=12&reset=1", class: "btn btn-white", target: "_blank"
