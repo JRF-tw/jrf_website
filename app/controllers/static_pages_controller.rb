@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    @keywords = Keyword.showed
+    @keywords = Keyword.showed.first(5)
+    @first_keyword = @keywords.shift
     @articles = Article.includes(:keywords).published.page(params[:page]).per(6)
     @epaper_article = Article.epapers.first
     @book_articles = Article.books.first(6)

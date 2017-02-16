@@ -1,19 +1,27 @@
-.banner.hidden-xs
-  .slideshow
-    .slider-banner-container
-      .slider-banner-fullscreen
-        ul
-          - @keywords.each do |k|
-            li.dark-translucent-bg data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on" data-title="#{k.name}"
-              = image_tag k.cover.try(:url), alt: k.name, data: {bgposition: "center top", bgfit: "cover", bgrepeat: "no-repeat"}
-              .tp-caption.very_large_text.sft.tp-resizeme data-x="center" data-y="0" data-speed="700" data-start="200" data-end="10000" data-endspeed="600"
-                h1 = k.title
-              .tp-caption.small_thin_white.sfb.tp-resizeme data-x="center" data-y="100" data-speed="700" data-start="400" data-end="10000" data-endspeed="600"
-                = k.description.try(:html_safe)
-                p.text-center
-                  = link_to keyword_path(k), class: "btn btn-white btn-lg" do
-                    | 了解更多
-                    i.fa.fa-angle-right.pl-10
+
+div
+  .container
+    .row.margin-clear.grid-space-0
+      - if @first_keyword.present?
+        .col-sm-6.col-xs-12
+          = link_to keyword_path(@first_keyword) do
+            .index-banner style=("border: 3px solid #fff;") 
+              .index-label.hidden-xs
+                span.label.label-default = @first_keyword.category.name
+              .gradient-tl.mb-20
+                .pl-10.small
+                  h2.text-white = @first_keyword.title
+                  span.small.text-white = @first_keyword.description.try(:html_safe)
+              = image_tag @first_keyword.cover.try(:url), width: "100%"
+        - @keywords.each do |k|
+          .col-sm-6.col-xs-12
+            .col-xs-6.col-md-6
+              = link_to keyword_path(k) do
+                .index-banner style=("border: 3px solid #fff;") 
+                  .gradient-tl
+                    .pl-10.small
+                      h5.text-white = k.title
+                  = image_tag k.cover.try(:url), width: "100%"
 
 .page-top.gray-bg.hidden-xs
   .container

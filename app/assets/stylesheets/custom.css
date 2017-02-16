@@ -79,3 +79,28 @@ h2 i{
   height: 0px;
   visibility: hidden; 
 }
+.mb-30 {
+	margin-bottom: 30px;
+}
+.gradient-tl {
+	position: absolute; bottom:0;
+	width: 100%;
+	background: -webkit-linear-gradient(top left, rgba(0,0,0,1), rgba(0,0,0,0)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,0)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,0)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)); /* Standard syntax (must be last) */
+}
+.index-banner{
+	position:relative;
+}
+.index-label{
+	position: absolute; top:8px;left: 10px;
+}
+.text-white{
+	color: #fff
+}
+.index-boder{
+	border-width: 1px;
+    border-color: #ddd;
+    border-radius: 4px 4px 0 0;
+}
