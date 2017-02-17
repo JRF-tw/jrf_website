@@ -13,15 +13,15 @@ div.hidden
                   h2.text-white = @first_keyword.title
                   span.small.text-white = @first_keyword.description.try(:html_safe)
               = image_tag @first_keyword.cover.try(:url), width: "100%"
-          .col-sm-6.col-xs-12
-            - @keywords.each do |k|
-              .col-xs-6.col-md-6
-                = link_to keyword_path(k) do
-                  .index-banner style=("border: 3px solid #fff;") 
-                    .gradient-tl
-                      .pl-10.small
-                        h5.text-white = k.title
-                    = image_tag k.cover.try(:url), width: "100%"
+        .col-sm-6.col-xs-12
+          - @keywords.each do |k|
+            .col-xs-6.col-md-6
+              = link_to keyword_path(k) do
+                .index-banner style=("border: 3px solid #fff;") 
+                  .gradient-tl
+                    .pl-10.small
+                      h5.text-white = k.title
+                  = image_tag k.cover.try(:url), width: "100%"
 
 .white-bg.section
   .container
