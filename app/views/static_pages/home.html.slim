@@ -13,8 +13,8 @@
                   h2.text-white = @first_keyword.title
                   span.small.text-white = @first_keyword.description.try(:html_safe)
               = image_tag @first_keyword.cover.try(:url), width: "100%"
-        - @keywords.each do |k|
           .col-sm-6.col-xs-12
+          - @keywords.each do |k|
             .col-xs-6.col-md-6
               = link_to keyword_path(k) do
                 .index-banner style=("border: 3px solid #fff;") 
