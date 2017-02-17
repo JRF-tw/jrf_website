@@ -8,7 +8,7 @@
             .index-banner style=("border: 3px solid #fff;") 
               .index-label.hidden-xs
                 span.label.label-default = @first_keyword.category.name
-              .gradient-tl.mb-20
+              .gradient-tl
                 .pl-10.small
                   h2.text-white = @first_keyword.title
                   span.small.text-white = @first_keyword.description.try(:html_safe)
@@ -22,27 +22,6 @@
                     .pl-10.small
                       h5.text-white = k.title
                   = image_tag k.cover.try(:url), width: "100%"
-
-.page-top.gray-bg.hidden-xs
-  .container
-    .row
-      .col-md-8.col-md-offset-2
-        .call-to-action
-          h1.title 實際行動，支持司改
-          p
-            | 每一個
-            strong 你
-            | ，都是點亮司法黑暗的一盞燭光
-          .row.col-md-12
-            .col-xs-4.col-sm-4.col-md-4
-              .overlay-container
-                = link_to image_tag('b-0.png', alt: "專案參與"), "https://jrf.neticrm.tw/civicrm/profile/create?gid=34&reset=1", target: "_blank"
-            .col-xs-4.col-sm-4.col-md-4
-              .overlay-container
-                = link_to image_tag('b-1.png', alt: "捐款支持"), donate_path(anchor: "online")
-            .col-xs-4.col-sm-4.col-md-4
-              .overlay-container
-                = link_to image_tag('b-2.png', alt: "加入志工"), "https://jrf.neticrm.tw/civicrm/profile/create?gid=11&reset=1", target: "_blank"
 
 .white-bg.section
   .container
