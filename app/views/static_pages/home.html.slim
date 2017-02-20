@@ -5,7 +5,7 @@ div
       - if @first_keyword.present?
         .col-sm-6.col-xs-12
           = link_to keyword_path(@first_keyword) do
-            .index-banner style=("border: 3px solid #fff;") 
+            .index-banner style=("border:solid #fff;border-width: 5px 3px;") 
               .index-label.hidden-xs
                 span.label.label-default = @first_keyword.category.name
               .gradient-tl
