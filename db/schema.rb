@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802073541) do
+ActiveRecord::Schema.define(version: 20170303024054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,11 +27,12 @@ ActiveRecord::Schema.define(version: 20160802073541) do
     t.string   "youtube_id"
     t.string   "link"
     t.text     "description"
-    t.boolean  "published",     default: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.boolean  "published",       default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.text     "fb_ia_content"
     t.string   "system_type"
+    t.string   "youtube_list_id"
   end
 
   create_table "articles_keywords", id: false, force: :cascade do |t|

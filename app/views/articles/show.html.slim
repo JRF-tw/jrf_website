@@ -18,7 +18,7 @@ section.container
                         = @article.published_at.strftime('%Y-%-m-%d')
                   - if @article.youtube_id
                     .embed-responsive.embed-responsive-16by9
-                      iframe.embed-responsive-item src="//www.youtube.com/embed/#{@article.youtube_id}?rel=0&wmode=opaque"
+                      iframe.embed-responsive-item src="#{@article.youtube_embed_url}"
                   - elsif @article.slides.present?
                     .owl-carousel.content-slider-with-controls-autoplay
                       - @article.slides.each do |slide|

@@ -7,7 +7,7 @@
             article.clearfix.blogpost
               .overlay-container
                 .embed-responsive.embed-responsive-16by9
-                  iframe.embed-responsive-item src="//www.youtube.com/embed/#{v.youtube_id}"
+                  iframe.embed-responsive-item src="#{v.youtube_embed_url}"
               .blogpost-body
                 .post-info
                   span.day = v.published_at.strftime('%d')

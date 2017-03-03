@@ -64,7 +64,6 @@ gem 'lograge'
 gem 'oj', '~> 2.12.14'
 gem "skylight"
 gem "rails-i18n"
-
 source 'https://rails-assets.org' do
   # gem 'rails-assets-jquery'
   # gem 'rails-assets-bootstrap'

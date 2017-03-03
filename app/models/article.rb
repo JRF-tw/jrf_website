@@ -17,24 +17,43 @@ class Article < ActiveRecord::Base
   validate :check_content
   validates_presence_of :published_at
 
+  def youtube_embed_url
+    if youtube_id.present?
+      if youtube_list_id.present?
+        "//www.youtube.com/embed/#{youtube_id}?list=#{youtube_list_id}&rel=0&wmode=opaque"
+      else
+        "//www.youtube.com/embed/#{youtube_id}?rel=0&wmode=opaque"
+      end
+    else
+      nil
+    end
+  end
+
   def update_youtube_values
     if self.youtube_url.blank?
       self.youtube_id = nil
+      self.youtube_list_id = nil
       return true
     end
-    youtube_id = extract_youtube_id(self.youtube_url)
+    youtube_id, youtube_list_id = extract_youtube_id(self.youtube_url)
     unless youtube_id
       self.youtube_url = nil
       self.youtube_id = nil
+      self.youtube_list_id = nil
       errors.add(:base, 'youtube網址錯誤')
       return false
     end
-    if self.youtube_id == youtube_id
+    if self.youtube_id == youtube_id && self.youtube_list_id == youtube_list_id
       # means that youtube is the same, no need to update.
       return nil
     end
     self.youtube_id = youtube_id
-    self.youtube_url = "https://www.youtube.com/watch?v=" + self.youtube_id
+    self.youtube_list_id = youtube_list_id
+    if youtube_list_id.blank?
+      self.youtube_url = "https://www.youtube.com/watch?v=" + youtube_id
+    else
+      self.youtube_url = "https://www.youtube.com/watch?v=" + youtube_id + "&list=" + youtube_list_id
+    end
   end
 
   def save_fb_ia_content
@@ -77,15 +96,21 @@ class Article < ActiveRecord::Base
       params = youtube_uri.query
       if params
         youtube_id = CGI::parse(params)['v'].first
+        youtube_list_id = CGI::parse(params)['list'].first
+        return youtube_id, youtube_list_id
       else
         youtube_id = youtube_uri.path.split('/')[-1]
+        youtube_list_id = nil
+        return youtube_id, youtube_list_id
       end
     elsif youtube_uri.host == 'youtu.be'
       youtube_id = youtube_uri.path[1..-1]
+      youtube_list_id = CGI::parse(params)['list'].first
+      return youtube_id, youtube_list_id
     else
       self.youtube_url = nil
       errors.add(:base, 'youtube網址錯誤')
-      return false
+      return false, nil
     end
   end
 

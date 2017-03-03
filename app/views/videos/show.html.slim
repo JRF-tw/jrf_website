@@ -13,7 +13,7 @@
                 i.fa.fa-user.pr-1
                 = @video.author
             .embed-responsive.embed-responsive-16by9
-              iframe.embed-responsive-item src="//www.youtube.com/embed/#{@video.youtube_id}"
+              iframe.embed-responsive-item src="#{v.youtube_embed_url}"
 .container
   .container
     .row.col-lg-12
@@ -31,7 +31,7 @@
             .image-box.mb-20
               .overlay-container
                 .embed-responsive.embed-responsive-16by9
-                  iframe.embed-responsive-item" src="//www.youtube.com/embed/#{v.youtube_id}"
+                  iframe.embed-responsive-item" src="#{v.youtube_embed_url}"
               .image-box-body
                 h4.title.margin-clear
                   = link_to v.title, video_path(v)
