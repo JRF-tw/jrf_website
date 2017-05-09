@@ -1,0 +1,23 @@
+---
+version: '2'
+services:
+  app:
+    build:
+      context: .
+      args:
+        GEM_MIRROR: ${GEM_MIRROR}
+    environment:
+      RAILS_ENV: production
+      SECRET_KEY_BASE: ad70b4d126fb7546faa99250e38c84fa964b1662ba291cc29d0a85ffa6a2b90bc815bb66930d05dd6fb5da72ca73b3cc99aafff9dc288c910f7b6010a7f06724
+    depends_on:
+      - db
+    volumes:
+      - .:/myapp/
+    command: unicorn_rails
+    ports:
+      - "8080:8080"
+  db:
+    image: "postgres:9.6-alpine"
+    environment:
+      POSTGRES_DB: jrf_production
+    command: "postgres -c bytea_output='escape' -c synchronous_commit='off' -c autovacuum='off'"
