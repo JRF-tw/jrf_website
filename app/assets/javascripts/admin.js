@@ -77,7 +77,7 @@ var ready = function(){
   });
 
   // after the order changes
-  $('.sortable-catalog').sortable().bind('sortupdate', function(e, ui) {
+  sortable('.sortable-catalog')[0].addEventListener('sortupdate', function(e) {
     // array to store new order
     updated_order = [];
     // set the updated positions
@@ -103,7 +103,7 @@ var ready = function(){
   });
 
   // after the order changes
-  $('.sortable-category').sortable().bind('sortupdate', function(e, ui) {
+  sortable('.sortable-category')[0].addEventListener('sortupdate', function(e) {
     // array to store new order
     updated_order = [];
     // set the updated positions
@@ -130,7 +130,7 @@ var ready = function(){
   });
 
   // after the order changes
-  $('.sortable-keyword').sortable().bind('sortupdate', function(e, ui) {
+  sortable('.sortable-keyword')[0].addEventListener('sortupdate', function(e) {
     // array to store new order
     updated_order = [];
     // set the updated positions
@@ -155,7 +155,7 @@ var ready = function(){
     });
   });
 
-  $('.sortable-showed-keyword').sortable().bind('sortupdate', function(e, ui) {
+  sortable('.sortable-showed-keyword')[0].addEventListener('sortupdate', function(e) {
     // array to store new order
     updated_order = [];
     // set the updated positions
@@ -181,7 +181,7 @@ var ready = function(){
   });
 
   // after the order changes
-  $('.sortable-faq').sortable().bind('sortupdate', function(e, ui) {
+  sortable('.sortable-faq')[0].addEventListener('sortupdate', function(e) {
     // array to store new order
     updated_order = [];
     // set the updated positions
@@ -207,7 +207,7 @@ var ready = function(){
   });
 
   // after the order changes
-  $('.sortable-slide').sortable().bind('sortupdate', function(e, ui) {
+  sortable('.sortable-slide')[0].addEventListener('sortupdate', function(e) {
     // array to store new order
     updated_order = [];
     // set the updated positions
