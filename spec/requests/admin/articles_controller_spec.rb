@@ -165,7 +165,7 @@ describe "Admin/Article" do
           slides_attributes: [
             {
               id: slide.id,
-              image: File.open(File.join(Rails.root, 'spec', 'fixtures', 'test1.jpg'))
+              image: Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, 'spec', 'fixtures', 'test1.jpg')))
             }
           ]
         }
