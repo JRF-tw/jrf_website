@@ -76,161 +76,173 @@ var ready = function(){
     }
   });
 
-  // after the order changes
-  sortable('.sortable-catalog')[0].addEventListener('sortupdate', function(e) {
-    // array to store new order
-    updated_order = [];
-    // set the updated positions
-    set_positions();
+  if ($('.sortable-catalog').length) {
+    // after the order changes
+    sortable('.sortable-catalog')[0].addEventListener('sortupdate', function(e) {
+      // array to store new order
+      updated_order = [];
+      // set the updated positions
+      set_positions();
 
-    // populate the updated_order array with the new task positions
-    $('.panel.panel-default').each(function(i){
-        updated_order.push({ id: $(this).data("id"), position: i+1 });
+      // populate the updated_order array with the new task positions
+      $('.panel.panel-default').each(function(i){
+          updated_order.push({ id: $(this).data("id"), position: i+1 });
+      });
+
+      // send the updated order via ajax
+      $.ajax({
+        type: "PUT",
+        url: '/admin/catalogs/sort',
+        data: {
+          _method: 'put',
+          catalog: {
+            order: updated_order
+          },
+          authenticity_token: window._token
+        }
+      });
     });
+  }
 
-    // send the updated order via ajax
-    $.ajax({
-      type: "PUT",
-      url: '/admin/catalogs/sort',
-      data: {
-        _method: 'put',
-        catalog: {
-          order: updated_order
-        },
-        authenticity_token: window._token
-      }
+  if ($('.sortable-category').length) {
+    // after the order changes
+    sortable('.sortable-category')[0].addEventListener('sortupdate', function(e) {
+      // array to store new order
+      updated_order = [];
+      // set the updated positions
+      set_positions();
+
+      // populate the updated_order array with the new task positions
+      $('.panel.panel-default').each(function(i){
+          catalog_id = this.parentElement.dataset['id'];
+          updated_order.push({ id: $(this).data("id"), position: i+1, catalog_id: catalog_id });
+      });
+
+      // send the updated order via ajax
+      $.ajax({
+        type: "PUT",
+        url: '/admin/categories/sort',
+        data: {
+          _method: 'put',
+          category: {
+            order: updated_order
+          },
+          authenticity_token: window._token
+        }
+      });
     });
-  });
+  }
 
-  // after the order changes
-  sortable('.sortable-category')[0].addEventListener('sortupdate', function(e) {
-    // array to store new order
-    updated_order = [];
-    // set the updated positions
-    set_positions();
+  if ($('.sortable-keyword').length) {
+    // after the order changes
+    sortable('.sortable-keyword')[0].addEventListener('sortupdate', function(e) {
+      // array to store new order
+      updated_order = [];
+      // set the updated positions
+      set_positions();
 
-    // populate the updated_order array with the new task positions
-    $('.panel.panel-default').each(function(i){
-        catalog_id = this.parentElement.dataset['id'];
-        updated_order.push({ id: $(this).data("id"), position: i+1, catalog_id: catalog_id });
+      // populate the updated_order array with the new task positions
+      $('.panel.panel-default').each(function(i){
+          updated_order.push({ id: $(this).data("id"), position: i+1 });
+      });
+
+      // send the updated order via ajax
+      $.ajax({
+        type: "PUT",
+        url: '/admin/keywords/sort',
+        data: {
+          _method: 'put',
+          keyword: {
+            order: updated_order
+          },
+          authenticity_token: window._token
+        }
+      });
     });
+  }
 
-    // send the updated order via ajax
-    $.ajax({
-      type: "PUT",
-      url: '/admin/categories/sort',
-      data: {
-        _method: 'put',
-        category: {
-          order: updated_order
-        },
-        authenticity_token: window._token
-      }
+  if ($('.sortable-showed-keyword').length) {
+    sortable('.sortable-showed-keyword')[0].addEventListener('sortupdate', function(e) {
+      // array to store new order
+      updated_order = [];
+      // set the updated positions
+      set_positions();
+
+      // populate the updated_order array with the new task positions
+      $('.panel.panel-default').each(function(i){
+          updated_order.push({ id: $(this).data("id"), position: i+1 });
+      });
+
+      // send the updated order via ajax
+      $.ajax({
+        type: "PUT",
+        url: '/admin/keywords/show_sort',
+        data: {
+          _method: 'put',
+          keyword: {
+            order: updated_order
+          },
+          authenticity_token: window._token
+        }
+      });
     });
-  });
+  }
 
-  // after the order changes
-  sortable('.sortable-keyword')[0].addEventListener('sortupdate', function(e) {
-    // array to store new order
-    updated_order = [];
-    // set the updated positions
-    set_positions();
+  if ($('.sortable-faq').length) {
+    // after the order changes
+    sortable('.sortable-faq')[0].addEventListener('sortupdate', function(e) {
+      // array to store new order
+      updated_order = [];
+      // set the updated positions
+      set_positions();
 
-    // populate the updated_order array with the new task positions
-    $('.panel.panel-default').each(function(i){
-        updated_order.push({ id: $(this).data("id"), position: i+1 });
+      // populate the updated_order array with the new task positions
+      $('.panel.panel-default').each(function(i){
+          updated_order.push({ id: $(this).data("id"), position: i+1 });
+      });
+
+      // send the updated order via ajax
+      $.ajax({
+        type: "PUT",
+        url: '/admin/faqs/sort',
+        data: {
+          _method: 'put',
+          faq: {
+            order: updated_order
+          },
+          authenticity_token: window._token
+        }
+      });
     });
+  }
 
-    // send the updated order via ajax
-    $.ajax({
-      type: "PUT",
-      url: '/admin/keywords/sort',
-      data: {
-        _method: 'put',
-        keyword: {
-          order: updated_order
-        },
-        authenticity_token: window._token
-      }
+  if ($('.sortable-slide').length) {
+    // after the order changes
+    sortable('.sortable-slide')[0].addEventListener('sortupdate', function(e) {
+      // array to store new order
+      updated_order = [];
+      // set the updated positions
+      set_positions();
+
+      // populate the updated_order array with the new task positions
+      $('.panel.panel-default').each(function(i){
+          updated_order.push({ id: $(this).data("id"), position: i+1 });
+      });
+
+      // send the updated order via ajax
+      $.ajax({
+        type: "PUT",
+        url: '/admin/slides/sort',
+        data: {
+          _method: 'put',
+          slide: {
+            order: updated_order
+          },
+          authenticity_token: window._token
+        }
+      });
     });
-  });
-
-  sortable('.sortable-showed-keyword')[0].addEventListener('sortupdate', function(e) {
-    // array to store new order
-    updated_order = [];
-    // set the updated positions
-    set_positions();
-
-    // populate the updated_order array with the new task positions
-    $('.panel.panel-default').each(function(i){
-        updated_order.push({ id: $(this).data("id"), position: i+1 });
-    });
-
-    // send the updated order via ajax
-    $.ajax({
-      type: "PUT",
-      url: '/admin/keywords/show_sort',
-      data: {
-        _method: 'put',
-        keyword: {
-          order: updated_order
-        },
-        authenticity_token: window._token
-      }
-    });
-  });
-
-  // after the order changes
-  sortable('.sortable-faq')[0].addEventListener('sortupdate', function(e) {
-    // array to store new order
-    updated_order = [];
-    // set the updated positions
-    set_positions();
-
-    // populate the updated_order array with the new task positions
-    $('.panel.panel-default').each(function(i){
-        updated_order.push({ id: $(this).data("id"), position: i+1 });
-    });
-
-    // send the updated order via ajax
-    $.ajax({
-      type: "PUT",
-      url: '/admin/faqs/sort',
-      data: {
-        _method: 'put',
-        faq: {
-          order: updated_order
-        },
-        authenticity_token: window._token
-      }
-    });
-  });
-
-  // after the order changes
-  sortable('.sortable-slide')[0].addEventListener('sortupdate', function(e) {
-    // array to store new order
-    updated_order = [];
-    // set the updated positions
-    set_positions();
-
-    // populate the updated_order array with the new task positions
-    $('.panel.panel-default').each(function(i){
-        updated_order.push({ id: $(this).data("id"), position: i+1 });
-    });
-
-    // send the updated order via ajax
-    $.ajax({
-      type: "PUT",
-      url: '/admin/slides/sort',
-      data: {
-        _method: 'put',
-        slide: {
-          order: updated_order
-        },
-        authenticity_token: window._token
-      }
-    });
-  });
+  }
 
   if (typeof(CKEDITOR) != undefined) {
     // CKEDITOR.config.extraAllowedContent = 'i dl dt dd data-toggle[*]{*} data-parent[*]{*}';
