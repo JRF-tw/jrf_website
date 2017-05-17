@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 gem "bundler", ">= 1.8.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -30,7 +28,7 @@ gem 'meta-tags', '~> 2.0.0'
 gem 'devise'
 gem 'simple_form'
 gem 'slim-rails'
-gem 'factory_girl_rails'
+gem 'factory_girl_rails', group: :test
 gem 'kaminari'
 gem 'jquery-ui-rails'
 gem 'chosen-rails'
@@ -61,7 +59,6 @@ gem 'responders', '~> 2.0'
 gem 'swagger-docs', git: 'git://github.com/billy3321/swagger-docs.git'
 gem 'lograge'
 # gem 'rollbar', '~> 2.5.1'
-gem 'oj', '~> 2.12.14'
 gem "skylight"
 gem "rails-i18n"
 source 'https://rails-assets.org' do
@@ -85,7 +82,7 @@ end
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
