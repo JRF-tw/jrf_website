@@ -27,7 +27,7 @@ gem 'omniauth-google-oauth2'
 gem 'meta-tags', '~> 2.0.0'
 gem 'devise'
 gem 'simple_form'
-gem 'slim-rails'
+gem 'slim-rails', '3.1.1'
 gem 'factory_girl_rails', group: :test
 gem 'kaminari'
 gem 'jquery-ui-rails'
@@ -62,10 +62,6 @@ gem 'lograge'
 gem "skylight"
 gem "rails-i18n"
 source 'https://rails-assets.org' do
-  # gem 'rails-assets-jquery'
-  # gem 'rails-assets-bootstrap'
-  # gem 'rails-assets-fontawesome'
-  # gem 'rails-assets-owlcarousel'
   gem 'rails-assets-magnific-popup'
   gem 'rails-assets-animate.css'
   gem 'rails-assets-owl-carousel'
@@ -75,7 +71,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-mhuggins--jquery-countTo'
   gem 'rails-assets-jquery.parallax'
   gem 'rails-assets-jquery.validate'
-  gem 'rails-assets-html.sortable'
 end
 
 # Use ActiveModel has_secure_password
