@@ -11,7 +11,7 @@
 (function($){
 	$(document).ready(function(){
 
-		$(window).load(function() {
+		$(window).on('load', function() {
 			$("body").removeClass("no-trans");
 		});
 
@@ -364,7 +364,7 @@
 		// Isotope filters
 		//-----------------------------------------------
 		if ($('.isotope-container').length>0 || $('.masonry-grid').length>0 || $('.masonry-grid-fitrows').length>0) {
-			$(window).load(function() {
+			$(window).on('load', function() {
 				$('.masonry-grid').isotope({
 					itemSelector: '.masonry-grid-item',
 					layoutMode: 'masonry'
@@ -384,11 +384,11 @@
 			});
 		};
 
-		
+
 		//hc-tabs
 		//-----------------------------------------------
 		if ($('.hc-tabs').length>0) {
-			$(window).load(function() {
+			$(window).on('load', function() {
 				var currentTab = $(".hc-tabs .nav.nav-tabs li.active a").attr("href"),
 				tabsImageAnimation = $(".hc-tabs-top").find("[data-tab='" + currentTab + "']").attr("data-tab-animation-effect");
 				$(".hc-tabs-top").find("[data-tab='" + currentTab + "']").addClass("current-img show " + tabsImageAnimation + " animated");
@@ -830,7 +830,7 @@
 		// Affix plugin
 		//-----------------------------------------------
 		if ($("#affix").length>0) {
-			$(window).load(function() {
+			$(window).on('load', function() {
 
 				var affixBottom = $(".footer").outerHeight(true) + $(".subfooter").outerHeight(true) + $(".blogpost footer").outerHeight(true),
 				affixTop = $("#affix").offset().top;
