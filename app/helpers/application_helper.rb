@@ -5,7 +5,7 @@ module ApplicationHelper
       site: '財團法人民間司法改革基金會',
       reverse: true,
       description: '',
-      canonical: request.url,
+      canonical: request.url.sub(/^http:\/\//, 'https://'),
       author: Setting.google.pages,
       publisher: Setting.google.pages,
       og: {
@@ -14,7 +14,7 @@ module ApplicationHelper
         type: 'website',
         image: "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf.jpg",
         site_name: '財團法人民間司法改革基金會',
-        url: request.url
+        url: request.url.sub(/^http:\/\//, 'https://')
       },
       twitter: {
         card: 'summary_large_image',
