@@ -1,11 +1,12 @@
 module ApplicationHelper
   def default_meta_tags
+    canonical_url = request.url.sub(/^http:\/\//, 'https://')
     {
       separator: "&mdash;".html_safe,
       site: '財團法人民間司法改革基金會',
       reverse: true,
       description: '',
-      canonical: request.url.sub(/^http:\/\//, 'https://'),
+      canonical: canonical_url,
       author: Setting.google.pages,
       publisher: Setting.google.pages,
       og: {
@@ -14,7 +15,7 @@ module ApplicationHelper
         type: 'website',
         image: "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf.jpg",
         site_name: '財團法人民間司法改革基金會',
-        url: request.url.sub(/^http:\/\//, 'https://')
+        url: canonical_url
       },
       twitter: {
         card: 'summary_large_image',
