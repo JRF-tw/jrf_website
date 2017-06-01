@@ -1,6 +1,10 @@
 module ApplicationHelper
   def default_meta_tags
-    canonical_url = request.url.sub(/^http:\/\//, 'https://')
+    if Setting.url.protocol == 'http'
+      canonical_url = request.url
+    else
+      canonical_url = request.url.sub(/^http:\/\//, "#{Setting.url.protocol}://")
+    end
     {
       separator: "&mdash;".html_safe,
       site: '財團法人民間司法改革基金會',
