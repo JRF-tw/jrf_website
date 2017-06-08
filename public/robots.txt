@@ -5,3 +5,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/*
 Disallow: /users/*
+Sitemap: https://www.jrf.org.tw/sitemap.xml
