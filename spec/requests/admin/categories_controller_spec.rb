@@ -35,7 +35,7 @@ describe "Admin/Category" do
 
     describe "#create" do
       it "redirect" do
-        post "/admin/categories", category: new_category
+        post "/admin/categories", params: { category: new_category }
         expect(response).to be_redirect
       end
     end
@@ -44,7 +44,7 @@ describe "Admin/Category" do
       it "redirect" do
         category
         update_data = { name: "new_name" }
-        put "/admin/categories/#{category.id}", category: update_data
+        put "/admin/categories/#{category.id}", params: { category: update_data }
         expect(response).to be_redirect
       end
     end
@@ -77,7 +77,7 @@ describe "Admin/Category" do
             }
           }
         }
-        put "/admin/categories/sort", sort_data
+        put "/admin/categories/sort", params: sort_data
         category1.reload
         category2.reload
         expect(Category.all).to eq([category1, category2])
@@ -112,7 +112,7 @@ describe "Admin/Category" do
 
     describe "#create" do
       it "redirect" do
-        post "/admin/categories", category: new_category
+        post "/admin/categories", params: { category: new_category }
         expect(response).to be_redirect
       end
     end
@@ -121,7 +121,7 @@ describe "Admin/Category" do
       it "redirect" do
         category
         update_data = { name: "new_name" }
-        put "/admin/categories/#{category.id}", category: update_data
+        put "/admin/categories/#{category.id}", params: { category: update_data }
         expect(response).to be_redirect
       end
     end
@@ -154,7 +154,7 @@ describe "Admin/Category" do
             }
           }
         }
-        put "/admin/categories/sort", sort_data
+        put "/admin/categories/sort", params: sort_data
         category1.reload
         category2.reload
         expect(Category.all).to eq([category1, category2])
@@ -189,7 +189,7 @@ describe "Admin/Category" do
 
     describe "#create" do
       it "success" do
-        post "/admin/categories", category: new_category
+        post "/admin/categories", params: { category: new_category }
         expect(response).to be_success
       end
     end
@@ -198,7 +198,7 @@ describe "Admin/Category" do
       it "success" do
         category
         update_data = { name: "new_name" }
-        put "/admin/categories/#{category.id}", category: update_data
+        put "/admin/categories/#{category.id}", params: { category: update_data }
         expect(response).to be_redirect
       end
     end
@@ -231,7 +231,7 @@ describe "Admin/Category" do
             }
           }
         }
-        put "/admin/categories/sort", sort_data
+        put "/admin/categories/sort", params: sort_data
         category1.reload
         category2.reload
         expect(Category.all).to eq([category2, category1])

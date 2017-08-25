@@ -37,7 +37,7 @@ describe "Admin/Keyword" do
 
     describe "#create" do
       it "redirect" do
-        post "/admin/keywords", keyword: new_keyword
+        post "/admin/keywords", params: { keyword: new_keyword }
         expect(response).to be_redirect
       end
     end
@@ -46,7 +46,7 @@ describe "Admin/Keyword" do
       it "redirect" do
         keyword
         update_data = { name: "new_name" }
-        put "/admin/keywords/#{keyword.id}", keyword: update_data
+        put "/admin/keywords/#{keyword.id}", params: { keyword: update_data }
         expect(response).to be_redirect
       end
     end
@@ -79,7 +79,7 @@ describe "Admin/Keyword" do
             }
           }
         }
-        put "/admin/keywords/sort", sort_data
+        put "/admin/keywords/sort", params: sort_data
         keyword1.reload
         keyword2.reload
         expect(Keyword.all).to eq([keyword1, keyword2])
@@ -114,7 +114,7 @@ describe "Admin/Keyword" do
 
     describe "#create" do
       it "redirect" do
-        post "/admin/keywords", keyword: new_keyword
+        post "/admin/keywords", params: { keyword: new_keyword }
         expect(response).to be_redirect
       end
     end
@@ -123,7 +123,7 @@ describe "Admin/Keyword" do
       it "redirect" do
         keyword
         update_data = { name: "new_name" }
-        put "/admin/keywords/#{keyword.id}", keyword: update_data
+        put "/admin/keywords/#{keyword.id}", params: { keyword: update_data }
         expect(response).to be_redirect
       end
     end
@@ -156,7 +156,7 @@ describe "Admin/Keyword" do
             }
           }
         }
-        put "/admin/keywords/sort", sort_data
+        put "/admin/keywords/sort", params: sort_data
         keyword1.reload
         keyword2.reload
         expect(Keyword.all).to eq([keyword1, keyword2])
@@ -191,7 +191,7 @@ describe "Admin/Keyword" do
 
     describe "#create" do
       it "success" do
-        post "/admin/keywords", keyword: new_keyword
+        post "/admin/keywords", params: { keyword: new_keyword }
         expect(response).to be_redirect
       end
     end
@@ -200,7 +200,7 @@ describe "Admin/Keyword" do
       it "success" do
         keyword
         update_data = { name: "new_name" }
-        put "/admin/keywords/#{keyword.id}", keyword: update_data
+        put "/admin/keywords/#{keyword.id}", params: { keyword: update_data }
         expect(response).to be_redirect
       end
     end
@@ -226,7 +226,7 @@ describe "Admin/Keyword" do
             }
           ]
         }
-        put "/admin/keywords/#{faq.keyword_id}", keyword: update_faq_data
+        put "/admin/keywords/#{faq.keyword_id}", params: { keyword: update_faq_data }
         expect(response).to be_redirect
         faq.reload
         expect(faq.question).to match(update_faq_data[:faqs_attributes][0][:question])
@@ -245,7 +245,7 @@ describe "Admin/Keyword" do
           ]
         }
         expect {
-          put "/admin/keywords/#{faq.keyword_id}", keyword: update_faq_data
+          put "/admin/keywords/#{faq.keyword_id}", params: { keyword: update_faq_data }
         }.to change { Faq.count }.by(-1)
       end
     end
@@ -261,7 +261,7 @@ describe "Admin/Keyword" do
             }
           ]
         }
-        put "/admin/keywords/#{slide.slideable_id}", keyword: update_slide_data
+        put "/admin/keywords/#{slide.slideable_id}", params: { keyword: update_slide_data }
         expect(response).to be_redirect
         slide.reload
         expect(File.basename(slide.image.url)).to match('test1.jpg')
@@ -280,7 +280,7 @@ describe "Admin/Keyword" do
           ]
         }
         expect {
-          put "/admin/keywords/#{slide.slideable.id}", keyword: update_slide_data
+          put "/admin/keywords/#{slide.slideable.id}", params: { keyword: update_slide_data }
         }.to change { Slide.count }.by(-1)
       end
     end
@@ -303,7 +303,7 @@ describe "Admin/Keyword" do
             }
           }
         }
-        put "/admin/keywords/sort", sort_data
+        put "/admin/keywords/sort", params: sort_data
         keyword1.reload
         keyword2.reload
         expect(Keyword.all).to eq([keyword2, keyword1])

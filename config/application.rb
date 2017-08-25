@@ -25,6 +25,3 @@ module NewJrfWebsite
     config.exceptions_app = self.routes
   end
 end
-
-
-ActiveSupport.halt_callback_chains_on_return_false = false

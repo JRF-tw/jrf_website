@@ -27,7 +27,7 @@ gem 'omniauth-google-oauth2'
 gem 'meta-tags'
 gem 'devise'
 gem 'simple_form'
-gem 'slim-rails'
+gem 'slim-rails', '3.1.1'
 gem 'factory_girl_rails', group: :test
 gem 'kaminari'
 gem 'jquery-ui-rails'

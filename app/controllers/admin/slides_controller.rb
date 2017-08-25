@@ -6,7 +6,7 @@ class Admin::SlidesController < Admin::BaseController
         Slide.find(value[:id]).update_attribute(:position, value[:position])
       end
     end
-    render nothing: true
+    render body: nil
   end
 
   private

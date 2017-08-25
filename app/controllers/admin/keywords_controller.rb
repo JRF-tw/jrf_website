@@ -75,14 +75,14 @@ class Admin::KeywordsController < Admin::BaseController
     keyword_params[:order].each do |key,value|
       Keyword.find(value[:id]).update_attribute(:position, value[:position])
     end
-    render nothing: true
+    render body: nil
   end
 
   def show_sort
     keyword_params[:order].each do |key,value|
       Keyword.find(value[:id]).update_attribute(:show_position, value[:position])
     end
-    render nothing: true
+    render body: nil
   end
 
   private

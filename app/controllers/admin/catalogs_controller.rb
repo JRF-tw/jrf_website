@@ -57,7 +57,7 @@ class Admin::CatalogsController < Admin::BaseController
     catalog_params[:order].each do |key,value|
       Catalog.find(value[:id]).update_attribute(:position, value[:position])
     end
-    render nothing: true
+    render body: nil
   end
 
   private

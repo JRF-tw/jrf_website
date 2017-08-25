@@ -58,7 +58,7 @@ class Admin::CategoriesController < Admin::BaseController
       Category.find(value[:id]).update_attribute(:position, value[:position])
       #Category.find(value[:id]).update_attribute(:catalog_id, value[:catalog_id])
     end
-    render nothing: true
+    render body: nil
   end
 
   private
