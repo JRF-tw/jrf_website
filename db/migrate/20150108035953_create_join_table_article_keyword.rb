@@ -1,4 +1,4 @@
-class CreateJoinTableArticleKeyword < ActiveRecord::Migration
+class CreateJoinTableArticleKeyword < ActiveRecord::Migration[4.2]
   def change
     create_table :articles_keywords, id: false do |t|
       t.references :article, null: false

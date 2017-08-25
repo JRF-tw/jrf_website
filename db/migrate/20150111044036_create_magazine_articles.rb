@@ -1,4 +1,4 @@
-class CreateMagazineArticles < ActiveRecord::Migration
+class CreateMagazineArticles < ActiveRecord::Migration[4.2]
   def change
     create_table :magazine_articles do |t|
       t.integer :magazine_id

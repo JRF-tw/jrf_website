@@ -1,4 +1,4 @@
-class CreateEpapers < ActiveRecord::Migration
+class CreateEpapers < ActiveRecord::Migration[4.2]
   def change
     create_table :epapers do |t|
       t.string :title
