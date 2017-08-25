@@ -1,4 +1,4 @@
-class Keyword < ActiveRecord::Base
+class Keyword < ApplicationRecord
   belongs_to :category
   has_many :faqs, dependent: :destroy
   has_many :slides, as: :slideable, dependent: :destroy

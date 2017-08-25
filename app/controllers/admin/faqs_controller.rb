@@ -1,5 +1,5 @@
 class Admin::FaqsController < Admin::BaseController
-  before_filter :find_keyword, except: [:sort]
+  before_action :find_keyword, except: [:sort]
 
   # GET /faqs
   def index

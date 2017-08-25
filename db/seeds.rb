@@ -31,10 +31,10 @@ Category.delete_all
 Keyword.delete_all
 Article.delete_all
 Faq.delete_all
-ActiveRecord::Base.connection.execute("Delete from articles_keywords;");
+ApplicationRecord.connection.execute("Delete from articles_keywords;");
 
-ActiveRecord::Base.connection.tables.each do |t|
-  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+ApplicationRecord.connection.tables.each do |t|
+  ApplicationRecord.connection.reset_pk_sequence!(t)
 end
 
 
@@ -546,6 +546,6 @@ articles.each do |a|
   article.save
 end
 
-ActiveRecord::Base.connection.tables.each do |t|
-  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+ApplicationRecord.connection.tables.each do |t|
+  ApplicationRecord.connection.reset_pk_sequence!(t)
 end

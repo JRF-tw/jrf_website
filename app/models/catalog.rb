@@ -1,4 +1,4 @@
-class Catalog < ActiveRecord::Base
+class Catalog < ApplicationRecord
   has_many :categories
   has_many :keywords, through: :categories
   validates_presence_of :name, message: '請填寫分類名稱'
