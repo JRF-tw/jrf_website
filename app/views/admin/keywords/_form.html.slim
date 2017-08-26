@@ -31,7 +31,7 @@
 - unless @keyword.new_record?
   #slides.sortable-slide
     = f.simple_fields_for :slides do |slide|
-      = render :partial => 'slide_fields', :locals => { :f => slide }
+      = render partial: 'slide_fields', locals: { f: slide }
     = link_to_add_association "新增Slide", f, :slides, class: "btn radius btn-white btn-sm"
 .form-group
   label 內文
@@ -42,7 +42,7 @@ p.help-block FAQ不一定必填，若留空則頁面不顯示。欲新增請至�
 - unless @keyword.new_record?
   #faqs.sortable-faq
     = f.simple_fields_for :faqs do |faq|
-      = render :partial => 'faq_fields', :locals => { :f => faq }
+      = render partial: 'faq_fields', locals: { f: faq }
     = link_to_add_association "新增FAQ", f, :faqs, class: "btn radius btn-white btn-sm"
     = link_to "排序FAQ", admin_keyword_faqs_path(@keyword), class: "btn radius btn-default btn-sm"
 hr

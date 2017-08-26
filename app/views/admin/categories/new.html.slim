@@ -4,4 +4,4 @@ pre
   br
   | 將滑鼠移到專案名稱上，按住滑鼠上下拖曳到要的位置後放開即可調整排序
 = simple_form_for @category, url: admin_categories_path do |f|
-  = render :partial => 'form', :locals => { :f => f }
+  = render partial: 'form', locals: { f: f }

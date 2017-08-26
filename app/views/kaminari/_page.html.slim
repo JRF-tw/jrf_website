@@ -8,7 +8,7 @@
     remote       : data-remote
 li class="#{'active' if page.current?}"
   - if page.current?
-    == link_to page, url, {:remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil}
+    == link_to page, url, {remote: remote, rel: page.next? ? 'next' : page.prev? ? 'prev' : nil}
   - else
-    == link_to page, url, {:remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil}
+    == link_to page, url, {remote: remote, rel: page.next? ? 'next' : page.prev? ? 'prev' : nil}
 '

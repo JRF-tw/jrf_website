@@ -13,7 +13,7 @@ html lang="zh-Hant-TW"
     link href="/images/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"
     link href="/images/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"
     link href="/images/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144"
-    = auto_discovery_link_tag(:rss, feed_url(:format => :atom))
+    = auto_discovery_link_tag(:rss, feed_url(format: :atom))
     - if (params[:controller] == 'static_pages' and params[:action] == 'home') or params[:controller] == 'keywords'
       = stylesheet_link_tag  'index', media: 'all'
     - else

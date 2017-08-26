@@ -1,4 +1,4 @@
 h1.text-center 修改主目錄
 pre 主目錄名稱不宜過長，圖檔不宜過大噢！
 = simple_form_for @catalog, url: admin_catalog_path(@catalog), method: :put do |f|
-  = render :partial => 'form', :locals => { :f => f }
+  = render partial: 'form', locals: { f: f }

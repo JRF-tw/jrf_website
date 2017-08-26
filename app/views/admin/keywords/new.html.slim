@@ -1,3 +1,3 @@
 h1.text-center 新增專案
 = simple_form_for @keyword, url: admin_keywords_path do |f|
-  = render :partial => 'form', :locals => { :f => f }
+  = render partial: 'form', locals: { f: f }
