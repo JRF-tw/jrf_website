@@ -10,50 +10,50 @@
       ul.nav.nav-tabs
         - if @kind.blank?
           li.active
-            = link_to "所有", url_for(params.merge({k: nil}))
+            = link_to "所有", url_for(k: nil)
           li
-            = link_to "新聞稿", url_for(params.merge({k: "presses"}))
+            = link_to "新聞稿", url_for(k: "presses")
           li
-            = link_to "活動", url_for(params.merge({k: "activities"}))
+            = link_to "活動", url_for(k: "activities")
           li
-            = link_to "活動", url_for(params.merge({k: "comments"}))
+            = link_to "活動", url_for(k: "comments")
           li
-            = link_to "電子報", url_for(params.merge({k: "epapers"}))
+            = link_to "電子報", url_for(k: "epapers")
           li
-            = link_to "書籍", url_for(params.merge({k: "books"}))
+            = link_to "書籍", url_for(k: "books")
         - else
           li
-            = link_to "所有", url_for(params.merge({k: nil}))
+            = link_to "所有", url_for(k: nil)
           - if @kind == 'presses'
             li.active
-              = link_to "新聞稿", url_for(params.merge({k: "presses"}))
+              = link_to "新聞稿", url_for(k: "presses")
           - else
             li
-              = link_to "新聞稿", url_for(params.merge({k: "presses"}))
+              = link_to "新聞稿", url_for(k: "presses")
           - if @kind == 'activities'
             li.active
-              = link_to "活動", url_for(params.merge({k: "activities"}))
+              = link_to "活動", url_for(k: "activities")
           - else
             li
-              = link_to "活動", url_for(params.merge({k: "activities"}))
+              = link_to "活動", url_for(k: "activities")
           - if @kind == 'comments'
             li.active
-             = link_to "活動", url_for(params.merge({k: "comments"}))
+             = link_to "活動", url_for(k: "comments")
           - else
             li
-              = link_to "活動", url_for(params.merge({k: "comments"}))
+              = link_to "活動", url_for(k: "comments")
           - if @kind == 'epapers'
             li.active
-              = link_to "電子報", url_for(params.merge({k: "epapers"}))
+              = link_to "電子報", url_for(k: "epapers")
           - else
             li
-              = link_to "電子報", url_for(params.merge({k: "epapers"}))
+              = link_to "電子報", url_for(k: "epapers")
           - if @kind == 'books'
             li.active
-              = link_to "書籍", url_for(params.merge({k: "books"}))
+              = link_to "書籍", url_for(k: "books")
           - else
             li
-              = link_to "書籍", url_for(params.merge({k: "books"}))
+              = link_to "書籍", url_for(k: "books")
     .row
       .block.clearfix.isotope-container
         - @articles.each do |a|
