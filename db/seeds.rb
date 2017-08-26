@@ -381,7 +381,7 @@ articles = [
   <ul style="font-size:15px">
     <li><a href="https://jrf.neticrm.tw/civicrm/contribute/transact?reset=1&id=11" target="_blank">小額定期捐款</a></li>
     <li><a href="https://jrf.neticrm.tw/civicrm/contribute/transact?reset=1&id=12" target="_blank">單筆捐款</a></li>
-    <li>下載捐款單，填寫後回傳：<a href="http://www.jrf.org.tw/newjrf/attach01/2014_donation.doc" target="_blank">DOC</a>│<a href="http://www.jrf.org.tw/newjrf/attach01/2014_donation.pdf" target="_blank">PDF</a></li>
+    <li>下載捐款單，填寫後回傳：<a href="/files/2014_donation.doc" target="_blank">DOC</a>│<a href="/files/2014_donation.pdf" target="_blank">PDF</a></li>
   </ul>
 </div>
 <P>親愛的朋友：</P>
@@ -390,27 +390,27 @@ articles = [
 <p>而這個問題也難，難在千絲萬縷，不知從何下手。幸而19年來的摸索，我們理出了一些頭緒和脈絡：</p>
 <ul class="nav nav-tabs" role="tablist">
   <li class="active col-md-2">
-    <a href="#htab1" role="tab" data-toggle="tab"><img width="100%" src="http://www.jrf.org.tw/newjrf/img/2014-d-1.png">
+    <a href="#htab1" role="tab" data-toggle="tab"><img width="100%" src="/images/2014-d-1.png">
       <h4 class="text-center">個案救援</h4>
     </a>
   </li>
   <li class="col-md-2">
-    <a href="#htab2" role="tab" data-toggle="tab"><img width="100%" src="http://www.jrf.org.tw/newjrf/img/2014-d-2.png">
+    <a href="#htab2" role="tab" data-toggle="tab"><img width="100%" src="/images/2014-d-2.png">
       <h4 class="text-center">律師平台</h4>
     </a>
   </li>
   <li class="col-md-2">
-    <a href="#htab3" role="tab" data-toggle="tab"><img width="100%" src="http://www.jrf.org.tw/newjrf/img/2014-d-3.png">
+    <a href="#htab3" role="tab" data-toggle="tab"><img width="100%" src="/images/2014-d-3.png">
       <h4 class="text-center">數位出版</h4>
     </a>
   </li>
   <li class="col-md-2">
-    <a href="#htab4" role="tab" data-toggle="tab"><img width="100%" src="http://www.jrf.org.tw/newjrf/img/2014-d-4.png">
+    <a href="#htab4" role="tab" data-toggle="tab"><img width="100%" src="/images/2014-d-4.png">
       <h4 class="text-center">志工發展</h4>
     </a>
   </li>
   <li class="col-md-2">
-    <a href="#htab5" role="tab" data-toggle="tab"><img width="100%" src="http://www.jrf.org.tw/newjrf/img/2014-d-5.png">
+    <a href="#htab5" role="tab" data-toggle="tab"><img width="100%" src="/images/2014-d-5.png">
       <h4 class="text-center">法案工作</h4>
     </a>
   </li>
@@ -459,9 +459,9 @@ articles = [
   <p>　　　　敬祝　平安、順心</p>
   <p align="right">財團法人民間司法改革基金會
     <br /> 董事長
-    <img src="http://www.jrf.org.tw/newjrf/img/20140905-3.png" width="150" />
+    <img src="/images/20140905-3.png" width="150" />
     <br /> 執行長
-    <img src="http://www.jrf.org.tw/newjrf/img/20140905-4.png" width="150" />
+    <img src="/images/20140905-4.png" width="150" />
     <br /> 暨秘書處全體同仁 敬上 </p>
 </div>
 <!-- 若有FAQ，以下放ＦＡＱ,則此處內文結束；若無下方註解處才結束內文 -->
@@ -507,7 +507,7 @@ articles = [
     </div>
     <div id="collapseFive" class="panel-collapse collapse">
       <div class="panel-body">
-        <p>​請點選連結，下載紙本捐款單。（<a href="http://www.jrf.org.tw/newjrf/attach01/2014_donation.doc" target="_blank">DOC</a>│<a href="http://www.jrf.org.tw/newjrf/attach01/2014_donation.pdf" target="_blank">PDF</a>）</p>
+        <p>​請點選連結，下載紙本捐款單。（<a href="/files/2014_donation.doc" target="_blank">DOC</a>│<a href="/files/2014_donation.pdf" target="_blank">PDF</a>）</p>
       </div>
     </div>
   </div>
