@@ -2,6 +2,6 @@
   label 問
   = f.input :question, label: false, required: true, input_html: { class: 'form-control' }
   label 答
-  = f.cktext_area :answer, label: false, required: true
+  = f.cktext_area :answer, label: false, required: true, input_html: { class: 'ckeditor' }
   = link_to_remove_association "刪除FAQ", f, class: "form-control"
   /= f.input :_destroy, as: :boolean, input_html: {checked: false, class: "form-control"}, label: '刪除FAQ'

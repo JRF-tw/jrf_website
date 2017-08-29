@@ -32,7 +32,7 @@
     p.help-block 此處文字在專案主打時出現在首頁中，以供FB抓取
   .form-group
     label 內文
-    = f.cktext_area :content, label: '內文', required: true
+    = f.cktext_area :content, label: '內文', required: true, input_html: { class: 'ckeditor' }
 - else
   .form-group
     = f.association :keywords, label: "專案分類", collection: Keyword.all, input_html: { class: 'chosen-select form-control' }, disabled: true
@@ -62,11 +62,11 @@
     = f.input :youtube_url, label: 'Youtube 網址', input_html: { class: 'form-control' }
   .form-group
     label 簡述
-    = f.cktext_area :description, required: true, hint: "此處文字在專案主打時出現在首頁中，以及供FB抓取"
+    = f.cktext_area :description, required: true, hint: "此處文字在專案主打時出現在首頁中，以及供FB抓取", input_html: { class: 'ckeditor' }
     p.help-block 此處文字在專案主打時出現在首頁中，以供FB抓取
   .form-group
     label 內文
-    = f.cktext_area :content, label: '內文', required: true
+    = f.cktext_area :content, label: '內文', required: true, input_html: { class: 'ckeditor' }
 = f.button :submit, "儲存", class: 'btn btn-default'
 
 

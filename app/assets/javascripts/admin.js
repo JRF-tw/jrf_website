@@ -249,6 +249,12 @@ var ready = function(){
     CKEDITOR.config.allowedContent = true ;
     CKEDITOR.dtd.$removeEmpty['i'] = false ;
   }
+
+  $('textarea.ckeditor').each(function(){
+    if ($(this).css('visibility') != 'hidden') {
+      CKEDITOR.replace(this)
+    }
+  })
 };
 
 
