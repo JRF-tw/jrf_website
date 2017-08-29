@@ -1,6 +1,6 @@
 class Admin::BaseController < ApplicationController
   layout 'admin'
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :require_admin, :set_articles
 
   private

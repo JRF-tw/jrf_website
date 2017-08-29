@@ -20,7 +20,7 @@
   = image_tag(@keyword.cover_url, alt:"") if @keyword.cover?
 .form-group
   label 首頁專案介紹
-  = f.cktext_area :description, label: '簡述', required: true, hint: "此處文字在專案主打時出現在首頁中，以及供FB抓取"
+  = f.cktext_area :description, label: '簡述', required: true, hint: "此處文字在專案主打時出現在首頁中，以及供FB抓取", input_html: { class: 'ckeditor' }
   p.help-block 此處文字在專案主打時出現在首頁中，以供FB抓取。留意每行字數不超過20全形字
 .form-group
   = f.input :image, as: :file, label: '文章附圖', input_html: { id: 'exampleInputFile' }, label_html: {for: "exampleInputFile"}
@@ -31,18 +31,18 @@
 - unless @keyword.new_record?
   #slides.sortable-slide
     = f.simple_fields_for :slides do |slide|
-      = render :partial => 'slide_fields', :locals => { :f => slide }
+      = render partial: 'slide_fields', locals: { f: slide }
     = link_to_add_association "新增Slide", f, :slides, class: "btn radius btn-white btn-sm"
 .form-group
   label 內文
-  = f.cktext_area :content, label: '內文', required: true
+  = f.cktext_area :content, label: '內文', required: true, input_html: { class: 'ckeditor' }
 hr
 h3 FAQ
 p.help-block FAQ不一定必填，若留空則頁面不顯示。欲新增請至「修改/刪除專案」頁面。
 - unless @keyword.new_record?
   #faqs.sortable-faq
     = f.simple_fields_for :faqs do |faq|
-      = render :partial => 'faq_fields', :locals => { :f => faq }
+      = render partial: 'faq_fields', locals: { f: faq }
     = link_to_add_association "新增FAQ", f, :faqs, class: "btn radius btn-white btn-sm"
     = link_to "排序FAQ", admin_keyword_faqs_path(@keyword), class: "btn radius btn-default btn-sm"
 hr

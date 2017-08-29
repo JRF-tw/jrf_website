@@ -21,11 +21,11 @@ table.table
           td 管理員
           td
             = simple_form_for u, url: admin_user_path(u), method: :put do |f|
-              = f.input :admin, as: :hidden, :input_html => { :value => 0 }
+              = f.input :admin, as: :hidden, input_html: { value: 0 }
               = f.button :submit, "移除管理權限"
         - else
           td 無
           td
             = simple_form_for u, url: admin_user_path(u), method: :put do |f|
-              = f.input :admin, as: :hidden, :input_html => { :value => 1 }
+              = f.input :admin, as: :hidden, input_html: { value: 1 }
               = f.button :submit, "授與管理權限"

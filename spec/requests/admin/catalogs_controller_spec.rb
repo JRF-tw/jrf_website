@@ -35,7 +35,7 @@ describe "Admin/Catalog" do
 
     describe "#create" do
       it "redirect" do
-        post "/admin/catalogs", catalog: new_catalog
+        post "/admin/catalogs", params: { catalog: new_catalog }
         expect(response).to be_redirect
       end
     end
@@ -44,7 +44,7 @@ describe "Admin/Catalog" do
       it "redirect" do
         catalog
         update_data = { name: "new_name" }
-        put "/admin/catalogs/#{catalog.id}", catalog: update_data
+        put "/admin/catalogs/#{catalog.id}", params: { catalog: update_data }
         expect(response).to be_redirect
       end
     end
@@ -77,7 +77,7 @@ describe "Admin/Catalog" do
             }
           }
         }
-        put "/admin/catalogs/sort", sort_data
+        put "/admin/catalogs/sort", params: sort_data
         catalog1.reload
         catalog2.reload
         expect(Catalog.all).to eq([catalog1, catalog2])
@@ -112,7 +112,7 @@ describe "Admin/Catalog" do
 
     describe "#create" do
       it "redirect" do
-        post "/admin/catalogs", catalog: new_catalog
+        post "/admin/catalogs", params: { catalog: new_catalog }
         expect(response).to be_redirect
       end
     end
@@ -121,7 +121,7 @@ describe "Admin/Catalog" do
       it "redirect" do
         catalog
         update_data = { name: "new_name" }
-        put "/admin/catalogs/#{catalog.id}", catalog: update_data
+        put "/admin/catalogs/#{catalog.id}", params: { catalog: update_data }
         expect(response).to be_redirect
       end
     end
@@ -154,7 +154,7 @@ describe "Admin/Catalog" do
             }
           }
         }
-        put "/admin/catalogs/sort", sort_data
+        put "/admin/catalogs/sort", params: sort_data
         catalog1.reload
         catalog2.reload
         expect(Catalog.all).to eq([catalog1, catalog2])
@@ -189,7 +189,7 @@ describe "Admin/Catalog" do
 
     describe "#create" do
       it "success" do
-        post "/admin/catalogs", catalog: new_catalog
+        post "/admin/catalogs", params: { catalog: new_catalog }
         expect(response).to be_success
       end
     end
@@ -198,7 +198,7 @@ describe "Admin/Catalog" do
       it "success" do
         catalog
         update_data = { name: "new_name" }
-        put "/admin/catalogs/#{catalog.id}", catalog: update_data
+        put "/admin/catalogs/#{catalog.id}", params: { catalog: update_data }
         expect(response).to be_redirect
       end
     end
@@ -231,7 +231,7 @@ describe "Admin/Catalog" do
             }
           }
         }
-        put "/admin/catalogs/sort", sort_data
+        put "/admin/catalogs/sort", params: sort_data
         catalog1.reload
         catalog2.reload
         expect(Catalog.all).to eq([catalog2, catalog1])

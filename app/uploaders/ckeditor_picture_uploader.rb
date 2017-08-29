@@ -5,7 +5,7 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   # Include RMagick or ImageScience support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  include CarrierWave::ImageOptimizer
+  # include CarrierWave::ImageOptimizer
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
@@ -24,7 +24,7 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process :scale => [200, 300]
+  # process scale: [200, 300]
   #
   # def scale(width, height)
   #   # do something

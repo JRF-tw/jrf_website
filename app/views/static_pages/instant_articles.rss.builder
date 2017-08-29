@@ -1,7 +1,7 @@
 #encoding: UTF-8
 
-xml.instruct! :xml, :version => "1.0"
-xml.rss :version => "2.0" do
+xml.instruct! :xml, version: "1.0"
+xml.rss version: "2.0" do
   xml.channel do
     xml.title "民間司法改革基金會"
     xml.author "民間司法改革基金會"
@@ -21,7 +21,7 @@ xml.rss :version => "2.0" do
         xml.link article_url(article)
         xml.guid article_url(article)
         xml.tag!("content:encode") do
-          xml.cdata!(render :partial => 'article', :locals => {:article => article})
+          xml.cdata!(render partial: 'article', locals: {article: article})
         end
         xml.description sanitize(article.description)
       end

@@ -57,9 +57,6 @@ Rails.application.routes.draw do
   match "/422" => "errors#error422", via: [ :get, :post, :patch, :delete ]
   match "/500" => "errors#error500", via: [ :get, :post, :patch, :delete ]
 
-  get '/api' => redirect('/swagger/dist/index.html?url=/apidocs/api-docs.json')
-
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

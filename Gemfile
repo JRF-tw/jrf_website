@@ -2,13 +2,13 @@ source 'https://rubygems.org'
 
 gem "bundler", ">= 1.8.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.1'
+gem 'rails', '5.1.3'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -24,7 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'jquery-turbolinks'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
-gem 'meta-tags', '~> 2.0.0'
+gem 'meta-tags'
 gem 'devise'
 gem 'simple_form'
 gem 'slim-rails', '3.1.1'
@@ -35,7 +35,7 @@ gem 'chosen-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'settingslogic'
-gem 'ckeditor', '4.1.2'
+gem 'ckeditor'
 gem 'pg'
 gem 'compass'
 gem 'ransack'
@@ -56,11 +56,10 @@ gem "cocoon"
 gem 'carrierwave-imageoptimizer'
 gem 'rabl-rails'
 gem 'responders', '~> 2.0'
-gem 'swagger-docs', git: 'git://github.com/billy3321/swagger-docs.git'
 gem 'lograge'
 # gem 'rollbar', '~> 2.5.1'
 gem "skylight"
-gem "rails-i18n"
+gem "rails-i18n", '~> 5.0.0'
 source 'https://rails-assets.org' do
   gem 'rails-assets-magnific-popup'
   gem 'rails-assets-animate.css'

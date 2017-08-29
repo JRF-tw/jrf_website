@@ -1,6 +1,6 @@
-class Article < ActiveRecord::Base
+class Article < ApplicationRecord
   belongs_to :user
-  has_and_belongs_to_many :keywords, -> { uniq }
+  has_and_belongs_to_many :keywords, index: { unique: true }
   has_many :slides, as: :slideable, dependent: :destroy
   accepts_nested_attributes_for :slides, reject_if: proc { |attributes| attributes['image'].blank? }, allow_destroy: true
   default_scope { order(published_at: :desc) }
@@ -41,7 +41,7 @@ class Article < ActiveRecord::Base
       self.youtube_id = nil
       self.youtube_list_id = nil
       errors.add(:base, 'youtube網址錯誤')
-      return false
+      throw(:abort)
     end
     if self.youtube_id == youtube_id && self.youtube_list_id == youtube_list_id
       # means that youtube is the same, no need to update.

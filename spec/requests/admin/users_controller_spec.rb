@@ -17,7 +17,7 @@ describe "Admin/User" do
       it "redirect" do
         user
         update_data = { admin: 1 }
-        put "/admin/users/#{user.id}", user: update_data
+        put "/admin/users/#{user.id}", params: { user: update_data }
         expect(response).to be_redirect
       end
     end
@@ -38,7 +38,7 @@ describe "Admin/User" do
       it "redirect" do
         user
         update_data = { admin: 1 }
-        put "/admin/users/#{user.id}", user: update_data
+        put "/admin/users/#{user.id}", params: { user: update_data }
         expect(response).to be_redirect
       end
     end
@@ -59,7 +59,7 @@ describe "Admin/User" do
       it "success" do
         user
         update_data = { admin: 1 }
-        put "/admin/users/#{user.id}", user: update_data
+        put "/admin/users/#{user.id}", params: { user: update_data }
         expect(response).to be_redirect
         user.reload
         expect(user.admin).to eq(true)

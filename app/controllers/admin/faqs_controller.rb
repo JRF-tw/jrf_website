@@ -1,5 +1,5 @@
 class Admin::FaqsController < Admin::BaseController
-  before_filter :find_keyword, except: [:sort]
+  before_action :find_keyword, except: [:sort]
 
   # GET /faqs
   def index
@@ -15,7 +15,7 @@ class Admin::FaqsController < Admin::BaseController
         Faq.find(value[:id]).update_attribute(:position, value[:position])
       end
     end
-    render nothing: true
+    render body: nil
   end
 
   private

@@ -1,4 +1,4 @@
-class CreateSlides < ActiveRecord::Migration
+class CreateSlides < ActiveRecord::Migration[4.2]
   def change
     create_table :slides do |t|
       t.integer :position

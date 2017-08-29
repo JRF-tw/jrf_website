@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-- 2.2.2
+- 2.3.4
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get install -y libxml2-dev nodejs optipng jpegoptim imagemagick
@@ -11,8 +11,8 @@ before_script:
 - cp config/database.yml.travis config/database.yml
 - cp config/config.yml.travis config/config.yml
 script:
-- bin/rake db:migrate RAILS_ENV=test
-- bin/rake spec
+- bin/rails db:migrate RAILS_ENV=test
+- bin/rails spec
 notifications:
   slack:
     secure: SVcW7vbfKxTMUKcy8PMz0faHDY2DpgyKv4iqnCkk7jVc/Hn0LssSHGUGjdhwFRvHZUS3eoKxhATPd1JKXf6fTlY3SaSlUNFi4aU9bEQHL9pL7XR1FHiepakRe309tceLYyqSkbH5dsaDN9F5EVwAVM5f8zwl7O4bpGt35vHc+XoFA0QrnzA0XLQDUKYi8NrGttG/Ty4MHrl8dyRb6QBakV/9O01cihqrtAANfZ0THZ4/9W9MYk964V6VjDkxF8faGGBq1sz+5nFVW0fyqtltWjQk4/inzk7BzyweEzXGBkQQc2HcX7Wsnxhf9Hiz7qyPluQi5YDvaqsQ2Kr7Wqd1oSPRfDdK9uoTRjh1drzJuJT0q73KfJRJ6n3NzSXIcoxsHOfzHOaFxCdbjHuqwuYJZcch4hGKk4yvKKfQ2HyGssYLlOy4ZMjYjEt2sU3HdebNykQAUUpHDl5a5/KKn/jDGtf+G896SwzKcmK3EPiyztKGMr72rAYQ54OPad1sjPLk9EOBZvaPv5HsAdulAYjbPZuDY4eBZvEqkn/Pj6ZAwx0GYL/tAFXJXY0RASMB2WqMwCzqc5ABRKPnLg9W/I1tvqw8rY3jUmpvV56BvDkWh1aWoDs9T0lF0PjF2RY28YqUQzM53XdK+8jczLa/wAEC21LYOd4T6bkq+Y/GWUrpED4=
