@@ -57,7 +57,7 @@ gem 'carrierwave-imageoptimizer'
 gem 'rabl-rails'
 gem 'responders', '~> 2.0'
 gem 'lograge'
-# gem 'rollbar', '~> 2.5.1'
+# gem 'rollbar'
 gem "skylight"
 gem "rails-i18n", '~> 5.0.0'
 source 'https://rails-assets.org' do
