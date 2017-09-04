@@ -1,7 +1,8 @@
 # encoding: utf-8
+require 'carrierwave'
+
 class CkeditorAttachmentFileUploader < CarrierWave::Uploader::Base
   include Ckeditor::Backend::CarrierWave
-  include CarrierWave::ImageOptimizer
 
   # Include RMagick or ImageScience support:
   # include CarrierWave::RMagick
@@ -10,7 +11,6 @@ class CkeditorAttachmentFileUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   storage :file
-  # process :optimize
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

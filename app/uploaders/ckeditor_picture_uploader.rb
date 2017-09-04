@@ -5,7 +5,7 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   # Include RMagick or ImageScience support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  # include CarrierWave::ImageOptimizer
+  include CarrierWave::ImageOptimizer
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
@@ -30,7 +30,7 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
-  process :read_dimensions
+  process :extract_dimensions
 
   # Create different versions of your uploaded files:
   version :thumb do
