@@ -84,7 +84,7 @@
                 li
                   = link_to "書籍", url_for(k: "books", page: nil, anchor: 'more')
       .row
-        .isotope-container#more
+        .isotope-container
           - @articles.each do |a|
             .list-with-image.isotope-item.col-sm-6 class="jrf-#{a.kind}"
               .overlay-container
