@@ -78,28 +78,30 @@ var ready = function(){
 
   if ($('.sortable-catalog').length) {
     // after the order changes
-    sortable('.sortable-catalog')[0].addEventListener('sortupdate', function(e) {
-      // array to store new order
-      updated_order = [];
-      // set the updated positions
-      set_positions();
+    sortable('.sortable-catalog').forEach(function(elem) {
+      elem.addEventListener('sortupdate', function(e) {
+        // array to store new order
+        updated_order = [];
+        // set the updated positions
+        set_positions();
 
-      // populate the updated_order array with the new task positions
-      $('.panel.panel-default').each(function(i){
-          updated_order.push({ id: $(this).data("id"), position: i+1 });
-      });
+        // populate the updated_order array with the new task positions
+        $('.panel.panel-default').each(function(i){
+            updated_order.push({ id: $(this).data("id"), position: i+1 });
+        });
 
-      // send the updated order via ajax
-      $.ajax({
-        type: "PUT",
-        url: '/admin/catalogs/sort',
-        data: {
-          _method: 'put',
-          catalog: {
-            order: updated_order
-          },
-          authenticity_token: window._token
-        }
+        // send the updated order via ajax
+        $.ajax({
+          type: "PUT",
+          url: '/admin/catalogs/sort',
+          data: {
+            _method: 'put',
+            catalog: {
+              order: updated_order
+            },
+            authenticity_token: window._token
+          }
+        });
       });
     });
   }
