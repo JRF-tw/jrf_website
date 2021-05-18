@@ -18,12 +18,15 @@ class User < ApplicationRecord
         registered_user.save
         return registered_user
       else
-        user = User.create(name:auth.info.name,
-                            provider:auth.provider,
-                            provider_uid:auth.uid,
-                            email:auth.info.email,
-                            password:Devise.friendly_token[0,20]
-                          )
+        password = Devise.friendly_token[0,20]
+        user = User.create(
+          name:auth.info.name,
+          provider:auth.provider,
+          provider_uid:auth.uid,
+          email:auth.info.email,
+          password: password,
+          password_confirmation: password
+        )
       end
     end
   end
@@ -41,11 +44,14 @@ class User < ApplicationRecord
         registered_user.save
         return registered_user
       else
-        user = User.create(name: data["name"],
+        password = Devise.friendly_token[0,20]
+        user = User.create(
+          name: data["name"],
           provider:auth.provider,
           email: data["email"],
-          provider_uid: auth.uid ,
-          password: Devise.friendly_token[0,20]
+          provider_uid: auth.uid,
+          password: password,
+          password_confirmation: password
         )
       end
     end
