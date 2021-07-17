@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   match '/about',     to: 'static_pages#about',     via: 'get'
   match '/donate',    to: 'static_pages#donate',    via: 'get'
+  match '/privacy',   to: 'static_pages#privacy',    via: 'get'
   match '/search',    to: 'static_pages#search',    via: 'get'
   match '/thanks',    to: 'static_pages#thanks',    via: 'get'
   match '/feed',      to: 'static_pages#feed',      format: 'atom', via: 'get'

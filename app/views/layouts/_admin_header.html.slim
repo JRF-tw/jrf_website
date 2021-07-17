@@ -42,6 +42,9 @@ aside.col-md-2.gray-bg
         - unless @donate_article.blank?
           li
             = link_to '修改捐款頁', edit_admin_article_path(@donate_article)
+        - unless @privacy_article.blank?
+          li
+            = link_to '修改隱私頁', edit_admin_article_path(@privacy_article)
         li.nav-divider
         li
           = link_to '後台使用者', admin_users_path

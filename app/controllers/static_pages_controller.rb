@@ -64,6 +64,25 @@ class StaticPagesController < ApplicationController
     })
   end
 
+  def privacy
+    @article = Article.where(kind: 'system', system_type: 'privacy').first
+    set_meta_tags({
+      title: "隱私條款",
+      og: {
+        title: "隱私條款",
+        image: @article.image.blank? ? "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf-img.png" : "#{Setting.url.protocol}://#{Setting.url.host}#{@article.image}"
+      },
+      article: {
+        author: 'https://www.facebook.com/jrf.tw',
+        published_time: @article.published_at.strftime('%FT%T%:z'),
+        modified_time: @article.updated_at.strftime('%FT%T%:z')
+      },
+      twitter: {
+        image: @article.image.blank? ? "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf-img.png" : "#{Setting.url.protocol}://#{Setting.url.host}#{@article.image}",
+      }
+    })
+  end
+
   def thanks
     set_meta_tags({
       title: "感謝您的支持",

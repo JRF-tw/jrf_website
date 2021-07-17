@@ -15,6 +15,7 @@ class Admin::BaseController < ApplicationController
   def set_articles
     @about_article = Article.where(kind: 'system', system_type: 'about').first
     @donate_article = Article.where(kind: 'system', system_type: 'donate').first
+    @privacy_article = Article.where(kind: 'system', system_type: 'privacy').first
   end
 
 end

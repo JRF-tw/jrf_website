@@ -534,7 +534,15 @@ articles = [
     </div>
   </div>
 </div>'
-  }
+  }, {
+    id: 3,
+    kind: 'system',
+    system_type: 'privacy',
+    published: false,
+    published_at: Time.now,
+    image: nil,
+    title: '隱私條款',
+    content: ''
 ]
 
 articles.each do |a|

@@ -1,0 +1,11 @@
+.container
+  .row.col-lg-12 data-animation-effect="fadeInUpSmall" data-effect-delay="200"
+    - if @article.present?
+      p.text-center
+        .embed-responsive.embed-responsive-16by9
+          - if @article.youtube_id
+            iframe.embed-responsive-item src="#{@article.youtube_embed_url}"
+          - else
+            = image_tag(@article.image.banner, width: "100%", alt: "")
+      h1.title.text-center = @article.title
+      = @article.content.try(:html_safe)
