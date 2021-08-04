@@ -8,10 +8,11 @@
         = image_tag(@keyword.image.banner, class: "embed-responsive-item", alt: "", width: "100%")
     h1.title.text-center = @keyword.title
     .separator
-    = @keyword.content.try(:html_safe)
-  - if user_signed_in? and current_user.admin?
-    .row.col-lg-10.col-lg-offset-1.text-center
-      = link_to '編輯本文', edit_admin_keyword_path(@keyword), class: "btn btn-default"
+    .text
+      = @keyword.content.try(:html_safe)
+    - if user_signed_in? and current_user.admin?
+      .row.col-lg-10.col-lg-offset-1.text-center
+        = link_to '編輯本文', edit_admin_keyword_path(@keyword), class: "btn btn-default"
 
 - if @keyword.faqs.any?
   .container
