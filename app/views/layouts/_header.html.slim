@@ -127,3 +127,5 @@ header.header.fixed.clearfix.header-small
                                                     = link_to keyword_path(keyword) do
                                                       i.icon-right-open
                                                       = keyword.name
+= link_to image_tag("donate.png", alt: "捐款支持", id: 'donate', class:"hidden-md hidden-lg d-icon-s"), donate_path
+= link_to image_tag("donate.png", alt: "捐款支持", id: 'donate', class:"hidden-xs hidden-sm d-icon-l"), donate_path
