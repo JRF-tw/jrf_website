@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20210816092529) do
 
   create_table "sites", id: :serial, force: :cascade do |t|
     t.string "title"
+    t.string "image"
     t.string "link"
     t.integer "position"
     t.boolean "published"
