@@ -10,8 +10,11 @@
             li.facebook
               = link_to "https://www.facebook.com/jrf.tw", target: "_blank" do
                 i.fa.fa-facebook
+            li.instagram
+              = link_to "https://www.instagram.com/jrf.org.tw/", target: "_blank" do
+                i.fa.fa-instagram
             li.pinterest
-              = link_to "https://jrf.neticrm.tw/civicrm/profile/create?gid=12&reset=1", target: "_blank" do
+              = link_to "https://report.jrf.org.tw/", target: "_blank" do
                 i.fa.fa-envelope
             li.vimeo
               = link_to "http://line.me/ti/p/%40rkh0402z", target: "_blank" do
@@ -27,8 +30,11 @@
                 li.facebook
                   = link_to "https://www.facebook.com/jrf.tw", target: "_blank" do
                     i.fa.fa-facebook
+                li.instagram
+                  = link_to "https://www.instagram.com/jrf.org.tw/", target: "_blank" do
+                    i.fa.fa-instagram
                 li.pinterest
-                  = link_to "https://jrf.neticrm.tw/civicrm/profile/create?gid=12&reset=1", target: "_blank" do
+                  = link_to "https://report.jrf.org.tw/", target: "_blank" do
                     i.fa.fa-envelope
                 li.vimeo
                   = link_to "http://line.me/ti/p/%40rkh0402z", target: "_blank" do
@@ -128,4 +134,4 @@ header.header.fixed.clearfix.header-small
                                                       i.icon-right-open
                                                       = keyword.name
 = link_to image_tag("donate.png", alt: "捐款支持", id: 'donate', class:"hidden-md hidden-lg d-icon-s"), donate_path
-= link_to image_tag("donate.png", alt: "捐款支持", id: 'donate', class:"hidden-xs hidden-sm d-icon-l"), donate_path
+= link_to image_tag("donate-lg.png", alt: "捐款支持", id: 'donate', class:"hidden-xs hidden-sm d-icon-l"), donate_path
