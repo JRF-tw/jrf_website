@@ -57,8 +57,9 @@
 
 .gray-bg.section 
   .container-fluid
-    .col-md-2.col-sm-4.col-xs-4
-
+    - @sites.each do |s|
+        .col-md-2.col-sm-4.col-xs-4
+          = link_to image_tag(s.image, alt: s.title), site_path(a)
 
 .white-bg.section 
   .container
