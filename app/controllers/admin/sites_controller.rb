@@ -3,7 +3,7 @@ class Admin::sitesController < Admin::BaseController
 
   # GET /sites
   def index
-    @q = site.search(params[:q])
+    @q = Site.search(params[:q])
     @sites = @q.result(distinct: true).page(params[:page])
     set_meta_tags({
       title: "對外連結管理"
@@ -16,7 +16,7 @@ class Admin::sitesController < Admin::BaseController
 
   # GET /sites/new
   def new
-    @site = site.new
+    @site = Site.new
     set_meta_tags({
       title: "新增對外連結"
     })
