@@ -64,7 +64,7 @@ class Admin::sitesController < Admin::BaseController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_site
-    @site = params[:id] ? site.find(params[:id]) : site.new(site_params)
+    @site = params[:id] ? Site.find(params[:id]) : Site.new(site_params)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
