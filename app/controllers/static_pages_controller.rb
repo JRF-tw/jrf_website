@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
     @keywords = Keyword.showed.first(5)
     @first_keyword = @keywords.shift
     @articles = Article.includes(:keywords).published.page(params[:page]).per(6)
+    @sites = Site.all
     @epaper_article = Article.epapers.first
     @book_articles = Article.books.first(6)
   end

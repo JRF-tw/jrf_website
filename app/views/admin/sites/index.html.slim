@@ -1,0 +1,16 @@
+h1.text-center 修改/刪除對外連結
+
+table.table
+  thead
+    tr
+      th 標題
+      th 圖片
+      th 編輯/刪除
+  tbody
+    - @sites.each do |s|
+      tr
+        td = link_to s.name, site_path(s)
+        td = "#{s.name}"
+        td
+          = link_to '編輯', edit_admin_site_path(s), class: "btn radius btn-white btn-sm"
+          = link_to '刪除', admin_site_path(s), method: :delete, data: { confirm: '確認要刪除嗎？' }, class: "btn radius btn-default btn-sm"

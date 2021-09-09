@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     end
     match 'faqs/sort',   to: 'faqs#sort',   via: 'put'
     match 'slides/sort', to: 'slides#sort', via: 'put'
+    match 'sites/sort', to: 'sites#sort', via: 'put'
   end
 
   namespace :api, defaults: { format: 'json' } do
