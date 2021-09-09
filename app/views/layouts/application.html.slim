@@ -26,6 +26,12 @@ html lang="zh-Hant-TW"
   body.front.no-trans
     .scrollToTop
       i.icon-up-open-big
+    = link_to donate_path
+      .icon-donate
+        i.icon-heart
+    = link_to "http://line.me/ti/p/%40rkh0402z", target: "_blank" do
+      .icon-line-me
+        i.fa.fa-comment
     .page-wrapper
       - if notice
         p class="alert alert-success" = notice
