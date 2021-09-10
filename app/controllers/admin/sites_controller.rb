@@ -1,4 +1,4 @@
-class Admin::sitesController < Admin::BaseController
+class Admin::SitesController < Admin::BaseController
   before_action :set_site, except: [:index, :new, :sort]
 
   # GET /sites
