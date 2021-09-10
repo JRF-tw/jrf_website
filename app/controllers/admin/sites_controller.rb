@@ -69,7 +69,7 @@ class Admin::SitesController < Admin::BaseController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def site_params
-    params.require(:site).permit(:published, :name, :position, :link,
+    params.require(:site).permit(:published, :title, :link,
       :image, :image_cache, :remove_image, :position, {order: [:id, :position]})
   end
 end
