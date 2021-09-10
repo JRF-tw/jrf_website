@@ -50,6 +50,10 @@ aside.col-md-2.gray-bg
         - unless @privacy_article.blank?
           li
             = link_to '修改隱私頁', edit_admin_article_path(@privacy_article)
+        li
+          = link_to '新增網站', new_admin_site_path
+        li
+          = link_to '修改/刪除網站', admin_sites_path
         li.nav-divider
         li
           = link_to '後台使用者', admin_users_path
