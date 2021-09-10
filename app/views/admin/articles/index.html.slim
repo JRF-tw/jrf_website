@@ -18,7 +18,7 @@ table.table
     - @articles.each do |a|
       tr
         td = a.id
-        td = link_to a.title, article_path(a)
+        td = link_to a.title, article_path(a), target: '_blank'
         td
           - num = 0
           - a.keywords.each do |k|

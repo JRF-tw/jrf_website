@@ -9,7 +9,7 @@ table.table
   tbody
     - @sites.each do |s|
       tr
-        td = link_to s.name, s.link
+        td = link_to s.name, s.link, target: '_blank'
         td = "#{s.name}"
         td
           = link_to '編輯', edit_admin_site_path(s), class: "btn radius btn-white btn-sm"
