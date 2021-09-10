@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     root 'admins#index',             via: 'get', as: 'admin'
     resources :articles, except: [:show]
     resources :users, only: [:index, :update]
+    resources :sites, except: [:show]
     resources :catalogs, except: [:show] do
       put :sort, on: :collection
     end
