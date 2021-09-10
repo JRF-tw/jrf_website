@@ -42,7 +42,7 @@ gem 'ransack'
 gem "twitter-bootstrap-rails"
 gem 'charlock_holmes'
 gem 'iconv'
-gem 'font_awesome5_rails'
+gem "font-awesome-rails"
 gem 'fontello_rails_converter'
 # gem 'magnific-popup-rails'
 # gem 'owlcarousel-rails'
