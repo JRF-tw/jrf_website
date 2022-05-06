@@ -93,10 +93,7 @@ header.header.fixed.clearfix.header-small
                         ul.dropdown-menu
                           li
                             .row
-                              - unless catalog.image.blank?
-                                .col-lg-4.visible-lg
-                                  = image_tag(catalog.image.thumb)
-                              .col-lg-8.col-md-12
+                              .col-lg-12.col-md-12
                                 .row
                                   - catalog.categories.published.each do |category|
                                     - width = catalog.width_unit * category.width
