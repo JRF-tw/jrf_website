@@ -8,7 +8,7 @@ class Catalog < ApplicationRecord
   default_scope { order(position: :asc) }
   before_save :set_position
   validates_uniqueness_of :name, message: '請確認名稱沒有重複'
-  before_destroy :check_categories_empty
+  before_destroy :check_categories_empty, prepend: true
 
   def set_position
     self.position ||= Catalog.maximum("position").to_i + 1
@@ -19,6 +19,15 @@ class Catalog < ApplicationRecord
   end
 
   def check_categories_empty
-    return self.categories.length == 0
+    if self.categories.length > 0
+      names = []
+      self.categories.each do |c|
+        names << c.name
+      end
+      names = names.join('、')
+      message = "子分類並未刪除完畢： #{names}"
+      errors.add(:base, message)
+      throw(:abort)
+    end
   end
 end

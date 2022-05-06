@@ -7,7 +7,7 @@ class Category < ApplicationRecord
   default_scope { order(position: :asc) }
   before_save :set_position
   validates_uniqueness_of :name, message: '請確認名稱沒有重複'
-  before_destroy :check_keywords_empty
+  before_destroy :check_keywords_empty, prepend: true
 
   def full_name
     "#{self.catalog.name} > #{self.name}"
@@ -27,6 +27,15 @@ class Category < ApplicationRecord
   end
 
   def check_keywords_empty
-    return self.keywords.length == 0
+    if self.keywords.length > 0
+      names = []
+      self.keywords.each do |k|
+        names << k.name
+      end
+      names = names.join('、')
+      message = "專案並未刪除完畢： #{names}"
+      errors.add(:base, message)
+      throw(:abort)
+    end
   end
 end
