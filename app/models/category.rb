@@ -7,6 +7,7 @@ class Category < ApplicationRecord
   default_scope { order(position: :asc) }
   before_save :set_position
   validates_uniqueness_of :name, message: '請確認名稱沒有重複'
+  before_destroy :check_keywords_empty
 
   def full_name
     "#{self.catalog.name} > #{self.name}"
@@ -23,5 +24,9 @@ class Category < ApplicationRecord
     else
       []
     end
+  end
+
+  def check_keywords_empty
+    return self.keywords.length == 0
   end
 end

@@ -8,6 +8,7 @@ class Catalog < ApplicationRecord
   default_scope { order(position: :asc) }
   before_save :set_position
   validates_uniqueness_of :name, message: '請確認名稱沒有重複'
+  before_destroy :check_categories_empty
 
   def set_position
     self.position ||= Catalog.maximum("position").to_i + 1
@@ -15,5 +16,9 @@ class Catalog < ApplicationRecord
 
   def width_unit
     12 / self.categories.published.sum(:width)
+  end
+
+  def check_categories_empty
+    return self.categories.length == 0
   end
 end
