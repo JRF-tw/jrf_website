@@ -34,7 +34,6 @@ section.container
           - if user_signed_in? and current_user.admin?
             .text-center
               = link_to '編輯本文', edit_admin_article_path(@article), class: "btn btn-default"
-        #disqus_thread
       aside.col-md-3
         .sidebar
           .block.clearfix

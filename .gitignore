@@ -25,3 +25,5 @@ public/uploads/
 public/assets/
 public/apidocs/
 #db/data/*.json
+.byebug_history
+Gemfile.lock.bak
