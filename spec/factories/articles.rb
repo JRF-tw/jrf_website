@@ -8,6 +8,7 @@ FactoryGirl.define do
     keywords {[ FactoryGirl.create(:keyword) ]}
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'test.jpg')) }
     published true
+    user
   end
 
   factory :press_article, parent: :article do

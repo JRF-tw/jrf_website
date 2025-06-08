@@ -50,4 +50,59 @@ describe Article do
     article.update_youtube_values
     expect(article.youtube_id).to eq("Gh1zJVwHhjw")
   end
+
+  it "should extract youtube list id" do
+    article = FactoryGirl.build(:press_article)
+    article.youtube_url = 'https://www.youtube.com/watch?v=Gh1zJVwHhjw&list=PLtest123'
+    article.update_youtube_values
+    expect(article.youtube_id).to eq("Gh1zJVwHhjw")
+    expect(article.youtube_list_id).to eq("PLtest123")
+  end
+
+  it "should handle invalid youtube url" do
+    article = FactoryGirl.build(:press_article)
+    article.youtube_url = 'https://invalid-url.com'
+    expect(article.save).to be_falsey
+    expect(article.errors[:base]).to include('youtube網址錯誤')
+  end
+
+  it "should validate content presence for non-system articles" do
+    article = FactoryGirl.build(:press_article, content: '')
+    expect(article).not_to be_valid
+    expect(article.errors[:content]).to include('內容不能為空')
+  end
+
+  it "should allow empty content for system articles" do
+    article = FactoryGirl.build(:article, kind: 'system', content: '')
+    expect(article).to be_valid
+  end
+
+  it "should require published_at" do
+    article = FactoryGirl.build(:press_article, published_at: nil)
+    expect(article).not_to be_valid
+    expect(article.errors[:published_at]).to be_present
+  end
+
+  it "should have youtube_embed_url method" do
+    article = FactoryGirl.create(:press_article)
+    article.youtube_id = 'test123'
+    expect(article.youtube_embed_url).to include('test123')
+  end
+
+  it "should process fb_ia_content before save" do
+    article = FactoryGirl.build(:press_article)
+    article.content = '<p>Test content</p>'
+    article.save
+    expect(article.fb_ia_content).to be_present
+  end
+
+  it "should belong to user" do
+    article = FactoryGirl.create(:press_article)
+    expect(article.user).to be_present
+  end
+
+  it "should have slides association" do
+    article = FactoryGirl.create(:press_article)
+    expect(article).to respond_to(:slides)
+  end
 end
