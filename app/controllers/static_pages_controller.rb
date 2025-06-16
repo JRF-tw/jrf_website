@@ -10,15 +10,7 @@ class StaticPagesController < ApplicationController
 
   def search
     q = params[:q]
-    @articles = Article.published.search(title_or_content_cont: q).result.page(params[:page])
-    # @videos = Video.published.search(title_or_content_cont: q).result.page(params[:videos_page])
-    # @kinds = []
-    # @articles.each do |a|
-    #   unless @kinds.include? a.kind
-    #     @kinds << a.kind if a.kind
-    #   end
-    # end
-    # puts @kinds
+    @articles = Article.published.ransack(title_or_content_cont: q).result.page(params[:page])
     set_meta_tags({
       title: "搜尋文章",
       og: {
@@ -33,15 +25,15 @@ class StaticPagesController < ApplicationController
       title: "關於我們",
       og: {
         title: "關於我們",
-        image: @article.image.blank? ? "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf-img.png" : "#{Setting.url.protocol}://#{Setting.url.host}#{@article.image}"
+        image: @article&.image.blank? ? "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf-img.png" : "#{Setting.url.protocol}://#{Setting.url.host}#{@article&.image}"
       },
       article: {
         author: 'https://www.facebook.com/jrf.tw',
-        published_time: @article.published_at.strftime('%FT%T%:z'),
-        modified_time: @article.updated_at.strftime('%FT%T%:z')
+        published_time: @article&.published_at&.strftime('%FT%T%:z'),
+        modified_time: @article&.updated_at&.strftime('%FT%T%:z')
       },
       twitter: {
-        image: @article.image.blank? ? "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf-img.png" : "#{Setting.url.protocol}://#{Setting.url.host}#{@article.image}",
+        image: @article&.image.blank? ? "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf-img.png" : "#{Setting.url.protocol}://#{Setting.url.host}#{@article&.image}",
       }
     })
   end
@@ -52,15 +44,15 @@ class StaticPagesController < ApplicationController
       title: "捐款支持",
       og: {
         title: "捐款支持",
-        image: @article.image.blank? ? "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf-img.png" : "#{Setting.url.protocol}://#{Setting.url.host}#{@article.image}"
+        image: @article&.image.blank? ? "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf-img.png" : "#{Setting.url.protocol}://#{Setting.url.host}#{@article&.image}"
       },
       article: {
         author: 'https://www.facebook.com/jrf.tw',
-        published_time: @article.published_at.strftime('%FT%T%:z'),
-        modified_time: @article.updated_at.strftime('%FT%T%:z')
+        published_time: @article&.published_at&.strftime('%FT%T%:z'),
+        modified_time: @article&.updated_at&.strftime('%FT%T%:z')
       },
       twitter: {
-        image: @article.image.blank? ? "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf-img.png" : "#{Setting.url.protocol}://#{Setting.url.host}#{@article.image}",
+        image: @article&.image.blank? ? "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf-img.png" : "#{Setting.url.protocol}://#{Setting.url.host}#{@article&.image}",
       }
     })
   end
@@ -71,15 +63,15 @@ class StaticPagesController < ApplicationController
       title: "隱私條款",
       og: {
         title: "隱私條款",
-        image: @article.image.blank? ? "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf-img.png" : "#{Setting.url.protocol}://#{Setting.url.host}#{@article.image}"
+        image: @article&.image.blank? ? "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf-img.png" : "#{Setting.url.protocol}://#{Setting.url.host}#{@article&.image}"
       },
       article: {
         author: 'https://www.facebook.com/jrf.tw',
-        published_time: @article.published_at.strftime('%FT%T%:z'),
-        modified_time: @article.updated_at.strftime('%FT%T%:z')
+        published_time: @article&.published_at&.strftime('%FT%T%:z'),
+        modified_time: @article&.updated_at&.strftime('%FT%T%:z')
       },
       twitter: {
-        image: @article.image.blank? ? "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf-img.png" : "#{Setting.url.protocol}://#{Setting.url.host}#{@article.image}",
+        image: @article&.image.blank? ? "#{Setting.url.protocol}://#{Setting.url.host}/images/jrf-img.png" : "#{Setting.url.protocol}://#{Setting.url.host}#{@article&.image}",
       }
     })
   end

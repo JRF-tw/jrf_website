@@ -5,7 +5,7 @@ h1.text-center 修改/刪除專案
     = f.select :category_id_eq, Category.all.map { |c| [ "#{c.catalog.try(:name)} > #{c.name}", c.id ] }, include_blank: true
     label 標題內容搜尋
     = f.search_field :name_or_title_or_content_cont, class: "form-control", placeholder: "輸入"
-    = f.submit "搜尋", class: "btn btn-default radius btn-sm"
+    = f.submit "搜尋", class: "btn btn-secondary radius btn-sm"
 table.table
   thead
     tr
@@ -21,4 +21,4 @@ table.table
         td = "#{k.catalog.name} > #{k.category.name}"
         td
           = link_to '編輯', edit_admin_keyword_path(k), class: "btn radius btn-white btn-sm"
-          = link_to '刪除', admin_keyword_path(k), method: :delete, data: { confirm: '確認要刪除嗎？' }, class: "btn radius btn-default btn-sm"
+          = link_to '刪除', admin_keyword_path(k), method: :delete, data: { confirm: '確認要刪除嗎？' }, class: "btn radius btn-secondary btn-sm"

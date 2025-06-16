@@ -3,7 +3,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   # GET /articles
   def index
-    @q = Article.includes(:keywords).search(params[:q])
+    @q = Article.includes(:keywords).ransack(params[:q])
     @articles = @q.result(distinct: true).page(params[:page])
     set_meta_tags({
       title: "文章管理"

@@ -1,8 +1,8 @@
 require "rails_helper"
 
 describe "API::Catalogs" do
-  let!(:catalog1) { FactoryGirl.create(:catalog) }
-  let!(:catalog2) { FactoryGirl.create(:catalog) }
+  let!(:catalog1) { FactoryBot.create(:catalog) }
+  let!(:catalog2) { FactoryBot.create(:catalog) }
 
   describe "GET /api/catalogs" do
     it "returns catalogs in JSON format" do

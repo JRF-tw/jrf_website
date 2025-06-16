@@ -1,67 +1,67 @@
 ﻿.header-top
   .container
     .row
-      .col-xs-2.col-sm-6
+      .col-2.col-sm-6
         .header-top-first.clearfix
-          ul.social-links.clearfix.hidden-xs
+          ul.social-links.clearfix.d-none.d-sm-flex
             li.youtube
               = link_to "https://www.youtube.com/@JRFmeeting_at10", target: "_blank" do
-                i.fa.fa-youtube-play
+                i.fab.fa-youtube
             li.facebook
               = link_to "https://www.facebook.com/jrf.tw", target: "_blank" do
-                i.fa.fa-facebook
+                i.fab.fa-facebook
             li.instagram
               = link_to "https://www.instagram.com/jrf.org.tw/", target: "_blank" do
-                i.fa.fa-instagram
+                i.fab.fa-instagram
             li.pinterest
               = link_to "https://report.jrf.org.tw/", target: "_blank" do
-                i.fa.fa-envelope
+                i.fas.fa-envelope
             li.vimeo
               = link_to "http://line.me/ti/p/%40rkh0402z", target: "_blank" do
                 i.fab.fa-line
-          .social-links.hidden-lg.hidden-md.hidden-sm
+          .social-links.d-block.d-sm-none
             .btn-group.dropdown
-              button.btn.dropdown-toggle data-toggle="dropdown" type="button"
-                i.fa.fa-plus
+              button.btn.dropdown-toggle data-bs-toggle="dropdown" type="button"
+                i.fas.fa-plus
               ul.dropdown-menu.dropdown-animation
                 li.youtube
                   = link_to "https://www.youtube.com/@JRFmeeting_at10", target: "_blank" do
-                    i.fa.fa-youtube-play
+                    i.fab.fa-youtube
                 li.facebook
                   = link_to "https://www.facebook.com/jrf.tw", target: "_blank" do
-                    i.fa.fa-facebook
+                    i.fab.fa-facebook
                 li.instagram
                   = link_to "https://www.instagram.com/jrf.org.tw/", target: "_blank" do
-                    i.fa.fa-instagram
+                    i.fab.fa-instagram
                 li.pinterest
                   = link_to "https://report.jrf.org.tw/", target: "_blank" do
-                    i.fa.fa-envelope
+                    i.fas.fa-envelope
                 li.vimeo
                   = link_to "http://line.me/ti/p/%40rkh0402z", target: "_blank" do
                     i.fab.fa-line
 
-      .col-xs-10.col-sm-6
-        .clearfix.header-top-second
+      .col-10.col-sm-6
+        .clearfix.header-top-second.d-none.d-sm-block
           .header-top-dropdown
             .btn-group.dropdown
               button.btn type="button" onclick="window.location.href='/about';"
                 = link_to about_path do
-                  i.fa.fa-info
+                  i.fas.fa-info
                   | 關於我們
               button.btn type="button" onclick="window.location.href='/donate';"
                 = link_to donate_path do
-                  i.fa.fa-heart
+                  i.fas.fa-heart
                   | 支持司改
-              button.btn.dropdown-toggle type="button1" data-toggle="dropdown"
-                i.fa.fa-search
+              button.btn.dropdown-toggle type="button" data-bs-toggle="dropdown"
+                i.fas.fa-search
                 | 搜尋
-              ul.dropdown-menu.dropdown-menu-right.dropdown-animation
+              ul.dropdown-menu.dropdown-menu-end.dropdown-animation
                 li
                   = search_form_for @article_q, url: articles_path, class: "search-box", role: "search" do |f|
                     .form-group.has-feedback
                       = f.search_field :title_or_content_or_author_or_keywords_name_cont, class: "form-control", id: "textfield", placeholder: "輸入關鍵字"
-                      i.fa.fa-search.form-control-feedback
-                      = f.submit "搜尋", class: "btn btn-default radius btn-sm"
+                      i.fas.fa-search.form-control-feedback
+                      = f.submit "搜尋", class: "btn btn-secondary radius btn-sm"
 header.header.fixed.clearfix.header-small
   .container
     .row
@@ -69,7 +69,7 @@ header.header.fixed.clearfix.header-small
         .header-left.clearfix
           .logo
             = link_to image_tag("logo.png", alt: "財團法人民間司法改革基金會", id: 'logo'), root_path
-            .pull-right
+            .float-end
               span.badge
                 = link_to "English", "https://english.jrf.org.tw/", target: "_blank"
 
@@ -77,35 +77,32 @@ header.header.fixed.clearfix.header-small
       .col-md-9
         .header-right.clearfix
           .main-navigation.animated
-            nav.navbar.navbar-default role="navigation"
+            nav.navbar.navbar-expand-md role="navigation"
               .container-fluid
                 .navbar-header
-                  button.navbar-toggle type="button" data-toggle="collapse" data-target="#navbar-collapse-1"
-                    span.sr-only Toggle navigation
-                    span.icon-bar
-                    span.icon-bar
-                    span.icon-bar
+                  button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse-1"
+                    span.visually-hidden Toggle navigation
+                    span.navbar-toggler-icon
                 .collapse.navbar-collapse#navbar-collapse-1
-                  ul.nav.navbar-nav.navbar-right
+                  ul.navbar-nav.ms-auto
                     - @catalogs.each do |catalog|
-                      li.dropdown.mega-menu
-                        = link_to catalog.name, "#", class: "dropdown-toggle", data: { toggle: "dropdown"}
+                      li.nav-item.dropdown.mega-menu
+                        = link_to catalog.name, "#", class: "nav-link dropdown-toggle", data: { "bs-toggle": "dropdown" }, role: "button", aria: { expanded: "false" }
                         ul.dropdown-menu
                           li
                             .row
                               .col-lg-12.col-md-12
                                 .row
-                                  - catalog.categories.published.each do |category|
+                                  - catalog.categories.select(&:published?).each do |category|
                                     - width = catalog.width_unit * category.width
                                     div class="col-sm-#{width}"
                                       h4 = category.name
                                       .divider
                                       - if category.width == 1
                                         ul.menu
-                                          - category.keywords.published.each do |keyword|
+                                          - category.keywords.select(&:published?).each do |keyword|
                                             li
                                               = link_to keyword_path(keyword) do
-                                                i.icon-right-open
                                                 = keyword.name
                                                 - unless keyword.label.blank?
                                                   | &nbsp;
@@ -113,11 +110,9 @@ header.header.fixed.clearfix.header-small
                                           - if category.name == '出版品'
                                             li
                                               = link_to epapers_articles_path do
-                                                i.icon-right-open
                                                 | 電子報
                                             li
                                               = link_to books_articles_path do
-                                                i.icon-right-open
                                                 | 書籍
                                       - else
                                         .row
@@ -128,6 +123,5 @@ header.header.fixed.clearfix.header-small
                                                 - keywords.each do |keyword|
                                                   li
                                                     = link_to keyword_path(keyword) do
-                                                      i.icon-right-open
                                                       = keyword.name
                                                       

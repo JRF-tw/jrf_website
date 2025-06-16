@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   # resources :columns, only: [:show, :index]
   resources :epapers, only: [:show, :index]
   namespace :admin do
-    root 'admins#index',             via: 'get', as: 'admin'
+    root 'static_pages#home',        via: 'get', as: 'admin'
     resources :articles, except: [:show]
     resources :users, only: [:index, :update]
     resources :sites, except: [:show]

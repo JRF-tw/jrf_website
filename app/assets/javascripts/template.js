@@ -15,43 +15,8 @@
 			$("body").removeClass("no-trans");
 		});
 
-		//Show dropdown on hover only for desktop devices
-		//-----------------------------------------------
-		var delay=0, setTimeoutConst;
-		if ((Modernizr.mq('only all and (min-width: 768px)') && !Modernizr.touch) || $("html.ie8").length>0) {
-			$('.main-navigation .navbar-nav>li.dropdown, .main-navigation li.dropdown>ul>li.dropdown').hover(
-			  function(){},	function(){
-				clearTimeout(setTimeoutConst );
-				$(this).removeClass('open');
-				$(this).find('.dropdown-toggle').removeClass('disabled');
-			});
-
-			$('.main-navigation .navbar-nav>li.dropdown, .main-navigation li.dropdown>ul>li.dropdown').click(
-				function(){
-				var $this = $(this);
-				setTimeoutConst = setTimeout(function(){
-					$this.addClass('open').slideDown();
-					$this.find('.dropdown-toggle').addClass('disabled');
-				}, delay);
-			});
-		};
-
-		//Show dropdown on click only for mobile devices
-		//-----------------------------------------------
-		if (Modernizr.mq('only all and (max-width: 767px)') || Modernizr.touch) {
-			$('.main-navigation [data-toggle=dropdown], .header-top [data-toggle=dropdown]').on('click', function(event) {
-			// Avoid following the href location when clicking
-			event.preventDefault();
-			// Avoid having the menu to close when clicking
-			event.stopPropagation();
-			// close all the siblings
-			$(this).parent().siblings().removeClass('open');
-			// close all the submenus of siblings
-			$(this).parent().siblings().find('[data-toggle=dropdown]').parent().removeClass('open');
-			// opening the one you clicked on
-			$(this).parent().toggleClass('open');
-			});
-		};
+		// Note: Dropdown functionality has been moved to bootstrap_dropdown_init.js
+		// to ensure proper Bootstrap 5 compatibility
 
 		//Main slider
 		//-----------------------------------------------

@@ -18,6 +18,14 @@ class Keyword < ApplicationRecord
 
   before_save :set_position, :fix_content
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["category_id", "content", "cover", "description", "id", "id_value", "image", "label", "label_type", "name", "position", "published", "show_position", "showed", "title"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["articles", "category", "faqs", "slides"]
+  end
+
   def set_position
     self.position ||= Keyword.maximum("position").to_i + 1
   end

@@ -12,21 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
-//= require ckeditor/init
-//= require modernizr
-//= require isotope.pkgd
-//= require owl.carousel
-//= require magnific-popup
-//= require jquery.appear
-//= require jquery.sharrre
+//= require bootstrap-sprockets
+//= require ckeditor/config
+//= require vendor/modernizr
+//= require vendor/isotope.pkgd
+//= require vendor/owl.carousel
+//= require vendor/magnific-popup
+//= require vendor/jquery.appear
+//= require vendor/jquery.sharrre
 //= require jquery.countTo
-//= require jquery.parallax
-//= require jquery.validate
+//= require vendor/jquery.parallax
+//= require vendor/jquery.validate
 //= require template
 //= require jquery-ui/widgets/datepicker
 //= require chosen-jquery
-//= require jquery.datetimepicker
+//= require vendor/jquery.datetimepicker
 //= require html.sortable
 //= require cocoon
 
@@ -36,7 +36,7 @@ var ready_ran = 0;
 set_positions = function(){
   // loop through and give each task a data-pos
   // attribute that holds its position in the DOM
-  $('.panel.panel-default').each(function(i){
+  $('.card.border-secondary, .card.bg-light').each(function(i){
       $(this).attr("data-pos",i+1);
   });
 }
@@ -86,7 +86,7 @@ var ready = function(){
         set_positions();
 
         // populate the updated_order array with the new task positions
-        $('.panel.panel-default').each(function(i){
+        $('.card.border-secondary, .card.bg-light').each(function(i){
             updated_order.push({ id: $(this).data("id"), position: i+1 });
         });
 
@@ -116,7 +116,7 @@ var ready = function(){
         set_positions();
 
         // populate the updated_order array with the new task positions
-        $('.panel.panel-default').each(function(i){
+        $('.card.border-secondary, .card.bg-light').each(function(i){
             catalog_id = this.parentElement.dataset['id'];
             updated_order.push({ id: $(this).data("id"), position: i+1, catalog_id: catalog_id });
         });
@@ -257,7 +257,7 @@ var ready = function(){
   }
 
   if (typeof(CKEDITOR) != undefined) {
-    // CKEDITOR.config.extraAllowedContent = 'i dl dt dd data-toggle[*]{*} data-parent[*]{*}';
+    // CKEDITOR.config.extraAllowedContent = 'i dl dt dd data-bs-toggle[*]{*} data-bs-parent[*]{*}';
     CKEDITOR.config.allowedContent = true ;
     CKEDITOR.dtd.$removeEmpty['i'] = false ;
   }

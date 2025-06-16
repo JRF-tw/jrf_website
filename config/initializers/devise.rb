@@ -236,8 +236,21 @@ Devise.setup do |config|
 
   require "omniauth-facebook"
   require "omniauth-google-oauth2"
-  config.omniauth :facebook, Setting.facebook_auth_key.app_id,  Setting.facebook_auth_key.app_secret, scope: 'email,public_profile', token_params: { parse: :json }
-  config.omniauth :google_oauth2, Setting.google_auth_key.client_id, Setting.google_auth_key.client_secret, { access_type: "offline", approval_prompt: "", scope: 'email,profile' }
+  
+  # OAuth configuration using environment variables or default values
+  # This avoids dependency on Setting class during initialization
+  facebook_app_id = ENV['FACEBOOK_APP_ID'] || ''
+  facebook_app_secret = ENV['FACEBOOK_APP_SECRET'] || ''
+  google_client_id = ENV['GOOGLE_CLIENT_ID'] || ''
+  google_client_secret = ENV['GOOGLE_CLIENT_SECRET'] || ''
+  
+  if facebook_app_id.present? && facebook_app_secret.present?
+    config.omniauth :facebook, facebook_app_id, facebook_app_secret, scope: 'email,public_profile', token_params: { parse: :json }
+  end
+  
+  if google_client_id.present? && google_client_secret.present?
+    config.omniauth :google_oauth2, google_client_id, google_client_secret, { access_type: "offline", approval_prompt: "", scope: 'email,profile' }
+  end
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

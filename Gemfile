@@ -1,101 +1,91 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem "bundler", ">= 1.8.4"
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1'
-# Use SCSS for stylesheets
-gem 'sass-rails'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+ruby '3.2.8'
 
-# Use jquery as the JavaScript library
+# Rails and core gems
+gem 'rails', '~> 7.1.0'
+gem 'sprockets-rails'
+gem 'pg', '~> 1.1'
+gem 'puma', '~> 6.0'
+gem 'importmap-rails'
+gem 'turbo-rails'
+gem 'stimulus-rails'
+gem 'jbuilder', '~> 2.7'
+gem 'redis', '~> 5.0'
+gem 'bootsnap', require: false
+
+# Asset pipeline
+gem 'sassc-rails'
+
+# JavaScript and UI
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-# gem 'turbolinks'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
-
-gem 'jquery-turbolinks'
-gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
-gem 'meta-tags'
-gem 'devise'
-gem 'simple_form'
-gem 'slim-rails', '3.1.1'
-gem 'factory_girl_rails', group: :test
-gem 'kaminari'
 gem 'jquery-ui-rails'
 gem 'chosen-rails'
+
+# Authentication and authorization
+gem 'devise'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
+
+# Content management
+gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'settingslogic'
-gem 'ckeditor'
-gem 'pg'
-gem 'compass'
-gem 'ransack'
-gem "twitter-bootstrap-rails"
-gem 'charlock_holmes'
-gem 'iconv'
-gem "font-awesome-rails"
-gem 'fontello_rails_converter'
-# gem 'magnific-popup-rails'
-# gem 'owlcarousel-rails'
-# gem "animate-rails"
-# gem 'google-webfonts'
-# gem 'modernizr-rails'
-gem 'social-share-button'
-gem 'unicode-display_width'
-gem 'jquery-datetimepicker-rails'
-gem "cocoon"
-gem 'carrierwave-imageoptimizer'
-gem 'rabl-rails'
-gem 'responders', '~> 2.0'
-gem 'lograge'
-gem 'rollbar'
-gem "skylight"
-gem "rails-i18n", '~> 5.0.0'
-source 'https://rails-assets.org' do
-  gem 'rails-assets-magnific-popup'
-  gem 'rails-assets-animate.css'
-  # gem 'rails-assets-owl-carousel'
-  gem 'rails-assets-modernizr', '~> 2.8.3'
-  gem 'rails-assets-isotope'
-  gem 'rails-assets-jquery-appear'
-  gem 'rails-assets-mhuggins--jquery-countTo'
-  gem 'rails-assets-jquery.parallax'
-  gem 'rails-assets-jquery.validate'
-end
+gem 'image_processing', '~> 1.2'
 
-# Use ActiveModel has_secure_password
+# Pagination and search
+gem 'kaminari'
+gem 'ransack'
+
+# UI and styling
+gem 'simple_form'
+gem 'slim-rails'
+gem 'bootstrap', '~> 5.3'
+gem "font-awesome-sass", "~> 6.5.0"
+gem 'meta-tags'
+gem 'social-share-button'
+
+# File uploads and processing
+gem 'carrierwave-imageoptimizer'
+
+# API
+gem 'rabl-rails'
+
+# Configuration and utilities
+gem 'config'
+gem "cocoon"
+gem 'unicode-display_width'
+
+# Monitoring and logging
+gem 'lograge'
+
+# Internationalization
+gem "rails-i18n", '~> 7.0'
+
+# Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-gem 'web-console', group: :development
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'minitest'
-  gem "capybara"
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'debug', platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails'
-  gem 'database_cleaner'
-  gem "bullet"
-  gem 'simplecov'
+  gem 'factory_bot_rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner-active_record'
+  gem 'bullet'
+  gem 'simplecov', require: false
 end
 
+group :development do
+  # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'web-console'
+  gem 'listen', '~> 3.3'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+end

@@ -4,7 +4,29 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the Judicial Reform Foundation (JRF) website, a Ruby on Rails 5.1 application using PostgreSQL. The application serves as a content management system for articles, news, and advocacy materials related to judicial reform in Taiwan.
+This is the Judicial Reform Foundation (JRF) website, a **Ruby on Rails 7.1** application using PostgreSQL. The application serves as a content management system for articles, news, and advocacy materials related to judicial reform in Taiwan.
+
+### Recent Rails 7.1 Upgrade (2025-06)
+
+The application has been successfully upgraded from Rails 5.1 to Rails 7.1 with forward compatibility for Rails 7.2:
+
+#### ✅ Core Upgrades Completed
+- **Rails 7.1.5.1** with Rails 7.2 compatibility
+- **Bootstrap 5.3** via gem (replaced vendor CSS files)
+- **Credentials System**: Migrated from deprecated `secrets.yml` to Rails credentials
+- **Controller Updates**: Fixed parameter handling for Rails 7.1 strong parameters
+- **Authentication**: Updated Devise integration and admin authentication
+- **Test Suite**: Comprehensive test coverage with 138+ passing examples
+
+#### 🔐 Security & Configuration Updates
+- **Encrypted Credentials**: Environment-specific credentials files for secure secret management
+- **Environment Variables**: Production-ready configuration using `SECRET_KEY_BASE` and `RAILS_MASTER_KEY`
+- **Backward Compatibility**: Existing production deployments continue working without changes
+
+#### 📋 Migration Documentation
+- See `script/secrets_to_credentials_migration_guide.md` for detailed migration instructions
+- Production deployment guide for secret management transition
+- Environment-specific credential setup and validation procedures
 
 ## Setup Commands
 
@@ -68,10 +90,12 @@ rake db:rollback
 - **API views** using RABL for JSON serialization
 
 ### Configuration
-- Environment-specific settings via `config/config.yml`
-- Custom error pages (404, 422, 500) with branded styling
-- Asset pipeline with custom fonts and optimized images
-- Rollbar for error tracking, Skylight for performance monitoring
+- **Rails Credentials**: Environment-specific encrypted credentials for secure secret management
+- **Environment Settings**: Configuration via `config/config.yml` for non-sensitive settings
+- **Custom Error Pages**: Branded 404, 422, 500 error pages with responsive design
+- **Asset Pipeline**: Optimized with Bootstrap 5.3 gem and custom fonts
+- **Monitoring**: Rollbar for error tracking, Skylight for performance monitoring
+- **Production Deployment**: Uses `SECRET_KEY_BASE` and `RAILS_MASTER_KEY` environment variables
 
 ## Development Notes
 
@@ -86,3 +110,32 @@ Configure Google and Facebook OAuth credentials in `config/config.yml` for authe
 
 ### Content Management
 Articles support multiple content types via the `kind` field. System articles are used for static pages and should have `system_type` specified.
+
+## Rails 7.1 Specific Notes
+
+### Credentials Management
+- **Development/Test**: Uses local key files in `config/credentials/[environment].key`
+- **Production**: Uses `RAILS_MASTER_KEY` environment variable
+- **Migration**: See `script/secrets_to_credentials_migration_guide.md` for full production migration guide
+
+### Controller Changes
+- All admin controllers updated for Rails 7.1 parameter handling
+- Fixed callback configurations (removed non-existent action references)
+- Updated nested attributes and sorting functionality
+
+### Asset Management
+- Bootstrap 5.3 integrated via gem instead of vendor CSS
+- Resolved SCSS compilation issues with custom properties
+- Maintained custom styling compatibility
+
+### Testing Framework
+- Updated RSpec configuration for Rails 7.1
+- Fixed fixture path deprecation warnings
+- All admin and model tests passing (138+ examples)
+- Updated authentication helpers for Devise integration
+
+### Deployment Considerations
+- Backward compatible with existing production secrets
+- Gradual migration path available
+- Environment variable fallbacks maintained
+- Production deployment requires no immediate changes

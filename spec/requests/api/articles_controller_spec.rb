@@ -1,9 +1,9 @@
 require "rails_helper"
 
 describe "API::Articles" do
-  let!(:article1) { FactoryGirl.create(:press_article, published: true) }
-  let!(:article2) { FactoryGirl.create(:activity_article, published: true) }
-  let!(:unpublished_article) { FactoryGirl.create(:comment_article, published: false) }
+  let!(:article1) { FactoryBot.create(:press_article, published: true) }
+  let!(:article2) { FactoryBot.create(:activity_article, published: true) }
+  let!(:unpublished_article) { FactoryBot.create(:comment_article, published: false) }
 
   describe "GET /api/articles" do
     it "returns published articles in JSON format" do

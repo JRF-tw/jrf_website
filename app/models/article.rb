@@ -1,5 +1,4 @@
 class Article < ApplicationRecord
-  belongs_to :user
   has_and_belongs_to_many :keywords, index: { unique: true }
   has_many :slides, as: :slideable, dependent: :destroy
   accepts_nested_attributes_for :slides, reject_if: proc { |attributes| attributes['image'].blank? }, allow_destroy: true
@@ -9,13 +8,20 @@ class Article < ApplicationRecord
   paginates_per 15
   scope :activities, -> { where(kind: 'activity') }
   scope :presses, -> { where(kind: 'press') }
-  # scope :videos, -> { where(kind: 'video') }
   scope :comments, -> { where(kind: 'comment') }
   scope :epapers, -> { where(kind: 'epaper') }
   scope :books, -> { where(kind: 'book') }
   before_save :update_youtube_values, :fix_content, :save_fb_ia_content
   validate :check_content
   validates_presence_of :published_at
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["author", "content", "created_at", "description", "fb_ia_content", "id", "id_value", "image", "kind", "link", "published", "published_at", "system_type", "title", "updated_at", "youtube_id", "youtube_list_id", "youtube_url"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["keywords", "slides"]
+  end
 
   def youtube_embed_url
     if youtube_id.present?

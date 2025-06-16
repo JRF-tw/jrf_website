@@ -3,7 +3,7 @@ h1.text-center 修改/刪除文章
   = search_form_for @q, url: admin_articles_path do |f|
     label 標題內容搜尋
     = f.search_field :title_or_content_cont, class: "form-control", placeholder: "輸入"
-    = f.submit "搜尋", class: "btn btn-default radius btn-sm"
+    = f.submit "搜尋", class: "btn btn-secondary radius btn-sm"
 hr
 table.table
   thead
@@ -31,5 +31,5 @@ table.table
         td = a.published_at.try(:strftime, '%Y-%m-%d')
         td
           = link_to '編輯', edit_admin_article_path(a), class: "btn radius btn-white btn-sm"
-          = link_to '刪除', admin_article_path(a), method: :delete, data: { confirm: '確認要刪除嗎？' }, class: "btn radius btn-default btn-sm"
+          = link_to '刪除', admin_article_path(a), method: :delete, data: { confirm: '確認要刪除嗎？' }, class: "btn radius btn-secondary btn-sm"
 

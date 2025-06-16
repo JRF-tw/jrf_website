@@ -1,4 +1,4 @@
-.banner.hidden-xs
+.banner.d-none.d-sm-block
   .slideshow
     .slider-banner-container
       .slider-banner-fullscreen
@@ -13,25 +13,25 @@
                 p.text-center
                   = link_to keyword_path(k), class: "btn btn-white btn-lg" do
                     | 了解更多
-                    i.fa.fa-angle-right.pl-10
+                    i.fas.fa-angle-right.pl-10
 
-.visible-xs
+.d-block.d-sm-none
   .container
     .row.margin-clear.grid-space-0
       - if @first_keyword.present?
-        .col-sm-6.col-xs-12
+        .col-12.col-sm-6
           = link_to keyword_path(@first_keyword) do
             .index-banner style=("border:solid #fff;border-width: 5px 3px;") 
-              .index-label.hidden-xs
-                span.label.label-default = @first_keyword.category.name
+              .index-label.d-none.d-sm-block
+                span.label.label-secondary = @first_keyword.category.name
               .gradient-tl
                 .pl-10.small
                   h2.text-white = @first_keyword.title
                   span.small.text-white = @first_keyword.description.try(:html_safe)
               = image_tag @first_keyword.cover.try(:url), width: "100%"
-        .col-sm-6.col-xs-12
+        .col-12.col-sm-6
           - @keywords.each do |k|
-            .col-xs-6.col-md-6
+            .col-6.col-md-6
               = link_to keyword_path(k) do
                 .index-banner style=("border: 3px solid #fff;") 
                   .gradient-tl
@@ -43,7 +43,7 @@
   .container
     .row.col-md-12
       h2
-        i.fa.fa-bullhorn
+        i.fas.fa-bullhorn
         | 最新訊息
       .separator-2
       /! masonry grid start
@@ -51,15 +51,15 @@
         - @articles.each do |a|
           = render partial: 'shared/article_block', locals: { a: a }
     p.text-center
-      = link_to articles_path, class: "btn btn-default btn-lg" do
+      = link_to articles_path, class: "btn btn-secondary btn-lg" do
         | 更多消息
-        i.fa.fa-angle-right.pl-10
+        i.fas.fa-angle-right.pl-10
 
 .gray-bg.section 
   .container-fluid
     - @sites.each do |s|
-      .col-md-2.col-sm-4.col-xs-4
-        = link_to image_tag(s.image, alt: s.title), s.link
+      .col-4.col-sm-4.col-md-2
+        = link_to image_tag(s.image.url, alt: s.title), s.link
 
 .white-bg.section 
   .container
@@ -67,7 +67,7 @@
       .row
         .col-md-12
           h2.page-title
-            i.fa.fa-book
+            i.fas.fa-book
             | 書籍
           .separator-2
           .owl-carousel.clients
@@ -78,7 +78,7 @@
                 - if a.image.blank?
                   = link_to image_tag("jrf-img.png", alt: a.title), article_path(a)
                 - else
-                  = link_to image_tag(a.image.thumb, alt: a.title), article_path(a)
+                  = link_to image_tag(a.image.thumb.url, alt: a.title), article_path(a)
                 h5.text-center = a.title
         h4.text-left
-          = link_to "更多書籍", books_articles_path, class: "btn btn-default"
+          = link_to "更多書籍", books_articles_path, class: "btn btn-secondary"

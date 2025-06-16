@@ -12,18 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
-//= require modernizr
+//= require bootstrap-sprockets
+//= require vendor/modernizr
 //= require jquery.themepunch.tools.min
 //= require jquery.themepunch.revolution
-//= require isotope.pkgd
-//= require owl.carousel
-//= require magnific-popup
+//= require vendor/isotope.pkgd
+//= require vendor/owl.carousel
+//= require vendor/magnific-popup
 //= require jquery.appear
 //= require jquery.countTo
-//= require jquery.parallax
-//= require jquery.validate
+//= require vendor/jquery.parallax
+//= require vendor/jquery.validate
 //= require template
+//= require bootstrap_dropdown_init
 //= require gtm
 
 var ready_ran = 0;

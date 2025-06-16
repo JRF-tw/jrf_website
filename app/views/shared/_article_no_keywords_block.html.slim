@@ -5,7 +5,7 @@
         - if a.image.blank?
           = link_to image_tag("jrf-img.png", width: "100%", class: "embed-responsive-item"), article_path(a)
         - else
-          = link_to image_tag(a.image.thumb, width: "100%", class: "embed-responsive-item"), article_path(a)
+          = link_to image_tag(a.image.thumb.url, width: "100%", class: "embed-responsive-item"), article_path(a)
       .blogpost-body
         .post-info
           span.day = a.published_at.try(:strftime, '%d')
@@ -14,7 +14,7 @@
           header
             h4.title = link_to a.title, article_path(a)
             .submitted
-              i.fa.fa-user.pr-5
+              i.fas.fa-user.pr-5
               = a.author
           - if a.description.present?
             = display_shorter(a.description, 50)
@@ -27,7 +27,7 @@
         - if a.image.blank?
           = link_to image_tag("jrf-img.png", width: "100%", class: "embed-responsive-item"), article_path(a)
         - else
-          = link_to image_tag(a.image.thumb, width: "100%", class: "embed-responsive-item"), article_path(a)
+          = link_to image_tag(a.image.thumb.url, width: "100%", class: "embed-responsive-item"), article_path(a)
       .blogpost-body
         .post-info
           span.day = a.published_at.try(:strftime, '%d')
@@ -36,7 +36,7 @@
           header
             h4.title = link_to a.title, article_path(a)
             .submitted
-              i.fa.fa-user.pr-5
+              i.fas.fa-user.pr-5
               = a.author
           - if a.description.present?
             = display_shorter(a.description, 50)

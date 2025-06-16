@@ -2,29 +2,65 @@
 
 [![Build Status](https://travis-ci.org/JRF-tw/jrf_website.svg?branch=master)](https://travis-ci.org/JRF-tw/jrf_website)
 
-## Project Build
+## Rails Version
 
+This project has been upgraded to **Rails 7.1** with **Rails 7.2 compatibility**. 
 
-- Make sure you have already start PostgreSql
+### Recent Upgrades (2025-06)
+- ✅ Rails 7.1.5.1 with Rails 7.2 forward compatibility
+- ✅ Bootstrap 5.3 via gem (replaced vendor CSS)
+- ✅ Migrated from deprecated `secrets.yml` to Rails credentials system
+- ✅ Updated Devise integration and admin authentication
+- ✅ Fixed all controller parameter handling for Rails 7.1
+- ✅ Comprehensive test suite passing (138+ examples)
 
-```
+## Project Setup
+
+### Prerequisites
+- Ruby 3.2.8+ 
+- PostgreSQL
+- Node.js (for asset compilation)
+
+### Initial Setup
+
+```bash
+# Install dependencies
 bundle install
-```
 
-```
+# Copy configuration templates
 cp config/database.yml.default config/database.yml
 cp config/config.yml.default config/config.yml
 ```
 
-- Setup database.yml & start postgresql.
+### Database Setup
 
-```
-bundle install
+```bash
+# Create and migrate database
 rake db:create db:migrate
+
+# Start the application
 rails server
 ```
 
-- Yo login as admin, setup Google or Facebook OAuth login at `config/config.yml`, and set the user as admin in rails console.
+### Admin Setup
+
+1. Setup Google or Facebook OAuth login in `config/config.yml`
+2. Create admin user via Rails console:
+   ```ruby
+   user = User.find_by(email: 'your@email.com')
+   user.update(admin: true)
+   ```
+
+### Testing
+
+```bash
+# Run full test suite
+bundle exec rspec
+
+# Run specific test categories
+bundle exec rspec spec/models/
+bundle exec rspec spec/requests/admin/
+```
 
 ## PostgreSql
 

@@ -3,7 +3,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   # GET /categories
   def index
-    @q = Category.search(params[:q])
+    @q = Category.ransack(params[:q])
     @categories = @q.result(distinct: true).page(params[:page])
     set_meta_tags({
       title: "次分類管理"

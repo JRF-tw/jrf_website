@@ -1,5 +1,5 @@
 def sign_in(user = nil)
-  user ||= FactoryGirl.create(:user)
+  user ||= FactoryBot.create(:user)
   data = { email: user.email, password: user.password }
   post '/users/sign_in', params: { user: data }
   @current_user = user if response.status == 302

@@ -97,6 +97,28 @@ mark,
 }
 
 /* Default Buttons */
+.btn-secondary {
+	background-color: #b73c5a;
+	color: #fff !important;
+	border-color: #b73c5a;
+}
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary.active,
+.open .dropdown-toggle.btn-secondary {
+	color: #fff !important;
+	background-color: #7d293e;
+	border-color: #7d293e;
+}
+.btn-secondary.disabled,
+.btn-secondary[disabled],
+fieldset[disabled] .btn-secondary {
+	background-color: #7d293e;
+	border-color: #7d293e;
+}
+
+/* Legacy support for btn-default */
 .btn-default {
 	background-color: #b73c5a;
 	color: #fff !important;

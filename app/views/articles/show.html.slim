@@ -3,18 +3,18 @@ section.container
     .row
       .main.col-md-9
         .masonry-grid.row
-          .masonry-grid-item.col-xs-12
+          .masonry-grid-item.col-12
             article.clearfix.blogpost
               .blogpost-body
                 .row
                   header
                     h2.title = @article.title
                     .submitted
-                      i.fa.fa-user.pr-5
+                      i.fas.fa-user.me-2
                       = @article.author
                       br
                       span 
-                        i.fa.fa-clock-o.pr-5
+                        i.far.fa-clock.me-2
                         = @article.published_at.strftime('%Y-%-m-%d')
                   - if @article.youtube_id
                     .embed-responsive.embed-responsive-16by9
@@ -22,23 +22,23 @@ section.container
                   - elsif @article.slides.present?
                     .owl-carousel.content-slider-with-controls-autoplay
                       - @article.slides.each do |slide|
-                        = image_tag(slide.image, alt: "", class: "embed-responsive-item")
+                        = image_tag(slide.image.url, alt: "", class: "embed-responsive-item")
                   - elsif @article.image.blank?
                     .embed-responsive.embed-responsive-16by9
                       = image_tag("jrf-img.png", alt: "", class: "embed-responsive-item")
                   - else
                     .embed-responsive.embed-responsive-16by9
-                      = image_tag(@article.image, alt: "", class: "embed-responsive-item")
+                      = image_tag(@article.image.url, alt: "", class: "embed-responsive-item")
         div.text
           = @article.content.try(:html_safe)
           - if user_signed_in? and current_user.admin?
             .text-center
-              = link_to '編輯本文', edit_admin_article_path(@article), class: "btn btn-default"
+              = link_to '編輯本文', edit_admin_article_path(@article), class: "btn btn-secondary"
       aside.col-md-3
         .sidebar
           .block.clearfix
             h3.title
-              i.fa.fa-tags
+              i.fas.fa-tags
               | 關鍵字
             - @article.keywords.each do |k|
               .tags-cloud
@@ -47,13 +47,13 @@ section.container
           .block.clearfix
             - if @related_articles.any?
               h3.title
-                i.fa.fa-comments
+                i.fas.fa-comments
                 | 相關訊息
               .separator
               - @related_articles.each do |a|
                 = render partial: 'shared/article_side_block', locals: { a: a }
             h3.title
-              i.fa.fa-bullhorn
+              i.fas.fa-bullhorn
               | 最新訊息
             .separator
             - @lastest_articles.each do |a|

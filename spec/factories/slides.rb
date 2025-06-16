@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :article_slide, class: "Slide" do
     association :slideable, factory: :article

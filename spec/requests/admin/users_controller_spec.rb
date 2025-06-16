@@ -2,8 +2,8 @@ require "rails_helper"
 
 describe "Admin/User" do
 
-  let(:user) { FactoryGirl.create(:user) }
-  let(:admin) { FactoryGirl.create(:admin) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:admin) { FactoryBot.create(:admin) }
 
   describe "before login" do
     describe "#index" do
@@ -25,7 +25,7 @@ describe "Admin/User" do
 
   describe "after login" do
     before { sign_in(user) }
-    after { sign_out }
+    after { sign_out(user) }
 
     describe "#index" do
       it "redirect" do
@@ -46,12 +46,12 @@ describe "Admin/User" do
 
   describe "after login admin" do
     before { sign_in(admin) }
-    after { sign_out }
+    after { sign_out(admin) }
 
     describe "#index" do
       it "success" do
         get "/admin/users/"
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 

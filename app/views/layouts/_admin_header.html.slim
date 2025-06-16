@@ -6,54 +6,54 @@ aside.col-md-2.gray-bg
       | 管理後台
     p.text-center
       = link_to destroy_user_session_path, method: :delete, class: 'btn btn-info btn-sm' do
-        i.fa.fa-lock.pr-10
+        i.fas.fa-lock.me-2
         | 登出
     .separator
     nav
-      ul.nav.nav-pills.nav-stacked
-        li
-          = link_to '排序首頁專案輪播', show_order_admin_keywords_path
+      ul.nav.nav-pills.flex-column
+        li.nav-item
+          = link_to '排序首頁專案輪播', show_order_admin_keywords_path, class: 'nav-link'
         li.nav-divider
-        li
-          = link_to '新增對外連結', new_admin_site_path
-        li
-          = link_to '修改/刪除對外連結', admin_sites_path
+        li.nav-item
+          = link_to '新增對外連結', new_admin_site_path, class: 'nav-link'
+        li.nav-item
+          = link_to '修改/刪除對外連結', admin_sites_path, class: 'nav-link'
         li.nav-divider
-        li
-          = link_to '新增主目錄', new_admin_catalog_path
-        li
-          = link_to '修改/刪除主目錄', admin_catalogs_path
+        li.nav-item
+          = link_to '新增主目錄', new_admin_catalog_path, class: 'nav-link'
+        li.nav-item
+          = link_to '修改/刪除主目錄', admin_catalogs_path, class: 'nav-link'
         li.nav-divider
-        li
-          = link_to '新增次目錄', new_admin_category_path
-        li
-          = link_to '修改/刪除次目錄', admin_categories_path
+        li.nav-item
+          = link_to '新增次目錄', new_admin_category_path, class: 'nav-link'
+        li.nav-item
+          = link_to '修改/刪除次目錄', admin_categories_path, class: 'nav-link'
         li.nav-divider
-        li
-          = link_to '新增專案', new_admin_keyword_path
-        li
-          = link_to '修改/刪除專案', admin_keywords_path
-        li
-          = link_to '排序專案', order_admin_keywords_path
+        li.nav-item
+          = link_to '新增專案', new_admin_keyword_path, class: 'nav-link'
+        li.nav-item
+          = link_to '修改/刪除專案', admin_keywords_path, class: 'nav-link'
+        li.nav-item
+          = link_to '排序專案', order_admin_keywords_path, class: 'nav-link'
         li.nav-divider
-        li
-          = link_to '新增文章', new_admin_article_path
-        li
-          = link_to '修改/刪除文章', admin_articles_path
+        li.nav-item
+          = link_to '新增文章', new_admin_article_path, class: 'nav-link'
+        li.nav-item
+          = link_to '修改/刪除文章', admin_articles_path, class: 'nav-link'
         li.nav-divider
         - unless @about_article.blank?
-          li
-            = link_to '修改介紹頁', edit_admin_article_path(@about_article)
+          li.nav-item
+            = link_to '修改介紹頁', edit_admin_article_path(@about_article), class: 'nav-link'
         - unless @donate_article.blank?
-          li
-            = link_to '修改捐款頁', edit_admin_article_path(@donate_article)
+          li.nav-item
+            = link_to '修改捐款頁', edit_admin_article_path(@donate_article), class: 'nav-link'
         - unless @privacy_article.blank?
-          li
-            = link_to '修改隱私頁', edit_admin_article_path(@privacy_article)
-        li
-          = link_to '新增網站', new_admin_site_path
-        li
-          = link_to '修改/刪除網站', admin_sites_path
+          li.nav-item
+            = link_to '修改隱私頁', edit_admin_article_path(@privacy_article), class: 'nav-link'
+        li.nav-item
+          = link_to '新增網站', new_admin_site_path, class: 'nav-link'
+        li.nav-item
+          = link_to '修改/刪除網站', admin_sites_path, class: 'nav-link'
         li.nav-divider
-        li
-          = link_to '後台使用者', admin_users_path
+        li.nav-item
+          = link_to '後台使用者', admin_users_path, class: 'nav-link'

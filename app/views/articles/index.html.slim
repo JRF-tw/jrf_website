@@ -6,22 +6,22 @@ p#notice = notice
       .row
         .container.section
           ul.nav.nav-tabs.nav-justified
-            li.active
-              = link_to "所有", articles_path
-            li
-              = link_to "新聞稿", presses_articles_path
-            li
-              = link_to "活動", activities_articles_path
-            li
-              = link_to "評論", comments_articles_path
-            li
-              = link_to "電子報", epapers_articles_path
-            li
-              = link_to "書籍", books_articles_path
+            li.nav-item
+              = link_to "所有", articles_path, class: "nav-link active"
+            li.nav-item
+              = link_to "新聞稿", presses_articles_path, class: "nav-link"
+            li.nav-item
+              = link_to "活動", activities_articles_path, class: "nav-link"
+            li.nav-item
+              = link_to "評論", comments_articles_path, class: "nav-link"
+            li.nav-item
+              = link_to "電子報", epapers_articles_path, class: "nav-link"
+            li.nav-item
+              = link_to "書籍", books_articles_path, class: "nav-link"
       .masonry-grid.row
         - @articles.each do |a|
           = render partial: 'shared/article_block', locals: { a: a }
 
       .row.text-center
-        .col-md-10.col-md-offset-1
+        .col-md-10.offset-md-1
           = paginate @articles

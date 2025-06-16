@@ -2,14 +2,15 @@ require "rails_helper"
 
 describe "Admin/Keyword" do
 
-  let(:user) { FactoryGirl.create(:user) }
-  let(:admin) { FactoryGirl.create(:admin) }
-  let(:keyword) { FactoryGirl.create(:keyword) }
-  let(:faq) { FactoryGirl.create(:faq) }
-  let(:slide) { FactoryGirl.create(:keyword_slide) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:admin) { FactoryBot.create(:admin) }
+  let(:keyword) { FactoryBot.create(:keyword) }
+  let(:faq) { FactoryBot.create(:faq) }
+  let(:slide) { FactoryBot.create(:keyword_slide) }
   let(:new_keyword) do
     {
-      name: "new_keyword_name"
+      name: "new_keyword_name",
+      category_id: FactoryBot.create(:category).id
     }
   end
 
@@ -63,8 +64,8 @@ describe "Admin/Keyword" do
 
     describe "#sort" do
       it "failed" do
-        keyword1 = FactoryGirl.create(:keyword)
-        keyword2 = FactoryGirl.create(:keyword)
+        keyword1 = FactoryBot.create(:keyword)
+        keyword2 = FactoryBot.create(:keyword)
         sort_data = {
           keyword: {
             order: {
@@ -89,7 +90,7 @@ describe "Admin/Keyword" do
 
   describe "after login" do
     before { sign_in(user) }
-    after { sign_out }
+    after { sign_out(user) }
 
     describe "#index" do
       it "redirect" do
@@ -140,8 +141,8 @@ describe "Admin/Keyword" do
 
     describe "#sort" do
       it "failed" do
-        keyword1 = FactoryGirl.create(:keyword)
-        keyword2 = FactoryGirl.create(:keyword)
+        keyword1 = FactoryBot.create(:keyword)
+        keyword2 = FactoryBot.create(:keyword)
         sort_data = {
           keyword: {
             order: {
@@ -166,26 +167,26 @@ describe "Admin/Keyword" do
 
   describe "after login admin" do
     before { sign_in(admin) }
-    after { sign_out }
+    after { sign_out(admin) }
 
     describe "#index" do
       it "success" do
         get "/admin/keywords/"
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
     describe "#new" do
       it "success" do
         get "/admin/keywords/new"
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
     describe "#edit" do
       it "success" do
         get "/admin/keywords/#{keyword.id}/edit"
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
@@ -287,8 +288,8 @@ describe "Admin/Keyword" do
 
     describe "#sort" do
       it "success" do
-        keyword1 = FactoryGirl.create(:keyword)
-        keyword2 = FactoryGirl.create(:keyword)
+        keyword1 = FactoryBot.create(:keyword)
+        keyword2 = FactoryBot.create(:keyword)
         sort_data = {
           keyword: {
             order: {
@@ -304,6 +305,7 @@ describe "Admin/Keyword" do
           }
         }
         put "/admin/keywords/sort", params: sort_data
+        expect(response).to be_successful
         keyword1.reload
         keyword2.reload
         expect(Keyword.all).to eq([keyword2, keyword1])

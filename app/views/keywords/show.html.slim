@@ -1,89 +1,72 @@
 .container
-  .row.col-lg-10.col-lg-offset-1
+  .row.justify-content-center
+    .col-lg-10
     .owl-carousel.content-slider-with-controls-autoplay
       - if @keyword.slides.present?
         - @keyword.slides.each do |slide|
-          = image_tag(slide.image, class: "embed-responsive-item", alt: "", width: "100%")
+          = image_tag(slide.image.url, class: "embed-responsive-item", alt: "", width: "100%")
       - elsif @keyword.image.present?
-        = image_tag(@keyword.image.banner, class: "embed-responsive-item", alt: "", width: "100%")
+        = image_tag(@keyword.image.banner.url, class: "embed-responsive-item", alt: "", width: "100%")
     h1.title.text-center = @keyword.title
     .separator
     .text
       = @keyword.content.try(:html_safe)
     - if user_signed_in? and current_user.admin?
-      .row.col-lg-10.col-lg-offset-1.text-center
-        = link_to '編輯本文', edit_admin_keyword_path(@keyword), class: "btn btn-default"
+      .row.justify-content-center
+      .col-lg-10.text-center
+        = link_to '編輯本文', edit_admin_keyword_path(@keyword), class: "btn btn-secondary"
 
 - if @keyword.faqs.any?
   .container
-    .row.col-lg-10.col-lg-offset-1
-      .panel-group#accordion-faq
+    .row.justify-content-center
+      .col-lg-10
+        .accordion#accordion-faq
         - num = 0
         - @keyword.faqs.each do |faq|
           - num += 1
-          .panel.panel-default
-            .panel-heading
-              h4.panel-title
-                = link_to "#collapse#{num}", data: { toggle: "collapse", parent: "#accordion-faq" }, class: "collapsed" do
-                  i.fa.fa-question-circle.pr-10
-                  = faq.question
-            .panel-collapse.collapse id="collapse#{num}"
-              .panel-body
+          .accordion-item
+            h4.accordion-header id="heading#{num}"
+              button.accordion-button.collapsed type="button" data-bs-toggle="collapse" data-bs-target="#collapse#{num}" aria-expanded="false" aria-controls="collapse#{num}"
+                i.fas.fa-question-circle.me-2
+                = faq.question
+            .accordion-collapse.collapse id="collapse#{num}" aria-labelledby="heading#{num}" data-bs-parent="#accordion-faq"
+              .accordion-body
                 = faq.answer.try(:html_safe)
 
 - if @keyword.articles.any?
   .container
-    .col-lg-10.col-lg-offset-1
+    .row.justify-content-center
+      .col-lg-10
       .separator#more
-      .row.hidden-xs
+      .row.d-none.d-sm-flex
         .section
           ul.nav.nav-tabs.nav-justified
             - if @kind.blank?
-              li.active
-                = link_to "所有", url_for(k: nil, anchor: 'more')
-              li
-                = link_to "新聞稿", url_for(k: "presses", page: nil, anchor: 'more')
-              li
-                = link_to "活動", url_for(k: "activities", page: nil, anchor: 'more')
-              li
-                = link_to "評論", url_for(k: "comments", page: nil, anchor: 'more')
-              li
-                = link_to "電子報", url_for(k: "epapers", page: nil, anchor: 'more')
-              li
-                = link_to "書籍", url_for(k: "books", page: nil, anchor: 'more')
+              li.nav-item
+                = link_to "所有", url_for(k: nil, anchor: 'more'), class: "nav-link active"
+              li.nav-item
+                = link_to "新聞稿", url_for(k: "presses", page: nil, anchor: 'more'), class: "nav-link"
+              li.nav-item
+                = link_to "活動", url_for(k: "activities", page: nil, anchor: 'more'), class: "nav-link"
+              li.nav-item
+                = link_to "評論", url_for(k: "comments", page: nil, anchor: 'more'), class: "nav-link"
+              li.nav-item
+                = link_to "電子報", url_for(k: "epapers", page: nil, anchor: 'more'), class: "nav-link"
+              li.nav-item
+                = link_to "書籍", url_for(k: "books", page: nil, anchor: 'more'), class: "nav-link"
             - else
-              li
-                = link_to "所有", url_for(k: nil, page: nil, anchor: 'more')
-              - if @kind == 'presses'
-                li.active
-                  = link_to "新聞稿", url_for(k: "presses", anchor: 'more')
-              - else
-                li
-                  = link_to "新聞稿", url_for(k: "presses", page: nil, anchor: 'more')
-              - if @kind == 'activities'
-                li.active
-                  = link_to "活動", url_for(k: "activities", anchor: 'more')
-              - else
-                li
-                  = link_to "活動", url_for(k: "activities", page: nil, anchor: 'more')
-              - if @kind == 'comments'
-                li.active
-                 = link_to "評論", url_for(k: "comments", anchor: 'more')
-              - else
-                li
-                  = link_to "評論", url_for(k: "comments", page: nil, anchor: 'more')
-              - if @kind == 'epapers'
-                li.active
-                  = link_to "電子報", url_for(k: "epapers", anchor: 'more')
-              - else
-                li
-                  = link_to "電子報", url_for(k: "epapers", page: nil, anchor: 'more')
-              - if @kind == 'books'
-                li.active
-                  = link_to "書籍", url_for(k: "books", anchor: 'more')
-              - else
-                li
-                  = link_to "書籍", url_for(k: "books", page: nil, anchor: 'more')
+              li.nav-item
+                = link_to "所有", url_for(k: nil, page: nil, anchor: 'more'), class: "nav-link"
+              li.nav-item
+                = link_to "新聞稿", url_for(k: "presses", page: nil, anchor: 'more'), class: "nav-link #{'active' if @kind == 'presses'}"
+              li.nav-item
+                = link_to "活動", url_for(k: "activities", page: nil, anchor: 'more'), class: "nav-link #{'active' if @kind == 'activities'}"
+              li.nav-item
+                = link_to "評論", url_for(k: "comments", page: nil, anchor: 'more'), class: "nav-link #{'active' if @kind == 'comments'}"
+              li.nav-item
+                = link_to "電子報", url_for(k: "epapers", page: nil, anchor: 'more'), class: "nav-link #{'active' if @kind == 'epapers'}"
+              li.nav-item
+                = link_to "書籍", url_for(k: "books", page: nil, anchor: 'more'), class: "nav-link #{'active' if @kind == 'books'}"
       .row
         .isotope-container
           - @articles.each do |a|
@@ -92,9 +75,9 @@
                 - if a.image.blank?
                   = image_tag("jrf-img.png", alt: "")
                 - else
-                  = image_tag(a.image.thumb, alt: "")
+                  = image_tag(a.image.thumb.url, alt: "")
                 = link_to article_path(a), class: "overlay small" do
-                  i.fa.fa-link
+                  i.fas.fa-link
                   - if a.kind == 'press'
                     span 新聞稿
                   - elsif a.kind == 'activity'

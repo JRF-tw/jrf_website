@@ -1,11 +1,11 @@
 h1.text-center 目錄排序/總覽
 pre 排序調整：將滑鼠移到區塊上，按住滑鼠上下拖曳到要的位置後放開即可調整排序
 - @catalogs.each do |c|
-  .panel.panel-default data-id="#{c.id}" 
+  .card.border-secondary data-id="#{c.id}" 
     table.table
       tr
         td width="300"
-          = image_tag(c.image, width: '100%')
+          = image_tag(c.image.url, width: '100%')
         td
           h2.title c.title
           - width = 12 / c.categories.length

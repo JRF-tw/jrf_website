@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, except: [:index, :new, :presses, :activities, :comments, :epapers, :books]
+  before_action :set_article, except: [:index, :presses, :activities, :comments, :epapers, :books]
   #before_action :authenticate_user!, except: [:show, :index]
 
   # GET /articles
@@ -16,10 +16,10 @@ class ArticlesController < ApplicationController
       end
     else
       if user_signed_in? and current_user.admin?
-        @q = Article.includes(:keywords).search(params[:q])
+        @q = Article.includes(:keywords).ransack(params[:q])
         @articles = @q.result(distinct: true).page(params[:page])
       else
-        @q = Article.includes(:keywords).published.search(params[:q])
+        @q = Article.includes(:keywords).published.ransack(params[:q])
         @articles = @q.result(distinct: true).page(params[:page])
       end
     end
@@ -55,9 +55,9 @@ class ArticlesController < ApplicationController
       end
     else
       if user_signed_in? and current_user.admin?
-        @q = Article.includes(:keywords).presses.search(params[:q])
+        @q = Article.includes(:keywords).presses.ransack(params[:q])
       else
-        @q = Article.includes(:keywords).presses.published.search(params[:q])
+        @q = Article.includes(:keywords).presses.published.ransack(params[:q])
       end
       @articles = @q.result(distinct: true).page(params[:page])
     end
@@ -92,9 +92,9 @@ class ArticlesController < ApplicationController
       end
     else
       if user_signed_in? and current_user.admin?
-        @q = Article.includes(:keywords).activities.search(params[:q])
+        @q = Article.includes(:keywords).activities.ransack(params[:q])
       else
-        @q = Article.includes(:keywords).activities.published.search(params[:q])
+        @q = Article.includes(:keywords).activities.published.ransack(params[:q])
       end
       @articles = @q.result(distinct: true).page(params[:page])
     end
@@ -129,9 +129,9 @@ class ArticlesController < ApplicationController
       end
     else
       if user_signed_in? and current_user.admin?
-        @q = Article.includes(:keywords).comments.search(params[:q])
+        @q = Article.includes(:keywords).comments.ransack(params[:q])
       else
-        @q = Article.includes(:keywords).comments.published.search(params[:q])
+        @q = Article.includes(:keywords).comments.published.ransack(params[:q])
       end
       @articles = @q.result(distinct: true).page(params[:page])
     end
@@ -166,9 +166,9 @@ class ArticlesController < ApplicationController
       end
     else
       if user_signed_in? and current_user.admin?
-        @q = Article.includes(:keywords).epapers.search(params[:q])
+        @q = Article.includes(:keywords).epapers.ransack(params[:q])
       else
-        @q = Article.includes(:keywords).epapers.published.search(params[:q])
+        @q = Article.includes(:keywords).epapers.published.ransack(params[:q])
       end
       @articles = @q.result(distinct: true).page(params[:page])
     end
@@ -203,9 +203,9 @@ class ArticlesController < ApplicationController
       end
     else
       if user_signed_in? and current_user.admin?
-        @q = Article.includes(:keywords).books.search(params[:q])
+        @q = Article.includes(:keywords).books.ransack(params[:q])
       else
-        @q = Article.includes(:keywords).books.published.search(params[:q])
+        @q = Article.includes(:keywords).books.published.ransack(params[:q])
       end
       @articles = @q.result(distinct: true).page(params[:page])
     end

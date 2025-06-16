@@ -1,0 +1,4 @@
+admin_email: "admin@test.com"
+smtp_settings:
+  mail_username: ""
+  mail_password: ""

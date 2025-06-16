@@ -17,7 +17,7 @@ table.table
             - c.categories.each do |cc|
               .panel.panel-default.gray-bg data-id="#{cc.id}"
                 .row
-                  .col-xs-6 = cc.name
-                  .col-xs-6.text-right
+                  .col-6 = cc.name
+                  .col-6.text-end
                     = link_to '編輯', edit_admin_category_path(cc), class: "btn radius btn-white btn-sm"
-                    = link_to '刪除', admin_category_path(cc), method: :delete, data: { confirm: '確認要刪除嗎？' }, class: "btn radius btn-default btn-sm"
+                    = link_to '刪除', admin_category_path(cc), method: :delete, data: { confirm: '確認要刪除嗎？' }, class: "btn radius btn-secondary btn-sm"

@@ -13,7 +13,7 @@ begin
   # Test basic model loading
   puts "\nTesting model loading..."
   
-  models = ['Article', 'User', 'Keyword', 'Video', 'Site', 'Setting']
+  models = ['Article', 'User', 'Keyword', 'Site', 'Setting']
   
   models.each do |model_name|
     begin

@@ -1,5 +1,5 @@
 class KeywordsController < ApplicationController
-  before_action :set_keyword, except: [:index, :new]
+  before_action :set_keyword, except: [:index]
 
   # GET /keywords
   def index
@@ -95,6 +95,11 @@ class KeywordsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_keyword
-    @keyword = params[:id] ? Keyword.find(params[:id]) : Keyword.new(keyword_params)
+    @keyword = params[:id] ? Keyword.find(params[:id]) : Keyword.new
+  end
+  
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def keyword_params
+    params.require(:keyword).permit()
   end
 end

@@ -27,3 +27,6 @@ public/apidocs/
 #db/data/*.json
 .byebug_history
 Gemfile.lock.bak
+/config/credentials/development.key
+
+/config/credentials/test.key

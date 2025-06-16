@@ -11,7 +11,7 @@ table.table
       td 編輯/刪除
 .sortable-catalog
   - @catalogs.each do |c|
-    .panel.panel-default.gray-bg data-id="#{c.id}"
+    .card.border-secondary.bg-light data-id="#{c.id}"
       table.table
         tr
           td width="20%" = c.name
@@ -25,5 +25,5 @@ table.table
               = cc.name
           td
             = link_to '編輯', edit_admin_catalog_path(c), class: "btn radius btn-white btn-sm"
-            = link_to '刪除', admin_catalog_path(c), method: :delete, data: { confirm: '確認要刪除嗎？' }, class: "btn radius btn-default btn-sm"
+            = link_to '刪除', admin_catalog_path(c), method: :delete, data: { confirm: '確認要刪除嗎？' }, class: "btn radius btn-secondary btn-sm"
 

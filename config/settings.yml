@@ -1,0 +1,34 @@
+google_auth_key:
+  client_id: '827322854206-vhqlhl32045mke8bn28i7439d76iisnu.apps.googleusercontent.com'
+  client_secret: 'Rr3OiYdoAF180wvWnJVdH-CZ'
+
+google_public_key:
+  api_key: 'AIzaSyBOJKdRRabFn8WgF-40oyJQEhoMEPKZLTw'
+
+facebook_auth_key:
+  app_id: "583963241750288"
+  app_secret: "c4fd626bbbc93830a8b31dde7e3f9ca6"
+
+recaptcha:
+  public_key: '6LesYv8SAAAAAD86MEaIz4FxDXaLjoT2VWojca1k'
+  private_key: '6LesYv8SAAAAAC_WyxJrCEbdpFott2pTqZxHtui_'
+
+google_analytics:
+  id: "UA-58871054-1"
+
+google_gtm: 
+  id: "GTM-T2CN7K"
+
+url:
+  host: "localhost:3000"
+  protocol: "http"
+  fb: "https://facebook.com/jrf.tw"
+
+fb:
+  pages: "176765029076"
+
+google:
+  pages: ""
+
+rollbar:
+  access_token: 'f5129c096b95475da339769fafb3dd19'

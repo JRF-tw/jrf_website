@@ -18,9 +18,10 @@ class Category < ApplicationRecord
   end
 
   def chunk_keywords
-    unless self.keywords.published.blank?
-      max_length = ( self.keywords.published.length + self.width - 1 ) / self.width
-      self.keywords.published.each_slice(max_length).to_a
+    published_keywords = self.keywords.select(&:published?)
+    unless published_keywords.blank?
+      max_length = ( published_keywords.length + self.width - 1 ) / self.width
+      published_keywords.each_slice(max_length).to_a
     else
       []
     end

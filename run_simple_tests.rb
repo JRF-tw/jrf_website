@@ -7,7 +7,6 @@ test_files = [
   'spec/models/article_spec.rb',
   'spec/models/user_spec.rb', 
   'spec/models/keyword_spec.rb',
-  'spec/models/video_spec.rb',
   'spec/models/site_spec.rb',
   'spec/models/setting_spec.rb'
 ]

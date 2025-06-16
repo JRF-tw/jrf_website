@@ -20,11 +20,12 @@ class ApplicationController < ActionController::Base
   private
 
   def set_catalog
-    @catalogs = Catalog.includes(:categories).published
+    # Use preload to avoid eager loading detection issues
+    @catalogs = Catalog.published.preload(categories: :keywords)
   end
 
   def set_article_q
-    @article_q = Article.includes(:keywords).search(params[:q])
+    @article_q = Article.includes(:keywords).ransack(params[:q])
   end
 
   def set_keywords

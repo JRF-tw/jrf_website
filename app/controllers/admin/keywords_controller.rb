@@ -1,9 +1,9 @@
 class Admin::KeywordsController < Admin::BaseController
-  before_action :set_keyword, except: [:index, :new, :sort, :add_faq, :order, :show_sort, :show_order]
+  before_action :set_keyword, except: [:index, :new, :sort, :order, :show_sort, :show_order]
 
   # GET /keywords
   def index
-    @q = Keyword.includes(category: :catalog).search(params[:q])
+    @q = Keyword.includes(category: :catalog).ransack(params[:q])
     @keywords = @q.result(distinct: true)
     set_meta_tags({
       title: "專案管理"
@@ -72,15 +72,23 @@ class Admin::KeywordsController < Admin::BaseController
   end
 
   def sort
-    keyword_params[:order].each do |key,value|
-      Keyword.find(value[:id]).update_attribute(:position, value[:position])
+    if params[:keyword] && params[:keyword][:order]
+      params[:keyword][:order].each do |key, value|
+        if Keyword.exists?(id: value[:id])
+          Keyword.find(value[:id]).update_attribute(:position, value[:position])
+        end
+      end
     end
     render body: nil
   end
 
   def show_sort
-    keyword_params[:order].each do |key,value|
-      Keyword.find(value[:id]).update_attribute(:show_position, value[:position])
+    if params[:keyword] && params[:keyword][:order]
+      params[:keyword][:order].each do |key, value|
+        if Keyword.exists?(id: value[:id])
+          Keyword.find(value[:id]).update_attribute(:show_position, value[:position])
+        end
+      end
     end
     render body: nil
   end
@@ -89,7 +97,11 @@ class Admin::KeywordsController < Admin::BaseController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_keyword
-    @keyword = params[:id] ? Keyword.find(params[:id]) : Keyword.new(keyword_params)
+    if params[:id]
+      @keyword = Keyword.find(params[:id])
+    else
+      @keyword = Keyword.new(keyword_params)
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

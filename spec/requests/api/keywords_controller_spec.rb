@@ -1,8 +1,8 @@
 require "rails_helper"
 
 describe "API::Keywords" do
-  let!(:keyword1) { FactoryGirl.create(:keyword) }
-  let!(:keyword2) { FactoryGirl.create(:keyword) }
+  let!(:keyword1) { FactoryBot.create(:keyword) }
+  let!(:keyword2) { FactoryBot.create(:keyword) }
 
   describe "GET /api/keywords" do
     it "returns keywords in JSON format" do
