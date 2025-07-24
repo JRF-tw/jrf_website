@@ -3,7 +3,7 @@ require "spec_helper"
 describe "Keyword" do
 
 
-  let(:keyword) { FactoryGirl.create(:keyword) }
+  let(:keyword) { FactoryBot.create(:keyword) }
   let(:new_keyword) do
     {
       name: "new_keyword_name",
@@ -13,15 +13,15 @@ describe "Keyword" do
   describe "#show" do
     it "success" do
       get "/keywords/#{keyword.id}"
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
   describe "#show_with_faq" do
     it "success" do
-      2.times { FactoryGirl.create(:faq, keyword: keyword) }
+      2.times { FactoryBot.create(:faq, keyword: keyword) }
       get "/keywords/#{keyword.id}"
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 end

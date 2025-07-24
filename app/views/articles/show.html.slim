@@ -22,13 +22,13 @@ section.container
                   - elsif @article.slides.present?
                     .owl-carousel.content-slider-with-controls-autoplay
                       - @article.slides.each do |slide|
-                        = image_tag(slide.image, alt: "", class: "embed-responsive-item")
+                        = image_tag(slide.image.url, alt: "", class: "embed-responsive-item")
                   - elsif @article.image.blank?
                     .embed-responsive.embed-responsive-16by9
                       = image_tag("jrf-img.png", alt: "", class: "embed-responsive-item")
                   - else
                     .embed-responsive.embed-responsive-16by9
-                      = image_tag(@article.image, alt: "", class: "embed-responsive-item")
+                      = image_tag(@article.image.url, alt: "", class: "embed-responsive-item")
         div.text
           = @article.content.try(:html_safe)
           - if user_signed_in? and current_user.admin?

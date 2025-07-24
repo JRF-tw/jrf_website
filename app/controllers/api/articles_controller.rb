@@ -1,5 +1,6 @@
 class Api::ArticlesController < ApplicationController
   respond_to :json
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def index
     limit = params[:limit].blank? ? 10 : params[:limit]
@@ -9,18 +10,24 @@ class Api::ArticlesController < ApplicationController
     ransack_params[:published_at_gt] = params[:date_start] if params[:date_start]
     ransack_params[:published_at_lt] = params[:date_end] if params[:date_end]
     if ransack_params.blank?
-      @articles = Article.includes(:keywords).offset(params[:offset]).limit(limit)
-      @articles_count = Article.count
+      @articles = Article.published.includes(:keywords).offset(params[:offset]).limit(limit)
+      @articles_count = Article.published.count
     else
-      @articles = Article.includes(:keywords).ransack(ransack_params).result(distinct: true)
+      @articles = Article.published.includes(:keywords).ransack(ransack_params).result(distinct: true)
         .offset(params[:offset]).limit(limit)
-      @articles_count = Article.ransack(ransack_params).result(distinct: true).count
+      @articles_count = Article.published.ransack(ransack_params).result(distinct: true).count
     end
     respond_with(@articles, @articles_count)
   end
 
   def show
-    @article = Article.includes(:keywords).find(params[:id])
+    @article = Article.published.includes(:keywords).find(params[:id])
     respond_with(@article)
+  end
+
+  private
+
+  def record_not_found
+    render json: { error: 'Article not found' }, status: :not_found
   end
 end

@@ -10,9 +10,9 @@ class Admin::FaqsController < Admin::BaseController
   end
 
   def sort
-    faq_params[:order].each do |key,value|
-      if not value[:id].blank? and Faq.exists?(id: value[:id])
-        Faq.find(value[:id]).update_attribute(:position, value[:position])
+    faq_params[:order].each do |item|
+      if item[:id].present? and Faq.exists?(id: item[:id])
+        Faq.find(item[:id]).update_attribute(:position, item[:position])
       end
     end
     render body: nil

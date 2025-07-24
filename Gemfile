@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem "bundler", ">= 1.8.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1'
+gem 'rails', '~> 5.2.8'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -19,7 +19,7 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+# gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'jquery-turbolinks'
 gem 'omniauth-facebook'
@@ -27,8 +27,9 @@ gem 'omniauth-google-oauth2'
 gem 'meta-tags'
 gem 'devise'
 gem 'simple_form'
-gem 'slim-rails', '3.1.1'
-gem 'factory_girl_rails', group: :test
+gem 'slim-rails', '~> 3.2'
+gem 'slim', '~> 4.1'
+gem 'factory_bot_rails', group: :test
 gem 'kaminari'
 gem 'jquery-ui-rails'
 gem 'chosen-rails'
@@ -40,7 +41,6 @@ gem 'pg'
 gem 'compass'
 gem 'ransack'
 gem "twitter-bootstrap-rails"
-gem 'charlock_holmes'
 gem 'iconv'
 gem "font-awesome-rails"
 gem 'fontello_rails_converter'
@@ -55,11 +55,13 @@ gem 'jquery-datetimepicker-rails'
 gem "cocoon"
 gem 'carrierwave-imageoptimizer'
 gem 'rabl-rails'
-gem 'responders', '~> 2.0'
+gem 'responders', '~> 3.0'
+gem 'bootsnap', '>= 1.1.0', require: false
+gem 'sprockets', '~> 3.7.0'
 gem 'lograge'
-gem 'rollbar'
 gem "skylight"
-gem "rails-i18n", '~> 5.0.0'
+gem "rails-i18n", '~> 5.1'
+gem 'mail', '< 2.8.0'
 source 'https://rails-assets.org' do
   gem 'rails-assets-magnific-popup'
   gem 'rails-assets-animate.css'

@@ -47,8 +47,19 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.before(:suite) do
+    begin
+      DatabaseCleaner.clean_with(:truncation, except: %w[public.schema_migrations])
+    rescue ActiveRecord::StatementInvalid => e
+      # Handle deadlock gracefully by retrying once
+      if e.message.include?('deadlock') || e.message.include?('Deadlocked')
+        puts "Deadlock detected, retrying database cleanup..."
+        sleep 1
+        DatabaseCleaner.clean_with(:deletion, except: %w[public.schema_migrations])
+      else
+        raise e
+      end
+    end
     DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation, except: %w[public.schema_migrations])
   end
 
   config.around(:each) do |example|

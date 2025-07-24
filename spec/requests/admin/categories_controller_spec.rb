@@ -2,9 +2,9 @@ require "rails_helper"
 
 describe "Admin/Category" do
 
-  let(:user) { FactoryGirl.create(:user) }
-  let(:admin) { FactoryGirl.create(:admin) }
-  let(:category) { FactoryGirl.create(:category) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:admin) { FactoryBot.create(:admin) }
+  let(:category) { FactoryBot.create(:category) }
   let(:new_category) do
     {
       name: "new_category_name"
@@ -61,8 +61,8 @@ describe "Admin/Category" do
 
     describe "#sort" do
       it "failed" do
-        category1 = FactoryGirl.create(:category)
-        category2 = FactoryGirl.create(:category)
+        category1 = FactoryBot.create(:category)
+        category2 = FactoryBot.create(:category)
         sort_data = {
           category: {
             order: {
@@ -138,8 +138,8 @@ describe "Admin/Category" do
 
     describe "#sort" do
       it "failed" do
-        category1 = FactoryGirl.create(:category)
-        category2 = FactoryGirl.create(:category)
+        category1 = FactoryBot.create(:category)
+        category2 = FactoryBot.create(:category)
         sort_data = {
           category: {
             order: {
@@ -169,28 +169,28 @@ describe "Admin/Category" do
     describe "#index" do
       it "success" do
         get "/admin/categories/"
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
     describe "#new" do
       it "success" do
         get "/admin/categories/new"
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
     describe "#edit" do
       it "success" do
         get "/admin/categories/#{category.id}/edit"
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
     describe "#create" do
       it "success" do
         post "/admin/categories", params: { category: new_category }
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
@@ -215,8 +215,8 @@ describe "Admin/Category" do
 
     describe "#sort" do
       it "success" do
-        category1 = FactoryGirl.create(:category)
-        category2 = FactoryGirl.create(:category)
+        category1 = FactoryBot.create(:category)
+        category2 = FactoryBot.create(:category)
         sort_data = {
           category: {
             order: {

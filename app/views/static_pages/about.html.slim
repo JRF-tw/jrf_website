@@ -6,6 +6,6 @@
           - if @article.youtube_id
             iframe.embed-responsive-item src="#{@article.youtube_embed_url}"
           - else
-            = image_tag(@article.image.banner, width: "100%", alt: "")
+            = image_tag(@article.image.banner.url, width: "100%", alt: "")
       h1.title.text-center = @article.title
       = @article.content.try(:html_safe)

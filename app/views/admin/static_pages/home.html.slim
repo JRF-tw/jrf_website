@@ -5,7 +5,7 @@ pre 排序調整：將滑鼠移到區塊上，按住滑鼠上下拖曳到要的�
     table.table
       tr
         td width="300"
-          = image_tag(c.image, width: '100%')
+          = image_tag(c.image.url, width: '100%')
         td
           h2.title c.title
           - width = 12 / c.categories.length

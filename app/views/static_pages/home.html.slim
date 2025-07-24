@@ -59,7 +59,7 @@
   .container-fluid
     - @sites.each do |s|
       .col-md-2.col-sm-4.col-xs-4
-        = link_to image_tag(s.image, alt: s.title), s.link
+        = link_to image_tag(s.image.url, alt: s.title), s.link
 
 .white-bg.section 
   .container
@@ -78,7 +78,7 @@
                 - if a.image.blank?
                   = link_to image_tag("jrf-img.png", alt: a.title), article_path(a)
                 - else
-                  = link_to image_tag(a.image.thumb, alt: a.title), article_path(a)
+                  = link_to image_tag(a.image.thumb.url, alt: a.title), article_path(a)
                 h5.text-center = a.title
         h4.text-left
           = link_to "更多書籍", books_articles_path, class: "btn btn-default"

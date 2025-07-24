@@ -8,7 +8,7 @@ ul
         h4 = "#{keyword.catalog.name} > #{keyword.category.name} > #{keyword.name}"
         .row
           .col-sm-4
-            = image_tag(keyword.cover)
+            = image_tag(keyword.cover.url)
           .col-sm-8
             h5 = keyword.title
             = keyword.description.try(:html_safe)

@@ -3,9 +3,9 @@
     .owl-carousel.content-slider-with-controls-autoplay
       - if @keyword.slides.present?
         - @keyword.slides.each do |slide|
-          = image_tag(slide.image, class: "embed-responsive-item", alt: "", width: "100%")
+          = image_tag(slide.image.url, class: "embed-responsive-item", alt: "", width: "100%")
       - elsif @keyword.image.present?
-        = image_tag(@keyword.image.banner, class: "embed-responsive-item", alt: "", width: "100%")
+        = image_tag(@keyword.image.banner.url, class: "embed-responsive-item", alt: "", width: "100%")
     h1.title.text-center = @keyword.title
     .separator
     .text
@@ -92,7 +92,7 @@
                 - if a.image.blank?
                   = image_tag("jrf-img.png", alt: "")
                 - else
-                  = image_tag(a.image.thumb, alt: "")
+                  = image_tag(a.image.thumb.url, alt: "")
                 = link_to article_path(a), class: "overlay small" do
                   i.fa.fa-link
                   - if a.kind == 'press'

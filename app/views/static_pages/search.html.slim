@@ -62,7 +62,7 @@
               - unless a.youtube_id.blank?
                 iframe.embed-responsive-item sec="//www.youtube.com/embed/#{a.youtube_id}"
               - else
-                = image_tag(a.image, alt: "")
+                = image_tag(a.image.url, alt: "")
               = link_to article_path(a), class: "overlay small" do
                 i.fa.fa-link
                 span = a.kind.name

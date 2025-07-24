@@ -10,8 +10,8 @@ class StaticPagesController < ApplicationController
 
   def search
     q = params[:q]
-    @articles = Article.published.search(title_or_content_cont: q).result.page(params[:page])
-    # @videos = Video.published.search(title_or_content_cont: q).result.page(params[:videos_page])
+    @articles = Article.published.ransack(title_or_content_cont: q).result.page(params[:page])
+    # @videos = Video.published.ransack(title_or_content_cont: q).result.page(params[:videos_page])
     # @kinds = []
     # @articles.each do |a|
     #   unless @kinds.include? a.kind

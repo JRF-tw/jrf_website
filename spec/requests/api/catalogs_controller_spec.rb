@@ -1,8 +1,8 @@
 require "rails_helper"
 
 describe "API::Catalogs" do
-  let!(:catalog1) { FactoryGirl.create(:catalog) }
-  let!(:catalog2) { FactoryGirl.create(:catalog) }
+  let!(:catalog1) { FactoryBot.create(:catalog) }
+  let!(:catalog2) { FactoryBot.create(:catalog) }
 
   describe "GET /api/catalogs" do
     it "returns catalogs in JSON format" do
@@ -11,8 +11,11 @@ describe "API::Catalogs" do
       expect(response.content_type).to include('application/json')
       
       json_response = JSON.parse(response.body)
-      expect(json_response).to be_an(Array)
-      expect(json_response.length).to eq(2)
+      expect(json_response).to be_a(Hash)
+      expect(json_response['catalogs']).to be_an(Array)
+      expect(json_response['catalogs'].length).to eq(2)
+      expect(json_response['count']).to eq(2)
+      expect(json_response['status']).to eq('success')
     end
   end
 
@@ -23,8 +26,10 @@ describe "API::Catalogs" do
       expect(response.content_type).to include('application/json')
       
       json_response = JSON.parse(response.body)
-      expect(json_response['id']).to eq(catalog1.id)
-      expect(json_response['name']).to eq(catalog1.name)
+      expect(json_response).to be_a(Hash)
+      expect(json_response['catalog']['id']).to eq(catalog1.id)
+      expect(json_response['catalog']['name']).to eq(catalog1.name)
+      expect(json_response['status']).to eq('success')
     end
   end
 end

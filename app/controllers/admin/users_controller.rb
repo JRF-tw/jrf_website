@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::BaseController
 
   # GET /users
   def index
-    @q = User.search(params[:q])
+    @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page])
     set_meta_tags({
       title: "管理員管理"

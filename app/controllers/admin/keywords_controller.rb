@@ -3,7 +3,7 @@ class Admin::KeywordsController < Admin::BaseController
 
   # GET /keywords
   def index
-    @q = Keyword.includes(category: :catalog).search(params[:q])
+    @q = Keyword.includes(category: :catalog).ransack(params[:q])
     @keywords = @q.result(distinct: true)
     set_meta_tags({
       title: "專案管理"

@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_article_q
-    @article_q = Article.includes(:keywords).search(params[:q])
+    @article_q = Article.includes(:keywords).ransack(params[:q])
   end
 
   def set_keywords

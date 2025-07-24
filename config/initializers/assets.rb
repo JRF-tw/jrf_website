@@ -12,6 +12,6 @@ Rails.application.config.assets.precompile += %w( index.css )
 Rails.application.config.assets.precompile += %w( index.js )
 Rails.application.config.assets.precompile += %w( admin.js )
 Rails.application.config.assets.precompile += %w( admin.css )
-Rails.application.config.assets.precompile += %w(*.svg *.eot *.woff *.ttf *.gif *.png *.ico)
+# Precompile additional image assets - simple string patterns only
 Rails.application.config.assets.precompile += Ckeditor.assets
 Rails.application.config.assets.precompile += %w( ckeditor/* )

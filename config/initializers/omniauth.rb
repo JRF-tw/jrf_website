@@ -1,9 +1,5 @@
 # OmniAuth configuration for better reliability and security
 
-# Rails 7+ CSRF protection compatibility
-Rails.application.config.middleware.use OmniAuth::Builder do
-end
-
 # Configure OmniAuth to handle CSRF protection
 OmniAuth.config.allowed_request_methods = [:post, :get]
 OmniAuth.config.silence_get_warning = true

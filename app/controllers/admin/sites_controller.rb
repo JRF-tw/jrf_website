@@ -3,7 +3,7 @@ class Admin::SitesController < Admin::BaseController
 
   # GET /sites
   def index
-    @q = Site.search(params[:q])
+    @q = Site.ransack(params[:q])
     @sites = @q.result(distinct: true).page(params[:page])
     set_meta_tags({
       title: "對外連結管理"

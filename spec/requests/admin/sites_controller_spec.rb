@@ -1,8 +1,8 @@
 require "rails_helper"
 
 describe "Admin::Sites" do
-  let(:admin) { FactoryGirl.create(:admin) }
-  let(:site) { FactoryGirl.create(:site) }
+  let(:admin) { FactoryBot.create(:admin) }
+  let(:site) { FactoryBot.create(:site) }
   let(:new_site_params) do
     {
       title: "New Site",

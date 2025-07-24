@@ -2,10 +2,10 @@ require "rails_helper"
 
 describe "Admin/Article" do
 
-  let(:user) { FactoryGirl.create(:user) }
-  let(:admin) { FactoryGirl.create(:admin) }
-  let(:article) { FactoryGirl.create(:press_article) }
-  let(:slide) { FactoryGirl.create(:article_slide) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:admin) { FactoryBot.create(:admin) }
+  let(:article) { FactoryBot.create(:press_article) }
+  let(:slide) { FactoryBot.create(:article_slide) }
   let(:new_article) do
     {
       title: "new_article_title",
@@ -13,7 +13,8 @@ describe "Admin/Article" do
       kind: "activity",
       published_at: 1.day.ago,
       image: File.open(File.join(Rails.root, 'spec', 'fixtures', 'test.jpg')),
-      published: true
+      published: true,
+      author: "Test Author"
     }
   end
 
@@ -124,21 +125,21 @@ describe "Admin/Article" do
     describe "#index" do
       it "success" do
         get "/admin/articles/"
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
     describe "#new" do
       it "success" do
         get "/admin/articles/new"
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
     describe "#edit" do
       it "success" do
         get "/admin/articles/#{article.id}/edit"
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 

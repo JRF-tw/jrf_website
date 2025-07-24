@@ -1,17 +1,17 @@
 require "rails_helper"
 
 describe User do
-  let(:user) {FactoryGirl.create(:user)}
+  let(:user) {FactoryBot.create(:user)}
 
   it "#factory_creat_success" do
     expect {
-      FactoryGirl.create :user
+      FactoryBot.create :user
     }.to change { User.count }.by(1)
   end
 
   it "#factory_creat_admin_success" do
     expect {
-      FactoryGirl.create :admin
+      FactoryBot.create :admin
     }.to change { User.count }.by(1)
   end
 
@@ -24,7 +24,7 @@ describe User do
   end
 
   it "admin user should be admin" do
-    admin = FactoryGirl.create(:admin)
+    admin = FactoryBot.create(:admin)
     expect(admin.admin?).to be_truthy
   end
 

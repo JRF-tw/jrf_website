@@ -10,7 +10,7 @@ table.table
     - @sites.each do |s|
       tr
         td = link_to s.title, s.link, target: '_blank'
-        td = image_tag(s.image)
+        td = image_tag(s.image.url)
         td
           = link_to '編輯', edit_admin_site_path(s), class: "btn radius btn-white btn-sm"
           = link_to '刪除', admin_site_path(s), method: :delete, data: { confirm: '確認要刪除嗎？' }, class: "btn radius btn-default btn-sm"
