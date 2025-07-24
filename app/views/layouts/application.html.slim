@@ -14,6 +14,7 @@ html lang="zh-Hant-TW"
     link href="/images/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"
     link href="/images/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144"
     = auto_discovery_link_tag(:rss, feed_url(format: :atom))
+    link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
     - if (params[:controller] == 'static_pages' and params[:action] == 'home') or params[:controller] == 'keywords'
       = stylesheet_link_tag  'index', media: 'all'
     - else
@@ -28,10 +29,10 @@ html lang="zh-Hant-TW"
       i.icon-up-open-big
     = link_to donate_path
       .icon-donate
-        i.fa.fa-heart
+        i.fas.fa-donate
     = link_to "http://line.me/ti/p/%40rkh0402z", target: "_blank" do
       .icon-line-me
-        i.fa.fa-comment
+        i.fab.fa-line
     .page-wrapper
       - if notice
         p class="alert alert-success" = notice

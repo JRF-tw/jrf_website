@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
   has_many :keywords
+  has_many :published_keywords, -> { where(published: true) }, class_name: 'Keyword', foreign_key: 'category_id'
   belongs_to :catalog
   validates_presence_of :name, message: '請填寫分類名稱'
   validates_presence_of :catalog_id, message: '請選擇主分類'
@@ -18,9 +19,9 @@ class Category < ApplicationRecord
   end
 
   def chunk_keywords
-    unless self.keywords.published.blank?
-      max_length = ( self.keywords.published.length + self.width - 1 ) / self.width
-      self.keywords.published.each_slice(max_length).to_a
+    unless self.published_keywords.blank?
+      max_length = ( self.published_keywords.length + self.width - 1 ) / self.width
+      self.published_keywords.each_slice(max_length).to_a
     else
       []
     end

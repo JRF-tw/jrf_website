@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_catalog
-    @catalogs = Catalog.includes(categories: :keywords).published
+    @catalogs = Catalog.published.includes(published_categories: :published_keywords)
   end
 
   def set_article_q

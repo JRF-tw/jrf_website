@@ -42,7 +42,7 @@ gem 'compass'
 gem 'ransack'
 gem "twitter-bootstrap-rails"
 gem 'iconv'
-gem "font-awesome-rails"
+# gem "font-awesome-rails"  # Replaced with Font Awesome 5 CDN
 gem 'fontello_rails_converter'
 # gem 'magnific-popup-rails'
 # gem 'owlcarousel-rails'

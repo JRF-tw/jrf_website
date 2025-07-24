@@ -6,39 +6,39 @@
           ul.social-links.clearfix.hidden-xs
             li.youtube
               = link_to "https://www.youtube.com/@JRFmeeting_at10", target: "_blank" do
-                i.fa.fa-youtube-play
+                i.fab.fa-youtube
             li.facebook
               = link_to "https://www.facebook.com/jrf.tw", target: "_blank" do
-                i.fa.fa-facebook
+                i.fab.fa-facebook
             li.instagram
               = link_to "https://www.instagram.com/jrf.org.tw/", target: "_blank" do
-                i.fa.fa-instagram
+                i.fab.fa-instagram
             li.pinterest
               = link_to "https://report.jrf.org.tw/", target: "_blank" do
-                i.fa.fa-envelope
+                i.fas.fa-envelope
             li.vimeo
               = link_to "http://line.me/ti/p/%40rkh0402z", target: "_blank" do
-                i.fa.fa-comment
+                i.fab.fa-line
           .social-links.hidden-lg.hidden-md.hidden-sm
             .btn-group.dropdown
               button.btn.dropdown-toggle data-toggle="dropdown" type="button"
-                i.fa.fa-plus
+                i.fas.fa-plus
               ul.dropdown-menu.dropdown-animation
                 li.youtube
                   = link_to "https://www.youtube.com/@JRFmeeting_at10", target: "_blank" do
-                    i.fa.fa-youtube-play
+                    i.fab.fa-youtube
                 li.facebook
                   = link_to "https://www.facebook.com/jrf.tw", target: "_blank" do
-                    i.fa.fa-facebook
+                    i.fab.fa-facebook
                 li.instagram
                   = link_to "https://www.instagram.com/jrf.org.tw/", target: "_blank" do
-                    i.fa.fa-instagram
+                    i.fab.fa-instagram
                 li.pinterest
                   = link_to "https://report.jrf.org.tw/", target: "_blank" do
-                    i.fa.fa-envelope
+                    i.fas.fa-envelope
                 li.vimeo
                   = link_to "http://line.me/ti/p/%40rkh0402z", target: "_blank" do
-                    i.fa.fa-comment
+                    i.fab.fa-line
 
       .col-xs-10.col-sm-6
         .clearfix.header-top-second
@@ -46,21 +46,21 @@
             .btn-group.dropdown
               button.btn type="button" onclick="window.location.href='/about';"
                 = link_to about_path do
-                  i.fa.fa-info
+                  i.fas.fa-info
                   | 關於我們
               button.btn type="button" onclick="window.location.href='/donate';"
                 = link_to donate_path do
-                  i.fa.fa-heart
+                  i.fas.fa-donate
                   | 支持司改
               button.btn.dropdown-toggle type="button1" data-toggle="dropdown"
-                i.fa.fa-search
+                i.fas.fa-search
                 | 搜尋
               ul.dropdown-menu.dropdown-menu-right.dropdown-animation
                 li
                   = search_form_for @article_q, url: articles_path, class: "search-box", role: "search" do |f|
                     .form-group.has-feedback
                       = f.search_field :title_or_content_or_author_or_keywords_name_cont, class: "form-control", id: "textfield", placeholder: "輸入關鍵字"
-                      i.fa.fa-search.form-control-feedback
+                      i.fas.fa-search.form-control-feedback
                       = f.submit "搜尋", class: "btn btn-default radius btn-sm"
 header.header.fixed.clearfix.header-small
   .container
@@ -95,14 +95,14 @@ header.header.fixed.clearfix.header-small
                             .row
                               .col-lg-12.col-md-12
                                 .row
-                                  - catalog.categories.published.each do |category|
+                                  - catalog.published_categories.each do |category|
                                     - width = catalog.width_unit * category.width
                                     div class="col-sm-#{width}"
                                       h4 = category.name
                                       .divider
                                       - if category.width == 1
                                         ul.menu
-                                          - category.keywords.published.each do |keyword|
+                                          - category.published_keywords.each do |keyword|
                                             li
                                               = link_to keyword_path(keyword) do
                                                 i.icon-right-open

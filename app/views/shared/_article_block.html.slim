@@ -14,7 +14,7 @@
           header
             h4.title = link_to a.title, article_path(a)
             .submitted
-              i.fa.fa-user.pr-5
+              i.fas.fa-user.pr-5
               = a.author
           - if a.description.present?
             = display_shorter(a.description, 50)
@@ -22,7 +22,7 @@
             = display_shorter(a.content, 50)
       footer.clearfix
         ul.links.pull-left
-          i.fa.fa-tags.pr-5
+          i.fas.fa-tags.pr-5
           - a.keywords.each do |k|
             li.keyword-list
               = link_to k.name, keyword_path(k)
@@ -42,7 +42,7 @@
           header
             h4.title = link_to a.title, article_path(a)
             .submitted
-              i.fa.fa-user.pr-5
+              i.fas.fa-user.pr-5
               = a.author
           - if a.description.present?
             = display_shorter(a.description, 50)
@@ -50,7 +50,7 @@
             = display_shorter(a.content, 50)
       footer.clearfix
         ul.links.pull-left
-          i.fa.fa-tags.pr-5
+          i.fas.fa-tags.pr-5
           - a.keywords.each do |k|
             li.keyword-list
               = link_to k.name, keyword_path(k)

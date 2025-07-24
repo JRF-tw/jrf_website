@@ -1,6 +1,8 @@
 class Catalog < ApplicationRecord
   has_many :categories
+  has_many :published_categories, -> { where(published: true) }, class_name: 'Category', foreign_key: 'catalog_id'
   has_many :keywords, through: :categories
+  has_many :published_keywords, through: :published_categories, source: :published_keywords
   validates_presence_of :name, message: '請填寫分類名稱'
   validates_presence_of :image, message: '請上傳圖片'
   mount_uploader :image, ImageUploader
@@ -15,7 +17,7 @@ class Catalog < ApplicationRecord
   end
 
   def width_unit
-    12 / self.categories.published.sum(:width)
+    12 / self.published_categories.sum(:width)
   end
 
   def check_categories_empty

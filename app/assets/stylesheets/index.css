@@ -11,7 +11,6 @@
  * file per style scope.
  *
  *= require bootstrap_and_overrides
- *= require font-awesome
  *= require fontello
  *= require settings
  *= require extralayers
