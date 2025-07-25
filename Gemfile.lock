@@ -486,6 +486,7 @@ DEPENDENCIES
   rails (~> 5.2.8)
   rails-assets-animate.css!
   rails-assets-isotope!
+  rails-assets-jquery!
   rails-assets-jquery-appear!
   rails-assets-jquery.parallax!
   rails-assets-jquery.validate!

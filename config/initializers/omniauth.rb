@@ -14,7 +14,7 @@ if Rails.env.development?
   OmniAuth.config.logger = Rails.logger
 end
 
-# Improve SSL verification
+# Configure SSL verification for OAuth providers
 if Rails.env.production?
-  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+  # Rails.application.config.force_ssl = true
 end
