@@ -256,7 +256,7 @@ var ready = function(){
     });
   }
 
-  if (typeof(CKEDITOR) != undefined) {
+  if (typeof(CKEDITOR) !== 'undefined') {
     // CKEDITOR.config.extraAllowedContent = 'i dl dt dd data-toggle[*]{*} data-parent[*]{*}';
     CKEDITOR.config.allowedContent = true ;
     CKEDITOR.dtd.$removeEmpty['i'] = false ;
