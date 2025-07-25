@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-// CKEditor init is handled manually below
 //= require modernizr
 //= require isotope.pkgd
 //= require owl.carousel
@@ -29,8 +28,6 @@
 //= require jquery.datetimepicker
 //= require html.sortable
 //= require cocoon
-//= require ckeditor/ckeditor
-//= require ckeditor/config
 
 var ready_ran = 0;
 
@@ -258,6 +255,12 @@ var ready = function(){
   }
 
   if (typeof(CKEDITOR) !== 'undefined') {
+    // CKEDITOR.config.extraAllowedContent = 'i dl dt dd data-toggle[*]{*} data-parent[*]{*}';
+    CKEDITOR.config.allowedContent = true ;
+    CKEDITOR.dtd.$removeEmpty['i'] = false ;
+  }
+
+  if (typeof(CKEDITOR) != undefined) {
     // CKEDITOR.config.extraAllowedContent = 'i dl dt dd data-toggle[*]{*} data-parent[*]{*}';
     CKEDITOR.config.allowedContent = true ;
     CKEDITOR.dtd.$removeEmpty['i'] = false ;
