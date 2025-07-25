@@ -14,4 +14,4 @@ Rails.application.config.assets.precompile += %w( admin.js )
 Rails.application.config.assets.precompile += %w( admin.css )
 # Precompile additional image assets - simple string patterns only
 Rails.application.config.assets.precompile += Ckeditor.assets
-Rails.application.config.assets.precompile += %w( ckeditor/* )
+Rails.application.config.assets.precompile += %w[ckeditor/config.js]

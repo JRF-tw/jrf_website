@@ -25,7 +25,6 @@ module NewJrfWebsite
     config.i18n.default_locale = "zh-TW"
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    config.assets.paths << Gem.loaded_specs['ckeditor'].full_gem_path + "/app/assets/javascripts"
     config.exceptions_app = self.routes
   end
 end

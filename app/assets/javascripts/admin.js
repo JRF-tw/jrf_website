@@ -30,7 +30,7 @@
 //= require html.sortable
 //= require cocoon
 //= require ckeditor/ckeditor
-
+//= require ckeditor/config
 
 var ready_ran = 0;
 
