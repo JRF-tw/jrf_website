@@ -21,6 +21,6 @@ html lang="zh-Hant-TW"
       = yield
     = debug(params) if Rails.env.development?
     /- console if Rails.env.development?
-    = javascript_include_tag Ckeditor.cdn_url
+    script src="https://cdn.ckeditor.com/4.6.1/basic/ckeditor.js"
     = javascript_include_tag 'admin', media: 'all'
  
