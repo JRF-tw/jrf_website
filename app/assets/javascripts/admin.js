@@ -257,12 +257,7 @@ var ready = function(){
   if (typeof(CKEDITOR) !== 'undefined') {
     // CKEDITOR.config.extraAllowedContent = 'i dl dt dd data-toggle[*]{*} data-parent[*]{*}';
     CKEDITOR.config.allowedContent = true ;
-    CKEDITOR.dtd.$removeEmpty['i'] = false ;
-  }
-
-  if (typeof(CKEDITOR) != undefined) {
-    // CKEDITOR.config.extraAllowedContent = 'i dl dt dd data-toggle[*]{*} data-parent[*]{*}';
-    CKEDITOR.config.allowedContent = true ;
+    CKEDITOR.config.versionCheck = false ;
     CKEDITOR.dtd.$removeEmpty['i'] = false ;
   }
 
