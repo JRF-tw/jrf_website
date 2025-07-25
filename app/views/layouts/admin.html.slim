@@ -21,6 +21,8 @@ html lang="zh-Hant-TW"
       = yield
     = debug(params) if Rails.env.development?
     /- console if Rails.env.development?
-    script src="https://cdn.ckeditor.com/4.22.1/basic/ckeditor.js"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.22.1/ckeditor.js"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.22.1/lang/zh.min.js"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.22.1/plugins/sourcedialog/plugin.min.js"
     = javascript_include_tag 'admin', media: 'all'
  
