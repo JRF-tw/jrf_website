@@ -5,6 +5,6 @@ $(document).on('turbolinks:load', function() {
     }
   }
   $('textarea.ckeditor').each(function() {
-    CKEDITOR.replace($(this).attr('id'));
+    CKEDITOR.replace(this);
   });
 });
