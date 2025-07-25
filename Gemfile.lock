@@ -84,8 +84,12 @@ GEM
       railties (>= 3.0)
       sassc-rails (>= 2.1.2)
     chunky_png (1.4.0)
-    ckeditor (5.1.3)
+    ckeditor (4.2.4)
+      cocaine
       orm_adapter (~> 0.5.0)
+    climate_control (0.2.0)
+    cocaine (0.6.0)
+      terrapin (= 0.6.0)
     cocoon (1.2.15)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
@@ -409,6 +413,8 @@ GEM
       sprockets (>= 3.0.0)
     ssrf_filter (1.3.0)
     temple (0.8.2)
+    terrapin (0.6.0)
+      climate_control (>= 0.0.3, < 1.0)
     thor (1.4.0)
     thread_safe (0.3.6)
     tilt (2.0.11)
@@ -459,7 +465,7 @@ DEPENDENCIES
   carrierwave
   carrierwave-imageoptimizer
   chosen-rails
-  ckeditor
+  ckeditor (= 4.2.4)
   cocoon
   coffee-rails
   compass
