@@ -29,7 +29,7 @@
 //= require jquery.datetimepicker
 //= require html.sortable
 //= require cocoon
-//= require ckeditor/init
+//= require ckeditor/ckeditor
 
 
 var ready_ran = 0;
