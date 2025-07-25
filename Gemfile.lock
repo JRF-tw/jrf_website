@@ -479,6 +479,7 @@ DEPENDENCIES
   meta-tags
   mini_magick
   minitest
+  nokogiri (= 1.15.7)
   omniauth-facebook
   omniauth-google-oauth2
   pg
@@ -509,7 +510,7 @@ DEPENDENCIES
   sprockets (~> 3.7.0)
   twitter-bootstrap-rails
   uglifier
-  unicode-display_width
+  unicode-display_width (~> 3.1)
   unicorn
   web-console
 

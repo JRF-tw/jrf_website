@@ -50,7 +50,7 @@ gem 'fontello_rails_converter'
 # gem 'google-webfonts'
 # gem 'modernizr-rails'
 gem 'social-share-button'
-gem 'unicode-display_width'
+gem 'unicode-display_width', '~> 3.1'
 gem 'jquery-datetimepicker-rails'
 gem "cocoon"
 gem 'carrierwave-imageoptimizer'
