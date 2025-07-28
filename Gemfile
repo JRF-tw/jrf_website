@@ -59,7 +59,6 @@ gem 'responders', '~> 3.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'sprockets', '~> 3.7.0'
 gem 'lograge'
-gem "skylight"
 gem "rails-i18n", '~> 5.1'
 gem 'mail', '< 2.8.0'
 gem 'nokogiri', '1.15.7'
