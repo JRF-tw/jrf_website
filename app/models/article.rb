@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   has_and_belongs_to_many :keywords, index: { unique: true }
   has_many :slides, as: :slideable, dependent: :destroy
   accepts_nested_attributes_for :slides, reject_if: proc { |attributes| attributes['image'].blank? }, allow_destroy: true

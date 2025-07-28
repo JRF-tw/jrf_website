@@ -42,6 +42,7 @@ class Admin::ArticlesController < Admin::BaseController
 
   # PATCH/PUT /articles/1
   def update
+    @article.user = current_user if @article.user.nil?
     if @article.update(article_params)
       redirect_to admin_articles_url, notice: '文章更新成功'
     else
