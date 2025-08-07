@@ -258,10 +258,10 @@ var ready = function(){
     CKEDITOR.config.extraAllowedContent = 'i dl dt dd data-toggle[*]{*} data-parent[*]{*}';
     CKEDITOR.config.allowedContent = true ;
     CKEDITOR.config.versionCheck = false ;
-    CKEDITOR.config.filebrowserImageBrowseUrl: '/ckeditor/pictures',
-    CKEDITOR.config.filebrowserImageUploadUrl: '/ckeditor/pictures',
-    CKEDITOR.config.filebrowserUploadUrl: '/ckeditor/attachment_files',
-    CKEDITOR.config.filebrowserBrowseUrl: '/ckeditor/attachment_files'
+    CKEDITOR.config.filebrowserImageBrowseUrl = '/ckeditor/pictures';
+    CKEDITOR.config.filebrowserImageUploadUrl = '/ckeditor/pictures';
+    CKEDITOR.config.filebrowserUploadUrl = '/ckeditor/attachment_files';
+    CKEDITOR.config.filebrowserBrowseUrl = '/ckeditor/attachment_files';
     CKEDITOR.dtd.$removeEmpty['i'] = false ;
   }
 
