@@ -263,6 +263,7 @@ var ready = function(){
     CKEDITOR.config.filebrowserUploadUrl = '/ckeditor/attachment_files';
     CKEDITOR.config.filebrowserBrowseUrl = '/ckeditor/attachment_files';
     CKEDITOR.dtd.$removeEmpty['i'] = false ;
+    CKEDITOR.config.extraPlugins: 'justify';
   }
 
   $('textarea.ckeditor').each(function(){
