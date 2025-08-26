@@ -3445,8 +3445,8 @@ a.overlay.small i {
 
 /* arrows for parent menu items */
 .dropdown>a:before {
-	font-family: 'FontAwesome';
-	content: "\f107";
+	font-family: 'fontello';
+	content: "\e874";
 	position: absolute;
 	left: auto;
 	top: 15px;
