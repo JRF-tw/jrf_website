@@ -28,3 +28,4 @@ public/apidocs/
 #db/data/*.json
 .byebug_history
 Gemfile.lock.bak
+.claude

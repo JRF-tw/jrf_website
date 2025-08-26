@@ -10,5 +10,5 @@ ul
           .col-sm-4
             = image_tag(keyword.cover.url)
           .col-sm-8
-            h5 = keyword.title
+            h5 = link_to keyword.title, edit_admin_keyword_path(keyword), class: "text-primary"
             = keyword.description.try(:html_safe)
