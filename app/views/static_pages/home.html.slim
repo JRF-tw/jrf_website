@@ -3,7 +3,7 @@
     .slider-banner-container
       .slider-banner-fullscreen
         ul
-          - @keywords.each do |k|
+          - @showed_keywords.each do |k|
             li.dark-translucent-bg data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on" data-title="#{k.name}"
               = image_tag k.cover.try(:url), alt: k.name, data: {bgposition: "center top", bgfit: "cover", bgrepeat: "no-repeat"}
               .tp-caption.very_large_text.sft.tp-resizeme data-x="center" data-y="0" data-speed="700" data-start="200" data-end="10000" data-endspeed="600"

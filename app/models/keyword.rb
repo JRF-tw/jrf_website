@@ -9,6 +9,7 @@ class Keyword < ApplicationRecord
   # validates_presence_of :title, message: '請填專案標題'
   # validates_presence_of :content, message: '請填專案內文'
   validates_uniqueness_of :name, message: '請確認名稱沒有重複'
+  validates :cover, presence: { message: '當專案在首頁顯示時必須上傳封面圖片' }, if: :showed?
   mount_uploader :image, ImageUploader
   mount_uploader :cover, ImageUploader
   scope :published, -> { where(published: true) }
