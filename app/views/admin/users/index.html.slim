@@ -30,7 +30,7 @@ table.table
           td
             = simple_form_for u, url: admin_user_path(u), method: :put, html: { style: 'display: inline;' } do |f|
               = f.input :admin, as: :hidden, input_html: { value: 0 }
-              = f.button :submit, "移除管理權限", class: "btn radius btn-white btn-sm"
+              = f.button :submit, "移除管理權限", class: "btn radius btn-default btn-sm"
             = link_to "刪除", admin_user_path(u), method: :delete,
               data: { confirm: "確認要刪除嗎？" },
               class: "btn radius btn-default btn-sm"
