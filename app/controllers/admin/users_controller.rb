@@ -3,9 +3,8 @@ class Admin::UsersController < Admin::BaseController
 
   # GET /users
   def index
-    # @q = User.ransack(params[:q])
-    # @users = @q.result(distinct: true).page(params[:page])
-    @users = User.all
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).page(params[:page]).per(15)
     set_meta_tags({
       title: "管理員管理"
     })
@@ -18,6 +17,12 @@ class Admin::UsersController < Admin::BaseController
     else
       render :edit
     end
+  end
+
+  # DELETE /users/1
+  def destroy
+    @user.destroy
+    redirect_to admin_users_url, notice: '使用者已刪除'
   end
 
   private

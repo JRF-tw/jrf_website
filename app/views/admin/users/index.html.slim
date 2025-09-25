@@ -1,14 +1,22 @@
-h1.text-center 後台使用者管理
+h1.text-center 修改/刪除使用者
+.form-group
+  = search_form_for @q, url: admin_users_path do |f|
+    label 使用者搜尋（姓名或 Email）
+    = f.search_field :name_or_email_cont, class: "form-control", placeholder: "輸入姓名或 Email"
+    = f.submit "搜尋", class: "btn btn-default radius btn-sm"
+hr
 table.table
   thead
     tr
+      th 姓名
       th E-mail
       th 來源（Google／Facebook）
       th 當前權限
-      th 權限管理
+      th 編輯/刪除
   tbody
     - @users.each do |u|
       tr
+        td = u.name.present? ? u.name : "未提供"
         td = u.email
         td
           - if u.provider == 'google_oauth2'
@@ -20,12 +28,22 @@ table.table
         - if u.admin?
           td 管理員
           td
-            = simple_form_for u, url: admin_user_path(u), method: :put do |f|
+            = simple_form_for u, url: admin_user_path(u), method: :put, html: { style: 'display: inline;' } do |f|
               = f.input :admin, as: :hidden, input_html: { value: 0 }
-              = f.button :submit, "移除管理權限"
+              = f.button :submit, "移除管理權限", class: "btn radius btn-white btn-sm"
+            = link_to "刪除", admin_user_path(u), method: :delete,
+              data: { confirm: "確認要刪除嗎？" },
+              class: "btn radius btn-default btn-sm"
         - else
           td 無
           td
-            = simple_form_for u, url: admin_user_path(u), method: :put do |f|
+            = simple_form_for u, url: admin_user_path(u), method: :put, html: { style: 'display: inline;' } do |f|
               = f.input :admin, as: :hidden, input_html: { value: 1 }
-              = f.button :submit, "授與管理權限"
+              = f.button :submit, "授與管理權限", class: "btn radius btn-white btn-sm"
+            = link_to "刪除", admin_user_path(u), method: :delete,
+              data: { confirm: "確認要刪除嗎？" },
+              class: "btn radius btn-default btn-sm"
+
+.row.text-center
+  .col-md-12
+    = paginate @users

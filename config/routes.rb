@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'admins#index',             via: 'get', as: 'admin'
     resources :articles, except: [:show]
-    resources :users, only: [:index, :update]
+    resources :users, only: [:index, :update, :destroy]
     resources :sites, except: [:show]
     resources :catalogs, except: [:show] do
       put :sort, on: :collection

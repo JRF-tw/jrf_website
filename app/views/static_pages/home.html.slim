@@ -80,5 +80,7 @@
                 - else
                   = link_to image_tag(a.image.thumb.url, alt: a.title), article_path(a)
                 h5.text-center = a.title
-        h4.text-left
-          = link_to "更多書籍", books_articles_path, class: "btn btn-default"
+    p.text-center
+      = link_to books_articles_path, class: "btn btn-default btn-lg" do
+        | 更多書籍
+        i.fa.fa-angle-right.pl-10
