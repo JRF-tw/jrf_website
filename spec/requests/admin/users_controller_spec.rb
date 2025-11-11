@@ -56,13 +56,29 @@ describe "Admin/User" do
     end
 
     describe "#update" do
-      it "success" do
+      it "success with nested params" do
         user
         update_data = { admin: 1 }
         put "/admin/users/#{user.id}", params: { user: update_data }
         expect(response).to be_redirect
         user.reload
         expect(user.admin).to eq(true)
+      end
+
+      it "success with query params (from link_to)" do
+        user
+        put "/admin/users/#{user.id}", params: { admin: 1 }
+        expect(response).to be_redirect
+        user.reload
+        expect(user.admin).to eq(true)
+      end
+
+      it "can revoke admin permission" do
+        admin_user = FactoryBot.create(:admin)
+        put "/admin/users/#{admin_user.id}", params: { admin: 0 }
+        expect(response).to be_redirect
+        admin_user.reload
+        expect(admin_user.admin).to eq(false)
       end
     end
   end

@@ -28,8 +28,7 @@ table.table
         - if u.admin?
           td 管理員
           td
-            = link_to "移除管理權限", admin_user_path(u), method: :patch,
-              params: { user: { admin: 0 } },
+            = link_to "移除管理權限", admin_user_path(u, admin: 0), method: :patch,
               class: "btn radius btn-default btn-sm"
             = link_to "刪除", admin_user_path(u), method: :delete,
               data: { confirm: "確認要刪除嗎？" },
@@ -37,8 +36,7 @@ table.table
         - else
           td 無
           td
-            = link_to "授與管理權限", admin_user_path(u), method: :patch,
-              params: { user: { admin: 1 } },
+            = link_to "授與管理權限", admin_user_path(u, admin: 1), method: :patch,
               class: "btn radius btn-white btn-sm"
             = link_to "刪除", admin_user_path(u), method: :delete,
               data: { confirm: "確認要刪除嗎？" },

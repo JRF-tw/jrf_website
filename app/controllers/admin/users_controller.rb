@@ -12,7 +12,11 @@ class Admin::UsersController < Admin::BaseController
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(user_params)
+    # Handle admin permission toggle from link_to
+    if params[:admin].present?
+      @user.update(admin: params[:admin])
+      redirect_to admin_users_url, notice: '使用者更新成功'
+    elsif @user.update(user_params)
       redirect_to admin_users_url, notice: '使用者更新成功'
     else
       render :edit
