@@ -259,11 +259,21 @@ var ready = function(){
     CKEDITOR.config.allowedContent = true ;
     CKEDITOR.config.versionCheck = false ;
     CKEDITOR.config.filebrowserImageBrowseUrl = '/ckeditor/pictures';
-    CKEDITOR.config.filebrowserImageUploadUrl = '/ckeditor/pictures';
-    CKEDITOR.config.filebrowserUploadUrl = '/ckeditor/attachment_files';
+    CKEDITOR.config.filebrowserImageUploadUrl = '/ckeditor/pictures?responseType=json';
+    CKEDITOR.config.filebrowserUploadUrl = '/ckeditor/attachment_files?responseType=json';
     CKEDITOR.config.filebrowserBrowseUrl = '/ckeditor/attachment_files';
     CKEDITOR.dtd.$removeEmpty['i'] = false ;
     CKEDITOR.config.extraPlugins = 'justify';
+
+    // Add CSRF token to file upload requests
+    CKEDITOR.on('fileUploadRequest', function(evt) {
+      var fileLoader = evt.data.fileLoader;
+      var xhr = fileLoader.xhr;
+      var token = $('meta[name="csrf-token"]').attr('content');
+      if (token) {
+        xhr.setRequestHeader('X-CSRF-Token', token);
+      }
+    });
   }
 
   $('textarea.ckeditor').each(function(){
