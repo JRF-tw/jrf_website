@@ -264,6 +264,8 @@ var ready = function(){
     CKEDITOR.config.filebrowserBrowseUrl = '/ckeditor/attachment_files';
     CKEDITOR.dtd.$removeEmpty['i'] = false ;
     CKEDITOR.config.extraPlugins = 'justify';
+    // Force standard upload method instead of Fine Uploader
+    CKEDITOR.config.filebrowserUploadMethod = 'form';
 
     // Add CSRF token to file upload requests
     CKEDITOR.on('fileUploadRequest', function(evt) {
