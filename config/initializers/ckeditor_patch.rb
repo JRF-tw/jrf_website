@@ -16,14 +16,28 @@ module Ckeditor
     # But when using XHR with responseType=json, it sends qqfile not upload
     # So we check: if upload exists use it, otherwise use qqfile
     def file
-      params[:upload].presence || params[:qqfile]
+      result = params[:upload].presence || params[:qqfile]
+      Rails.logger.info "[CKEditor] file method - upload: #{params[:upload].present?}, qqfile: #{params[:qqfile].present?}, using: #{result.class}"
+      result
     end
 
-    # Override success_json to return asset data expected by filebrowser
+    # Override success_json to handle both fileTools and filebrowser formats
+    # - qqfile parameter (XHR upload): expects { asset: { id, ... } } for filebrowser
+    # - upload parameter (multipart form): expects { uploaded: 1, fileName, url } for fileTools
     def success_json(_relative_url_root = nil)
-      {
-        json: { asset: asset.as_json(root: false) }
-      }
+      # If using qqfile parameter, it's for filebrowser
+      if params[:qqfile].present?
+        response = {
+          json: { asset: asset.as_json(root: false) }
+        }
+      else
+        # Otherwise it's for fileTools
+        response = {
+          json: { uploaded: 1, fileName: asset.filename, url: asset.url }.to_json
+        }
+      end
+      Rails.logger.info "[CKEditor] success_json - qqfile: #{params[:qqfile].present?}, response: #{response.inspect}"
+      response
     end
   end
 end
