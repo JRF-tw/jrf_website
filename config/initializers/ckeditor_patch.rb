@@ -25,11 +25,9 @@ module Ckeditor
       # asset.as_json returns the asset attributes
       # We wrap it in { asset: ... } for the filebrowser
       response_data = { asset: asset.as_json(root: false) }
-      json_string = response_data.to_json
-      Rails.logger.info "[CKEditor] JSON response string: #{json_string}"
+      Rails.logger.info "[CKEditor] JSON response: #{response_data.inspect}"
       {
-        text: json_string,
-        content_type: 'application/json'
+        json: response_data
       }
     end
   end
