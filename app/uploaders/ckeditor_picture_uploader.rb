@@ -28,7 +28,16 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
-  process :extract_dimensions
+  # Carrierwave 2.x compatibility: extract_dimensions was removed
+  # Define custom method to extract and store image dimensions
+  def store_dimensions
+    if file && model
+      img = ::MiniMagick::Image.open(file.file)
+      model.width, model.height = [img.width, img.height]
+    end
+  end
+
+  process :store_dimensions
 
   # Create different versions of your uploaded files:
   version :thumb do
