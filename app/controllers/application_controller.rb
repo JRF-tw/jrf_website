@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
-  before_action :set_catalog, :set_article_q, :set_keywords
+  protect_from_forgery with: :exception, unless: :ckeditor_request?
+  before_action :set_catalog, :set_article_q, :set_keywords, unless: :ckeditor_request?
 
   def append_info_to_payload(payload)
     super
@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def ckeditor_request?
+    request.path.start_with?('/ckeditor/')
+  end
 
   def set_catalog
     @catalogs = Catalog.published.includes(published_categories: :published_keywords)
