@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception, unless: :ckeditor_request?
   before_action :set_catalog, :set_article_q, :set_keywords, unless: :ckeditor_request?
-  before_action :sync_ckeditor_upload_param, if: :ckeditor_request?
 
   def append_info_to_payload(payload)
     super
@@ -22,26 +21,6 @@ class ApplicationController < ActionController::Base
 
   def ckeditor_request?
     request.path.start_with?('/ckeditor/')
-  end
-
-  # Sync qqfile parameter to upload parameter for CKEditor compatibility
-  def sync_ckeditor_upload_param
-    if params[:qqfile].present? && params[:upload].blank?
-      # When using XHR upload, file content is in request.body, not params
-      # Create an UploadedFile-like object from request body
-      filename = params[:qqfile]
-      tempfile = Tempfile.new(['ckeditor', File.extname(filename)])
-      tempfile.binmode
-      tempfile.write(request.body.read)
-      tempfile.rewind
-
-      params[:upload] = ActionDispatch::Http::UploadedFile.new(
-        tempfile: tempfile,
-        filename: filename,
-        type: request.content_type,
-        head: request.headers.to_h
-      )
-    end
   end
 
   def set_catalog

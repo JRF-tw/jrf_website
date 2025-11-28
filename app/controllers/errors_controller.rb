@@ -1,4 +1,7 @@
 class ErrorsController < ApplicationController
+  # Set required variables for HTML error pages only
+  before_action :set_variables_for_html, if: -> { request.format.html? }
+
   def error404
     @keyword = Keyword.where(name: '反黑箱服貿案').first
     respond_to do |format|
@@ -25,4 +28,11 @@ class ErrorsController < ApplicationController
     end
   end
 
+  private
+
+  def set_variables_for_html
+    set_catalog
+    set_article_q
+    set_keywords
+  end
 end
