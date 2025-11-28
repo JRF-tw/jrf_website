@@ -12,8 +12,11 @@ module Ckeditor
     private
 
     # Override file method to check both upload and qqfile parameters
+    # Original logic: !(ckeditor? || json?) ? params[:qqfile] : params[:upload]
+    # But when using XHR with responseType=json, it sends qqfile not upload
+    # So we check: if upload exists use it, otherwise use qqfile
     def file
-      params[:upload] || params[:qqfile]
+      params[:upload].presence || params[:qqfile]
     end
 
     # Override success_json to return asset data expected by filebrowser
