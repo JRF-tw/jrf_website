@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception, unless: :ckeditor_request?
   before_action :set_catalog, :set_article_q, :set_keywords, unless: :ckeditor_request?
+  before_action :sync_ckeditor_upload_param, if: :ckeditor_request?
 
   def append_info_to_payload(payload)
     super
@@ -21,6 +22,13 @@ class ApplicationController < ActionController::Base
 
   def ckeditor_request?
     request.path.start_with?('/ckeditor/')
+  end
+
+  # Sync qqfile parameter to upload parameter for CKEditor compatibility
+  def sync_ckeditor_upload_param
+    if params[:qqfile].present? && params[:upload].blank?
+      params[:upload] = params[:qqfile]
+    end
   end
 
   def set_catalog
