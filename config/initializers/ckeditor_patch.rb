@@ -33,7 +33,7 @@ module Ckeditor
       else
         # Otherwise it's for fileTools
         response = {
-          json: { uploaded: 1, fileName: asset.filename, url: asset.url }.to_json
+          json: { uploaded: 1, fileName: asset.filename, url: asset.url }
         }
       end
       Rails.logger.info "[CKEditor] success_json - qqfile: #{params[:qqfile].present?}, response: #{response.inspect}"
