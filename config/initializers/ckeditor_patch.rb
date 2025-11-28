@@ -22,10 +22,13 @@ module Ckeditor
     # Override success_json to return asset data expected by filebrowser
     # The filebrowser JavaScript expects: { asset: { id, type, size, ... } }
     def success_json(_relative_url_root = nil)
-      response_data = { asset: asset.as_json }
-      Rails.logger.info "[CKEditor] JSON response: #{response_data.to_json}"
+      # asset.as_json returns the asset attributes
+      # We wrap it in { asset: ... } for the filebrowser
+      response_data = { asset: asset.as_json(root: false) }
+      json_string = response_data.to_json
+      Rails.logger.info "[CKEditor] JSON response string: #{json_string}"
       {
-        json: response_data.to_json,
+        text: json_string,
         content_type: 'application/json'
       }
     end
