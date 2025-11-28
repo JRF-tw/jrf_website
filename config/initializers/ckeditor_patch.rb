@@ -7,7 +7,8 @@
 # The gem's file method only checks params[:upload] when json? is true,
 # but we need it to also check params[:qqfile]
 #
-# Also fix double JSON encoding issue in success_json response
+# The CKEditor gem's filebrowser expects asset data with id, type, etc
+# so we return asset JSON instead of fileTools format
 
 module Ckeditor
   class AssetResponse
@@ -18,11 +19,14 @@ module Ckeditor
       params[:upload] || params[:qqfile]
     end
 
-    # Override success_json to avoid double JSON encoding
-    # The original method calls .to_json which causes Rails to encode it twice
+    # Override success_json to return asset data expected by filebrowser
+    # The filebrowser JavaScript expects: { asset: { id, type, size, ... } }
     def success_json(_relative_url_root = nil)
+      response_data = { asset: asset.as_json }
+      Rails.logger.info "[CKEditor] JSON response: #{response_data.to_json}"
       {
-        json: { uploaded: 1, fileName: asset.filename, url: asset.url }
+        json: response_data.to_json,
+        content_type: 'application/json'
       }
     end
   end
