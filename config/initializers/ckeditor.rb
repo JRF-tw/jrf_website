@@ -6,6 +6,17 @@ Ckeditor.setup do |config|
   # available as additional gems.
   require 'ckeditor/orm/active_record'
 
+  # Restrict CKEditor upload/browse endpoints to logged-in admins.
+  # Without this, the mounted /ckeditor engine is fully open to anonymous
+  # visitors (file upload, asset listing and deletion).
+  config.current_user_method { current_user }
+
+  config.authorize_with do
+    unless current_user && current_user.admin?
+      raise ActionController::RoutingError, 'Not Found'
+    end
+  end
+
   # Allowed image file types for upload.
   # Set to nil or [] (empty array) for all file types
   # By default: %w(jpg jpeg png gif tiff)
@@ -19,7 +30,8 @@ Ckeditor.setup do |config|
   # Allowed attachment file types for upload.
   # Set to nil or [] (empty array) for all file types
   # By default: %w(doc docx xls odt ods pdf rar zip tar tar.gz swf)
-  # config.attachment_file_types = %w(doc docx xls odt ods pdf rar zip tar tar.gz swf)
+  # Drop swf: Flash files can be served back as an active-content XSS vector.
+  config.attachment_file_types = %w(doc docx xls xlsx odt ods pdf rar zip tar tar.gz)
 
   # Setup authorization to be run as a before filter
   # By default: there is no authorization.

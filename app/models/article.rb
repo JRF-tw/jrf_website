@@ -17,6 +17,17 @@ class Article < ApplicationRecord
   validate :check_content
   validates_presence_of :published_at
 
+  # Article search is exposed to anonymous visitors with a raw `params[:q]`.
+  # Restrict which fields/associations Ransack will query so it can't be used
+  # to probe sensitive data through the :user association (e.g. admin emails).
+  def self.ransackable_attributes(auth_object = nil)
+    %w[title content author published_at kind]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[keywords]
+  end
+
   def youtube_embed_url
     if youtube_id.present?
       if youtube_list_id.present?
