@@ -39,11 +39,18 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.admin
-      request.env['omniauth.origin'] || stored_location_for(resource) || admin_catalogs_path
+      safe_origin(request.env['omniauth.origin']) || stored_location_for(resource) || admin_catalogs_path
     else
       sign_out current_user
       root_path
     end
+  end
+
+  # omniauth.origin comes straight from the user-supplied `origin` query
+  # param, so only accept in-site relative paths ("/foo"); reject absolute
+  # URLs and protocol-relative ones ("//evil.com", "/\evil.com").
+  def safe_origin(origin)
+    origin if origin.to_s.match?(%r{\A/($|[^/\\])})
   end
 
   def sanitize(html)
