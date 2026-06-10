@@ -48,11 +48,15 @@ class ImageUploader < CarrierWave::Uploader::Base
     # process optimize: [{ quiet: true, quality: 50}]
   end
 
-  # Add a white list of extensions which are allowed to be uploaded.
-  # For images you might use something like this:
-  # def extension_white_list
-  #   %w(jpg jpeg gif png)
-  # end
+  # Restrict uploads to image extensions and matching content types so a
+  # mounted :image field can't be used to store executable/active content.
+  def extension_allowlist
+    %w(jpg jpeg gif png)
+  end
+
+  def content_type_allowlist
+    [/image\//]
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
