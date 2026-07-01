@@ -1,3 +1,5 @@
+- content_for :json_ld do
+  == article_structured_data(@article)
 section.container
   .container
     .row
@@ -8,7 +10,7 @@ section.container
               .blogpost-body
                 .row
                   header
-                    h2.title = @article.title
+                    h1.title = @article.title
                     .submitted
                       i.fa.fa-user.pr-5
                       = @article.author
