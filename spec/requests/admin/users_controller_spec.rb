@@ -80,6 +80,22 @@ describe "Admin/User" do
         admin_user.reload
         expect(admin_user.admin).to eq(false)
       end
+
+      it "can't change self" do
+        put "/admin/users/#{admin.id}", params: { admin: 0 }
+        expect(admin.reload.admin).to eq(true)
+      end
+    end
+
+    describe "#destroy" do
+      it "success" do
+        user
+        expect { delete "/admin/users/#{user.id}" }.to change { User.count }.by(-1)
+      end
+
+      it "can't delete self" do
+        expect { delete "/admin/users/#{admin.id}" }.not_to change { User.count }
+      end
     end
   end
 end

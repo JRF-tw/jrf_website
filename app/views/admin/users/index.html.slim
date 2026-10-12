@@ -25,7 +25,10 @@ table.table
             | Facebook
           - else
             | 未知
-        - if u.admin?
+        - if u == current_user
+          td = u.admin? ? '管理員' : '無'
+          td （目前登入帳號）
+        - elsif u.admin?
           td 管理員
           td
             = link_to "移除管理權限", admin_user_path(u, admin: 0), method: :patch,
