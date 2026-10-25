@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'jquery-turbolinks'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+# 讓 OmniAuth 用 Rails 的 CSRF token 驗證 POST 登入請求
+gem 'omniauth-rails_csrf_protection'
 gem 'meta-tags'
 gem 'devise'
 gem 'simple_form'

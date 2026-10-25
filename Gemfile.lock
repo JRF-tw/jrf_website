@@ -318,6 +318,9 @@ GEM
     omniauth-oauth2 (1.10.0)
       oauth2 (>= 2.0.2, < 3)
       omniauth (~> 2.3, >= 2.3.1)
+    omniauth-rails_csrf_protection (2.0.1)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     orm_adapter (0.5.0)
     pg (1.5.9)
     public_suffix (5.1.1)
@@ -519,6 +522,7 @@ DEPENDENCIES
   nokogiri
   omniauth-facebook
   omniauth-google-oauth2
+  omniauth-rails_csrf_protection
   pg
   rabl-rails
   rails (~> 7.0.8)
