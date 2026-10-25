@@ -26,9 +26,8 @@ Rails.application.routes.draw do
   # resources :magazines, only: [:show, :index]
   # resources :magazine_articles, only: [:show, :index]
   # resources :columns, only: [:show, :index]
-  resources :epapers, only: [:show, :index]
   namespace :admin do
-    root 'admins#index',             via: 'get', as: 'admin'
+    root 'catalogs#index',           via: 'get', as: 'admin'
     resources :articles, except: [:show]
     resources :users, only: [:index, :update, :destroy]
     resources :sites, except: [:show]
