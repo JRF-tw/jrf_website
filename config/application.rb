@@ -18,9 +18,8 @@ module NewJrfWebsite
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-    # 5.2 預設值裡，Rails 7.1 會移除的兩個舊行為先改成新的
-    config.active_record.legacy_connection_handling = false
-    config.action_controller.urlsafe_csrf_tokens = true
+    # 5.2 預設的 6.1 快取格式在 Rails 7.2 移除；7.1 格式讀得懂舊格式的快取
+    config.active_support.cache_format_version = 7.1
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
