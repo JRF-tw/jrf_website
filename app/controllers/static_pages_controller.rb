@@ -105,8 +105,13 @@ class StaticPagesController < ApplicationController
   end
 
   def sitemap
-    @articles = Article.published
+    # 系統頁（關於我們、捐款）有自己的網址，不重複列 /articles/:id
+    @articles = Article.published.where.not(kind: 'system')
     @keywords = Keyword.published
+    @system_articles = %w(about donate).filter_map do |system_type|
+      article = Article.find_by(kind: 'system', system_type: system_type)
+      [system_type, article] if article
+    end
   end
 
   def feed

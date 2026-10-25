@@ -34,6 +34,27 @@ describe "Static Pages" do
       get "/sitemap.xml"
       expect(response).to be_successful
     end
+
+    it "lastmod 是實際的修改時間，不列草稿與系統頁" do
+      keyword = FactoryBot.create(:keyword)
+      article = FactoryBot.create(:press_article, keywords: [keyword])
+      article.update_columns(updated_at: Time.zone.parse("2025-05-06 10:00"))
+      draft = FactoryBot.create(:press_article, published: false)
+      about = FactoryBot.create(:article, kind: "system", system_type: "about", published: true)
+      about.update_columns(updated_at: Time.zone.parse("2025-01-02 10:00"))
+
+      get "/sitemap.xml"
+      urls = Nokogiri::XML(response.body).remove_namespaces!.xpath("//url").to_h do |u|
+        [u.at("loc").text.sub("http://www.example.com", ""), u.at("lastmod")&.text]
+      end
+      expect(urls).to include("/keywords/#{keyword.id}")
+      expect(urls["/keywords/#{keyword.id}"]).to be_nil # 沒有修改時間就不填
+      expect(urls["/articles/#{article.id}"]).to eq("2025-05-06")
+      expect(urls["/about"]).to eq("2025-01-02")
+      expect(urls["/articles"]).to eq("2025-05-06")
+      expect(urls).to include("/articles/presses", "/articles/books")
+      expect(urls).not_to include("/articles/#{draft.id}", "/articles/#{about.id}")
+    end
   end
 
   describe "#search" do
