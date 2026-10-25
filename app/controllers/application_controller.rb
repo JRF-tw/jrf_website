@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
   end
 
   def sanitize(html)
-    Nokogiri::HTML(html).text
+    Nokogiri::HTML(html).text.strip
   end
 
   def not_found

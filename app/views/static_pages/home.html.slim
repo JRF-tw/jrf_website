@@ -1,5 +1,6 @@
 - content_for :json_ld do
   == organization_structured_data
+h1.sr-only 財團法人民間司法改革基金會
 .banner.hidden-xs
   .slideshow
     .slider-banner-container
@@ -9,7 +10,7 @@
             li.dark-translucent-bg data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on" data-title="#{k.name}"
               = image_tag k.cover.try(:url), alt: k.name, data: {bgposition: "center top", bgfit: "cover", bgrepeat: "no-repeat"}
               .tp-caption.very_large_text.sft.tp-resizeme data-x="center" data-y="0" data-speed="700" data-start="200" data-end="10000" data-endspeed="600"
-                h1 = k.title
+                h2.slide-title = k.title
               .tp-caption.small_thin_white.sfb.tp-resizeme data-x="center" data-y="100" data-speed="700" data-start="400" data-end="10000" data-endspeed="600"
                 = k.description.try(:html_safe)
                 p.text-center
@@ -30,7 +31,7 @@
                 .pl-10.small
                   h2.text-white = @first_keyword.title
                   span.small.text-white = @first_keyword.description.try(:html_safe)
-              = image_tag @first_keyword.cover.try(:url), width: "100%"
+              = image_tag @first_keyword.cover.try(:url), width: "100%", alt: @first_keyword.name
         .col-sm-6.col-xs-12
           - @keywords.each do |k|
             .col-xs-6.col-md-6
@@ -39,7 +40,7 @@
                   .gradient-tl
                     .pl-10.small
                       h5.text-white = k.title
-                  = image_tag k.cover.try(:url), width: "100%"
+                  = image_tag k.cover.try(:url), width: "100%", alt: k.name, loading: "lazy"
 
 .white-bg.section
   .container

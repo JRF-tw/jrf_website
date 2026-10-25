@@ -21,7 +21,7 @@
               - if a.youtube_id.present?
                 iframe.embed-responsive-item src="//www.youtube.com/embed/#{a.youtube_id}"
               - elsif a.image.present?
-                = image_tag(a.image.url, alt: "")
+                = image_tag(a.image.url, alt: a.title)
               = link_to article_path(a), class: "overlay small" do
                 i.fa.fa-link
                 span = Article::KIND_NAMES[a.kind]

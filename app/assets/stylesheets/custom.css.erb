@@ -207,3 +207,21 @@ h2 i {
 form.button_to {
   margin: 0;
 }
+
+/* 首頁輪播的專案標題從 h1 改成 h2（一頁只留一個 h1），維持原本 h1 的大小 */
+h2.slide-title {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* CKEditor 插入的圖片、表格會寫死寬度，手機上會撐破版面；表格太寬時在表格內左右捲動 */
+.text img {
+  max-width: 100%;
+  height: auto !important;
+}
+.text table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}

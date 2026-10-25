@@ -2,9 +2,9 @@
   .list-with-image.jrf-press
     .overlay-container
       - if a.image.blank?
-        = image_tag("jrf-img.png")
+        = image_tag("jrf-img.png", alt: a.title, loading: "lazy")
       - else
-        = image_tag(a.image.url)
+        = image_tag(a.image.url, alt: a.title, loading: "lazy")
       = link_to article_path(a), class: "overlay small" do
         i.fas.fa-link
         span 新聞稿
@@ -16,9 +16,9 @@
   .list-with-image.jrf-activity
     .overlay-container
       - if a.image.blank?
-        = image_tag("jrf-img.png")
+        = image_tag("jrf-img.png", alt: a.title, loading: "lazy")
       - else
-        = image_tag(a.image.url)
+        = image_tag(a.image.url, alt: a.title, loading: "lazy")
       = link_to article_path(a), class: "overlay small" do
         i.fas.fa-link
         span 活動
@@ -30,9 +30,9 @@
   .list-with-image.jrf-comments
     .overlay-container
       - if a.image.blank?
-        = image_tag("jrf-img.png")
+        = image_tag("jrf-img.png", alt: a.title, loading: "lazy")
       - else
-        = image_tag(a.image.url)
+        = image_tag(a.image.url, alt: a.title, loading: "lazy")
       = link_to article_path(a), class: "overlay small" do
         i.fas.fa-link
         span 評論
@@ -44,9 +44,9 @@
   .list-with-image.jrf-epaper
     .overlay-container
       - if a.image.blank?
-        = image_tag("jrf-img.png")
+        = image_tag("jrf-img.png", alt: a.title, loading: "lazy")
       - else
-        = image_tag(a.image.url)
+        = image_tag(a.image.url, alt: a.title, loading: "lazy")
       = link_to article_path(a), class: "overlay small" do
         i.fas.fa-link
         span 電子報
@@ -58,9 +58,9 @@
   .list-with-image.jrf-book
     .overlay-container
       - if a.image.blank?
-        = image_tag("jrf-img.png")
+        = image_tag("jrf-img.png", alt: a.title, loading: "lazy")
       - else
-        = image_tag(a.image.url)
+        = image_tag(a.image.url, alt: a.title, loading: "lazy")
       = link_to article_path(a), class: "overlay small" do
         i.fas.fa-link
         span 書籍
@@ -72,9 +72,9 @@
   .list-with-image
     .overlay-container
       - if a.image.blank?
-        = image_tag("jrf-img.png")
+        = image_tag("jrf-img.png", alt: a.title, loading: "lazy")
       - else
-        = image_tag(a.image.url)
+        = image_tag(a.image.url, alt: a.title, loading: "lazy")
       = link_to article_path(a), class: "overlay small" do
         i.fas.fa-link
         span

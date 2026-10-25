@@ -4,19 +4,14 @@ module ApplicationHelper
   SITE_DESCRIPTION = '財團法人民間司法改革基金會致力於監督司法、推動司法改革，促進台灣司法的公正、透明與民主，保障人民的訴訟權益。'.freeze
 
   def default_meta_tags
-    if Setting.url.protocol == 'http'
-      canonical_url = request.url
-    else
-      canonical_url = request.url.sub(/^http:\/\//, "#{Setting.url.protocol}://")
-    end
     {
       separator: "&mdash;".html_safe,
       site: '財團法人民間司法改革基金會',
       reverse: true,
       description: SITE_DESCRIPTION,
       canonical: canonical_url,
-      author: Setting.google.pages,
-      publisher: Setting.google.pages,
+      # 允許 Google 搜尋與 Discover 顯示大圖預覽
+      robots: { "max-image-preview" => "large" },
       og: {
         title: '財團法人民間司法改革基金會',
         description: SITE_DESCRIPTION,
@@ -39,6 +34,13 @@ module ApplicationHelper
     "#{Setting.url.protocol}://#{Setting.url.host}"
   end
 
+  # 只保留路徑與頁碼：追蹤參數（utm_*、fbclid）、專案頁的分類篩選、搜尋條件都指回同一頁
+  def canonical_url
+    url = "#{request.base_url.sub(/\Ahttps?:/, "#{Setting.url.protocol}:")}#{request.path}"
+    page = params[:page].to_i
+    page > 1 ? "#{url}?page=#{page}" : url
+  end
+
   # JSON-LD structured data for the organization (used on the home page).
   def organization_structured_data
     data = {
@@ -57,25 +59,41 @@ module ApplicationHelper
 
   # JSON-LD NewsArticle structured data for an article page.
   def article_structured_data(article)
-    image_url = article.image.blank? ? "#{site_base_url}/images/jrf-img.png" : "#{site_base_url}#{article.image}"
+    # banner 是 1600x900（16:9），符合 Google Discover 建議的 1200px 寬以上
+    images = article.image.blank? ? ["#{site_base_url}/images/jrf-img.png"] : ["#{site_base_url}#{article.image.banner.url}", "#{site_base_url}#{article.image.url}"]
     data = {
       "@context" => "https://schema.org",
       "@type" => "NewsArticle",
       "mainEntityOfPage" => { "@type" => "WebPage", "@id" => article_url(article) },
       "headline" => article.title.to_s.truncate(110),
-      "image" => [image_url],
-      "datePublished" => article.published_at.to_time.iso8601,
+      "image" => images,
+      "datePublished" => article.published_at.in_time_zone.iso8601,
       "dateModified" => article.updated_at.iso8601,
-      "description" => strip_tags(article.description.to_s),
-      "author" => { "@type" => "Organization", "name" => "財團法人民間司法改革基金會" },
+      "description" => strip_tags(article.description.to_s).strip,
+      "author" => article_author_structured_data(article.author),
       "publisher" => {
         "@type" => "Organization",
         "name" => "財團法人民間司法改革基金會",
+        "url" => site_base_url,
         "logo" => { "@type" => "ImageObject", "url" => "#{site_base_url}/images/logo.png" }
       }
     }
-    data["author"] = { "@type" => "Person", "name" => article.author } if article.author.present?
     json_ld_tag(data)
+  end
+
+  ORGANIZATION_AUTHOR = /基金會|聯盟|聲明|聯合|辦公室|團體|協會|信託|志工|司改會|Foundation/i
+
+  # 作者欄位是自由填寫：組織名稱標成 Organization、單純的人名標成 Person；
+  # 多人分工或帶職稱（例如「文字｜Eiley；設計｜Mido」）無法可靠拆解，改用基金會本身
+  def article_author_structured_data(author)
+    name = author.to_s.strip
+    if name.blank? || name.match?(%r{[／/｜|；;、,，]})
+      { "@type" => "Organization", "name" => "財團法人民間司法改革基金會", "url" => site_base_url }
+    elsif name.match?(ORGANIZATION_AUTHOR)
+      { "@type" => "Organization", "name" => name }
+    else
+      { "@type" => "Person", "name" => name }
+    end
   end
 
   def json_ld_tag(data)

@@ -18,6 +18,8 @@ p#notice = notice
               = link_to "電子報", epapers_articles_path
             li
               = link_to "書籍", books_articles_path
+      h1.title.text-center 所有文章
+      .separator
       .masonry-grid.row
         - @articles.each do |a|
           = render partial: 'shared/article_block', locals: { a: a }

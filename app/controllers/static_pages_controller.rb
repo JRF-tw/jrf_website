@@ -28,6 +28,7 @@ class StaticPagesController < ApplicationController
     # puts @kinds
     set_meta_tags({
       title: "搜尋文章",
+      noindex: true, # 站內搜尋結果不讓搜尋引擎索引
       og: {
         title: "搜尋文章"
       }

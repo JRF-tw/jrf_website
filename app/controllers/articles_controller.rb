@@ -25,6 +25,7 @@ class ArticlesController < ApplicationController
     end
     set_meta_tags({
       title: "所有文章",
+      noindex: params[:q].present?, # 頁首搜尋框的搜尋結果不讓搜尋引擎索引
       og: {
         title: "所有文章"
       }
@@ -252,7 +253,7 @@ class ArticlesController < ApplicationController
       article: {
         author: Setting.url.fb,
         publisher: Setting.url.fb,
-        published_time: @article.published_at.strftime('%FT%T%:z'),
+        published_time: @article.published_at.in_time_zone.iso8601,
         modified_time: @article.updated_at.strftime('%FT%T%:z')
       },
       twitter: {

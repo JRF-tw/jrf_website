@@ -3,9 +3,9 @@
     article.clearfix.blogpost
       .overlay-container
         - if a.image.blank?
-          = link_to image_tag("jrf-img.png", width: "100%", class: "embed-responsive-item"), article_path(a)
+          = link_to image_tag("jrf-img.png", width: "100%", class: "embed-responsive-item", alt: a.title), article_path(a)
         - else
-          = link_to image_tag(a.image.thumb.url, width: "100%", class: "embed-responsive-item"), article_path(a)
+          = link_to image_tag(a.image.thumb.url, width: "100%", class: "embed-responsive-item", alt: a.title), article_path(a)
       .blogpost-body
         .post-info
           span.day = a.published_at.try(:strftime, '%d')
@@ -25,9 +25,9 @@
     article.clearfix.blogpost
       .overlay-container
         - if a.image.blank?
-          = link_to image_tag("jrf-img.png", width: "100%", class: "embed-responsive-item"), article_path(a)
+          = link_to image_tag("jrf-img.png", width: "100%", class: "embed-responsive-item", alt: a.title), article_path(a)
         - else
-          = link_to image_tag(a.image.thumb.url, width: "100%", class: "embed-responsive-item"), article_path(a)
+          = link_to image_tag(a.image.thumb.url, width: "100%", class: "embed-responsive-item", alt: a.title), article_path(a)
       .blogpost-body
         .post-info
           span.day = a.published_at.try(:strftime, '%d')
