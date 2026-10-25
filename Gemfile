@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem "bundler", ">= 1.8.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.2.3'
+gem 'rails', '~> 8.0.5'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -34,7 +34,8 @@ gem 'slim', '~> 4.1'
 gem 'factory_bot_rails', group: :test
 gem 'kaminari'
 gem 'jquery-ui-rails'
-gem 'chosen-rails'
+# chosen-rails 1.10（最後一版）只在 Rails 4～7 自動載入 engine，Rails 8 要明確載入才找得到 asset
+gem 'chosen-rails', require: ['chosen-rails', 'chosen-rails/engine']
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'settingslogic'
@@ -59,7 +60,7 @@ gem 'responders', '~> 3.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'sprockets', '~> 3.7.0'
 gem 'lograge'
-gem "rails-i18n", '~> 7.0'
+gem "rails-i18n", '~> 8.0'
 gem 'nokogiri'
 source 'https://rails-assets.org' do
   gem 'rails-assets-magnific-popup'

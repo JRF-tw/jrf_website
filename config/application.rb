@@ -20,6 +20,8 @@ module NewJrfWebsite
     config.load_defaults 5.2
     # 5.2 預設的 6.1 快取格式在 Rails 7.2 移除；7.1 格式讀得懂舊格式的快取
     config.active_support.cache_format_version = 7.1
+    # Rails 8.1 起 to_time 保留完整時區（Asia/Taipei 而不只是 +08:00 偏移），先改用新行為
+    config.active_support.to_time_preserves_timezone = :zone
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
