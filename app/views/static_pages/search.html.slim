@@ -27,7 +27,7 @@
                 span = Article::KIND_NAMES[a.kind]
             h2
               = link_to a.title, article_path(a)
-            p.small a.published_at.strftime('%Y-%m-%d')
+            p.small = a.published_at.strftime('%Y-%m-%d')
     .row.text-center
       .col-md-10.col-md-offset-1
         = paginate @articles
