@@ -36,7 +36,7 @@ gem 'kaminari'
 gem 'jquery-ui-rails'
 # chosen-rails 1.10（最後一版）只在 Rails 4～7 自動載入 engine，Rails 8 要明確載入才找得到 asset
 gem 'chosen-rails', require: ['chosen-rails', 'chosen-rails/engine']
-gem 'carrierwave'
+gem 'carrierwave', '~> 3.1'
 gem 'mini_magick'
 gem 'settingslogic'
 gem 'ckeditor', '5.1.2'
@@ -54,7 +54,8 @@ gem 'social-share-button'
 gem 'unicode-display_width', '~> 3.1'
 gem 'jquery-datetimepicker-rails'
 gem "cocoon"
-gem 'carrierwave-imageoptimizer'
+# 縮圖壓縮；原本的 carrierwave-imageoptimizer 只是包一層呼叫，且不支援 CarrierWave 3
+gem 'image_optimizer'
 gem 'rabl-rails'
 gem 'responders', '~> 3.0'
 gem 'bootsnap', '>= 1.1.0', require: false

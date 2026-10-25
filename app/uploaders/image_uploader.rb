@@ -6,7 +6,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  include CarrierWave::ImageOptimizer
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -41,6 +40,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :thumb do
     process resize_to_fill: [480, 270]
     process optimize: [{ quiet: true, quality: 50 }]
+  end
+
+  # 用 jpegoptim / optipng 等工具壓縮檔案大小（伺服器沒裝這些工具時 image_optimizer 會略過）
+  def optimize(options = {})
+    ::ImageOptimizer.new(current_path, options).optimize
   end
 
   version :banner do
