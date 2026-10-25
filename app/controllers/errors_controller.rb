@@ -1,6 +1,7 @@
 class ErrorsController < ApplicationController
-  # Set required variables for HTML error pages only
-  before_action :set_variables_for_html, if: -> { request.format.html? }
+  # 除了 JSON 以外都會用 HTML 版型畫錯誤頁（format.any 也是），都要準備頁首資料；
+  # ApplicationController 對 /ckeditor/ 開頭的請求不會準備
+  before_action :set_variables_for_html, unless: -> { request.format.json? }
 
   def error404
     @keyword = Keyword.where(name: '反黑箱服貿案').first

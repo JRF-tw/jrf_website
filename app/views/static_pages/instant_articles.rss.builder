@@ -17,7 +17,7 @@ xml.rss version: "2.0" do
           xml.title ""
         end
         xml.author article.author
-        xml.pubDate article.published_at.to_s(:iso8601)
+        xml.pubDate article.published_at.to_fs(:iso8601)
         xml.link article_url(article)
         xml.guid article_url(article)
         xml.tag!("content:encode") do

@@ -10,8 +10,8 @@ html lang="zh-Hant-TW" prefix="op: http://media.facebook.com/op#"
     article
       header
         h1 = article.title
-        time.op-published datetime="#{article.published_at.to_s(:iso8601)}" = article.published_at.strftime('%Y年%m月%d日 %H:%M')
-        time.op-modified datetime="#{article.updated_at.to_s(:iso8601)}" = article.updated_at.strftime('%Y年%m月%d日 %H:%M')
+        time.op-published datetime="#{article.published_at.to_fs(:iso8601)}" = article.published_at.strftime('%Y年%m月%d日 %H:%M')
+        time.op-modified datetime="#{article.updated_at.to_fs(:iso8601)}" = article.updated_at.strftime('%Y年%m月%d日 %H:%M')
         address
           a = article.author
         - if article.youtube_id
