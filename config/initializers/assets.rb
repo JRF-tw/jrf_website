@@ -15,3 +15,5 @@ Rails.application.config.assets.precompile += %w( admin.css )
 # Precompile additional image assets - simple string patterns only
 Rails.application.config.assets.precompile += Ckeditor.assets
 Rails.application.config.assets.precompile += %w[ckeditor/config.js]
+# 後台「瀏覽伺服器」的附件清單會用到各檔案類型的縮圖，沒列入會 500
+Rails.application.config.assets.precompile += [%r{\Ackeditor/filebrowser/thumbs/.+\.gif\z}]
