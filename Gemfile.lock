@@ -34,85 +34,79 @@ GEM
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (7.1.6)
-      actionpack (= 7.1.6)
-      activesupport (= 7.1.6)
+    actioncable (7.2.3.2)
+      actionpack (= 7.2.3.2)
+      activesupport (= 7.2.3.2)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
       zeitwerk (~> 2.6)
-    actionmailbox (7.1.6)
-      actionpack (= 7.1.6)
-      activejob (= 7.1.6)
-      activerecord (= 7.1.6)
-      activestorage (= 7.1.6)
-      activesupport (= 7.1.6)
-      mail (>= 2.7.1)
-      net-imap
-      net-pop
-      net-smtp
-    actionmailer (7.1.6)
-      actionpack (= 7.1.6)
-      actionview (= 7.1.6)
-      activejob (= 7.1.6)
-      activesupport (= 7.1.6)
-      mail (~> 2.5, >= 2.5.4)
-      net-imap
-      net-pop
-      net-smtp
+    actionmailbox (7.2.3.2)
+      actionpack (= 7.2.3.2)
+      activejob (= 7.2.3.2)
+      activerecord (= 7.2.3.2)
+      activestorage (= 7.2.3.2)
+      activesupport (= 7.2.3.2)
+      mail (>= 2.8.0)
+    actionmailer (7.2.3.2)
+      actionpack (= 7.2.3.2)
+      actionview (= 7.2.3.2)
+      activejob (= 7.2.3.2)
+      activesupport (= 7.2.3.2)
+      mail (>= 2.8.0)
       rails-dom-testing (~> 2.2)
-    actionpack (7.1.6)
-      actionview (= 7.1.6)
-      activesupport (= 7.1.6)
+    actionpack (7.2.3.2)
+      actionview (= 7.2.3.2)
+      activesupport (= 7.2.3.2)
       cgi
       nokogiri (>= 1.8.5)
       racc
-      rack (>= 2.2.4)
+      rack (>= 2.2.4, < 3.3)
       rack-session (>= 1.0.1)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    actiontext (7.1.6)
-      actionpack (= 7.1.6)
-      activerecord (= 7.1.6)
-      activestorage (= 7.1.6)
-      activesupport (= 7.1.6)
+      useragent (~> 0.16)
+    actiontext (7.2.3.2)
+      actionpack (= 7.2.3.2)
+      activerecord (= 7.2.3.2)
+      activestorage (= 7.2.3.2)
+      activesupport (= 7.2.3.2)
       globalid (>= 0.6.0)
       nokogiri (>= 1.8.5)
-    actionview (7.1.6)
-      activesupport (= 7.1.6)
+    actionview (7.2.3.2)
+      activesupport (= 7.2.3.2)
       builder (~> 3.1)
       cgi
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    activejob (7.1.6)
-      activesupport (= 7.1.6)
+    activejob (7.2.3.2)
+      activesupport (= 7.2.3.2)
       globalid (>= 0.3.6)
-    activemodel (7.1.6)
-      activesupport (= 7.1.6)
-    activerecord (7.1.6)
-      activemodel (= 7.1.6)
-      activesupport (= 7.1.6)
+    activemodel (7.2.3.2)
+      activesupport (= 7.2.3.2)
+    activerecord (7.2.3.2)
+      activemodel (= 7.2.3.2)
+      activesupport (= 7.2.3.2)
       timeout (>= 0.4.0)
-    activestorage (7.1.6)
-      actionpack (= 7.1.6)
-      activejob (= 7.1.6)
-      activerecord (= 7.1.6)
-      activesupport (= 7.1.6)
+    activestorage (7.2.3.2)
+      actionpack (= 7.2.3.2)
+      activejob (= 7.2.3.2)
+      activerecord (= 7.2.3.2)
+      activesupport (= 7.2.3.2)
       marcel (~> 1.0)
-    activesupport (7.1.6)
+    activesupport (7.2.3.2)
       base64
       benchmark (>= 0.3)
       bigdecimal
-      concurrent-ruby (~> 1.0, >= 1.0.2)
+      concurrent-ruby (~> 1.0, >= 1.3.1)
       connection_pool (>= 2.2.5)
       drb
       i18n (>= 1.6, < 2)
       logger (>= 1.4.2)
-      minitest (>= 5.1)
-      mutex_m
+      minitest (>= 5.1, < 6)
       securerandom (>= 0.3)
-      tzinfo (~> 2.0)
+      tzinfo (~> 2.0, >= 2.0.5)
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
     anonymous_loader (0.1.4)
@@ -179,10 +173,10 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     date (3.6.0)
-    devise (4.9.4)
+    devise (5.0.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
+      railties (>= 7.0)
       responders
       warden (~> 1.2.3)
     diff-lcs (1.6.2)
@@ -274,12 +268,16 @@ GEM
     loofah (2.25.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    mail (2.7.1)
+    mail (2.9.1)
+      logger
       mini_mime (>= 0.1.1)
+      net-imap
+      net-pop
+      net-smtp
     marcel (1.0.4)
     matrix (0.4.3)
-    meta-tags (2.19.0)
-      actionpack (>= 3.2.0, < 7.2)
+    meta-tags (2.24.0)
+      actionpack (>= 6.0.0)
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
@@ -291,7 +289,6 @@ GEM
     minitest (5.25.5)
     msgpack (1.8.5)
     multi_xml (0.6.0)
-    mutex_m (0.3.0)
     net-imap (0.4.25)
       date
       net-protocol
@@ -358,20 +355,20 @@ GEM
     rackup (1.0.1)
       rack (< 3)
       webrick
-    rails (7.1.6)
-      actioncable (= 7.1.6)
-      actionmailbox (= 7.1.6)
-      actionmailer (= 7.1.6)
-      actionpack (= 7.1.6)
-      actiontext (= 7.1.6)
-      actionview (= 7.1.6)
-      activejob (= 7.1.6)
-      activemodel (= 7.1.6)
-      activerecord (= 7.1.6)
-      activestorage (= 7.1.6)
-      activesupport (= 7.1.6)
+    rails (7.2.3.2)
+      actioncable (= 7.2.3.2)
+      actionmailbox (= 7.2.3.2)
+      actionmailer (= 7.2.3.2)
+      actionpack (= 7.2.3.2)
+      actiontext (= 7.2.3.2)
+      actionview (= 7.2.3.2)
+      activejob (= 7.2.3.2)
+      activemodel (= 7.2.3.2)
+      activerecord (= 7.2.3.2)
+      activestorage (= 7.2.3.2)
+      activesupport (= 7.2.3.2)
       bundler (>= 1.15.0)
-      railties (= 7.1.6)
+      railties (= 7.2.3.2)
     rails-dom-testing (2.3.0)
       activesupport (>= 5.0.0)
       minitest
@@ -382,11 +379,11 @@ GEM
     rails-i18n (7.0.10)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
-    railties (7.1.6)
-      actionpack (= 7.1.6)
-      activesupport (= 7.1.6)
+    railties (7.2.3.2)
+      actionpack (= 7.2.3.2)
+      activesupport (= 7.2.3.2)
       cgi
-      irb
+      irb (~> 1.13)
       rackup (>= 1.0.0)
       rake (>= 12.2)
       thor (~> 1.0, >= 1.2.2)
@@ -509,6 +506,7 @@ GEM
       kgio (~> 2.6)
       raindrops (~> 0.7)
     uniform_notifier (1.17.0)
+    useragent (0.16.11)
     version_gem (1.1.16)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -553,7 +551,6 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   lograge
-  mail (< 2.8.0)
   meta-tags
   mini_magick
   minitest
@@ -563,7 +560,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   pg
   rabl-rails
-  rails (~> 7.1.5)
+  rails (~> 7.2.3)
   rails-assets-animate.css!
   rails-assets-desandro-matches-selector!
   rails-assets-ev-emitter!

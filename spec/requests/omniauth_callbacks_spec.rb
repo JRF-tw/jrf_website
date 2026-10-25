@@ -98,7 +98,11 @@ describe "Google / Facebook 登入" do
     end
 
     it "不能用 GET 開始登入（CVE-2015-9284）" do
-      get "/users/auth/google_oauth2"
+      begin
+        get "/users/auth/google_oauth2"
+      rescue ActionController::RoutingError
+        next # Devise 5 起只有 POST 路由
+      end
       expect(response.location.to_s).not_to include("/callback")
     end
   end
