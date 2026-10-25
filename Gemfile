@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem "bundler", ">= 1.8.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 8.0.5'
+gem 'rails', '~> 8.1.4'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -59,6 +59,8 @@ gem 'rabl-rails'
 gem 'responders', '~> 3.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'sprockets', '~> 3.7.0'
+# json 3.1 拿掉了 create_additions 參數，sprockets 3.7 與 execjs 還在用；維持 Ruby 內建的 json 2.x
+gem 'json', '< 3'
 gem 'lograge'
 gem "rails-i18n", '~> 8.0'
 gem 'nokogiri'
