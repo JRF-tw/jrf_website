@@ -13,7 +13,8 @@ class Keyword < ApplicationRecord
   mount_uploader :image, ImageUploader
   mount_uploader :cover, ImageUploader
   scope :published, -> { where(published: true) }
-  scope :showed, -> { unscoped.where(showed: true).order(show_position: :asc) }
+  # 用 reorder 取代預設排序；unscoped 會把前面串的 includes 等條件一起丟掉
+  scope :showed, -> { where(showed: true).reorder(show_position: :asc) }
   default_scope { order(position: :asc) }
   delegate :catalog, to: :category
 

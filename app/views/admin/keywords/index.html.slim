@@ -2,7 +2,7 @@ h1.text-center 修改/刪除專案
 .form-group
   = search_form_for @q, url: admin_keywords_path do |f|
     label 目錄分類
-    = f.select :category_id_eq, Category.all.map { |c| [ "#{c.catalog.try(:name)} > #{c.name}", c.id ] }, include_blank: true
+    = f.select :category_id_eq, Category.includes(:catalog).map { |c| [ "#{c.catalog.try(:name)} > #{c.name}", c.id ] }, include_blank: true
     label 標題內容搜尋
     = f.search_field :name_or_title_or_content_cont, class: "form-control", placeholder: "輸入"
     = f.submit "搜尋", class: "btn btn-default radius btn-sm"

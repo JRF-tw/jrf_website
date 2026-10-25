@@ -45,4 +45,17 @@ describe Keyword do
       expect(keyword).to be_valid
     end
   end
+
+  describe ".showed" do
+    it "只列出首頁主打的專案，依首頁排序" do
+      second = FactoryBot.create(:keyword, showed: true, show_position: 2, position: 1)
+      first = FactoryBot.create(:keyword, showed: true, show_position: 1, position: 2)
+      FactoryBot.create(:keyword, showed: false)
+      expect(Keyword.showed.to_a).to eq([first, second])
+    end
+
+    it "保留前面串的 includes，避免 N+1 查詢" do
+      expect(Keyword.includes(category: :catalog).showed.includes_values).to eq([{ category: :catalog }])
+    end
+  end
 end
