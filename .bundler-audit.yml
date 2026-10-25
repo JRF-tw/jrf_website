@@ -1,0 +1,6 @@
+---
+ignore:
+  # twitter-bootstrap-rails 的 Bootstrap 3 tooltip / popover XSS：
+  # 已在 vendor/assets/javascripts/twitter/bootstrap.js 換成 Bootstrap 3.4.1。
+  # 升級 gem 修不到（5.3 仍附 3.3.6，5.4 改附 Bootstrap 5 會整站破版）
+  - GHSA-9v3m-8fp8-mj99
