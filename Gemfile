@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem "bundler", ">= 1.8.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.7'
+gem 'rails', '~> 7.0.8'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -59,7 +59,7 @@ gem 'responders', '~> 3.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'sprockets', '~> 3.7.0'
 gem 'lograge'
-gem "rails-i18n", '~> 6.0'
+gem "rails-i18n", '~> 7.0'
 gem 'mail', '< 2.8.0'
 gem 'nokogiri', '1.15.7'
 source 'https://rails-assets.org' do
