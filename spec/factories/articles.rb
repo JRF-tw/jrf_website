@@ -6,7 +6,7 @@ FactoryBot.define do
     sequence(:author)  { |n| "Article author #{n}" }
     sequence(:published_at) { |n| n.days.ago }
     keywords {[ FactoryBot.create(:keyword) ]}
-    image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'test.jpg')) }
+    image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'test.jpg'), 'image/jpeg') }
     published { true }
     user
   end

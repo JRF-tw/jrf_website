@@ -8,7 +8,7 @@ describe "Admin::Sites" do
       title: "New Site",
       url: "http://example.com",
       description: "Test site description",
-      image: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'test.jpg'))
+      image: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'test.jpg'), 'image/jpeg')
     }
   end
 

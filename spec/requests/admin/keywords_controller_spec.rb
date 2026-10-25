@@ -259,7 +259,7 @@ describe "Admin/Keyword" do
           slides_attributes: [
             {
               id: slide.id,
-              image: Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, 'spec', 'fixtures', 'test1.jpg')))
+              image: Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, 'spec', 'fixtures', 'test1.jpg')), 'image/jpeg')
             }
           ]
         }

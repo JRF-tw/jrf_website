@@ -5,8 +5,8 @@ FactoryBot.define do
     sequence(:content)  { |n| "Keyword content #{n}" }
     sequence(:description)  { |n| "Keyword description #{n}" }
     category { FactoryBot.create(:category) }
-    image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'test.jpg')) }
-    cover { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'test.jpg')) }
+    image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'test.jpg'), 'image/jpeg') }
+    cover { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'test.jpg'), 'image/jpeg') }
     published { true }
   end
 end
