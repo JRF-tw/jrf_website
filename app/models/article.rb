@@ -7,6 +7,8 @@ class Article < ApplicationRecord
   scope :published, -> { where(published: true) }
   mount_uploader :image, ImageUploader
   paginates_per 15
+
+  KIND_NAMES = { 'press' => '新聞稿', 'activity' => '活動', 'comment' => '評論', 'epaper' => '電子報', 'book' => '書籍' }.freeze
   scope :activities, -> { where(kind: 'activity') }
   scope :presses, -> { where(kind: 'press') }
   # scope :videos, -> { where(kind: 'video') }

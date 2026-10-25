@@ -1,4 +1,7 @@
 class StaticPagesController < ApplicationController
+  # 搜尋頁分類分頁的 k 參數對應到 Article#kind
+  SEARCH_KINDS = { 'presses' => 'press', 'activities' => 'activity', 'comments' => 'comment', 'epapers' => 'epaper', 'books' => 'book' }.freeze
+
   def home
     @showed_keywords = Keyword.showed
     @keywords = Keyword.showed.first(5)
@@ -10,8 +13,11 @@ class StaticPagesController < ApplicationController
   end
 
   def search
-    q = params[:q]
-    @articles = Article.published.ransack(title_or_content_cont: q).result.page(params[:page])
+    @query = params[:q]
+    @kind = params[:k] if SEARCH_KINDS.key?(params[:k])
+    articles = Article.published.where.not(kind: 'system').ransack(title_or_content_cont: @query).result
+    articles = articles.where(kind: SEARCH_KINDS[@kind]) if @kind
+    @articles = articles.page(params[:page])
     # @videos = Video.published.ransack(title_or_content_cont: q).result.page(params[:videos_page])
     # @kinds = []
     # @articles.each do |a|
