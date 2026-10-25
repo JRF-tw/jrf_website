@@ -215,13 +215,16 @@ h2.slide-title {
   margin-bottom: 10px;
 }
 
-/* CKEditor 插入的圖片、表格會寫死寬度，手機上會撐破版面；表格太寬時在表格內左右捲動 */
+/* CKEditor 插入的圖片、表格會寫死寬度，手機上會撐破版面 */
 .text img {
   max-width: 100%;
   height: auto !important;
 }
-.text table {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
+/* 只在手機寬度讓太寬的表格在表格內左右捲動；桌機維持原本的表格排版 */
+@media (max-width: 767px) {
+  .text table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
 }
