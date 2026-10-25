@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem "bundler", ">= 1.8.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.8'
+gem 'rails', '~> 6.0.6'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -59,7 +59,7 @@ gem 'responders', '~> 3.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'sprockets', '~> 3.7.0'
 gem 'lograge'
-gem "rails-i18n", '~> 5.1'
+gem "rails-i18n", '~> 6.0'
 gem 'mail', '< 2.8.0'
 gem 'nokogiri', '1.15.7'
 source 'https://rails-assets.org' do
@@ -84,7 +84,7 @@ gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'web-console', group: :development
+gem 'web-console', '>= 4.0', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
