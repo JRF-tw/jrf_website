@@ -229,8 +229,6 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1
   def show
-    # 未發布的文章只有管理員能預覽
-    not_found unless @article.published || (user_signed_in? && current_user.admin?)
     keywords = @article.keywords.to_a.map{ |k| k.name }.join(',')
     if @article.keywords.first
       @related_articles = @article.keywords.first.articles.published.first(4).reject { |a| [@article].include? a }

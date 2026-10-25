@@ -122,22 +122,22 @@ describe "Article" do
     end
   end
 
+  # 刻意的設計：草稿可以把網址分享給協作者看，但不會出現在列表、搜尋、JSON
   describe "草稿文章" do
-    let(:draft) { FactoryBot.create(:press_article, published: false) }
+    let(:draft) { FactoryBot.create(:press_article, title: "協作中的草稿", published: false) }
 
-    it "一般訪客看不到" do
-      begin
-        get "/articles/#{draft.id}"
-      rescue ActionController::RoutingError
-        next
-      end
-      expect(response).to have_http_status(:not_found)
-    end
-
-    it "管理員可以預覽" do
-      sign_in FactoryBot.create(:admin)
+    it "拿到網址的人都能看" do
       get "/articles/#{draft.id}"
       expect(response).to be_successful
+      expect(response.body).to include(draft.title)
+    end
+
+    it "不會出現在分類列表與 JSON" do
+      draft
+      get "/articles/presses"
+      expect(response.body).not_to include(draft.title)
+      get "/articles.json"
+      expect(response.body).not_to include(draft.title)
     end
   end
 end
