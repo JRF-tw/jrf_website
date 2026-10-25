@@ -59,7 +59,7 @@ class Admin::KeywordsController < Admin::BaseController
   # PATCH/PUT /keywords/1
   def update
     if @keyword.update(keyword_params)
-      redirect_to admin_keywords_url, notice: '文章更新成功'
+      redirect_to admin_keywords_url, notice: '專案更新成功'
     else
       render :edit
     end
@@ -68,7 +68,7 @@ class Admin::KeywordsController < Admin::BaseController
   # DELETE /keywords/1
   def destroy
     @keyword.destroy
-    redirect_to admin_keywords_url, notice: '文章已刪除'
+    redirect_to admin_keywords_url, notice: '專案已刪除'
   end
 
   def sort
