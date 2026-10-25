@@ -44,7 +44,6 @@ gem 'pg'
 gem 'ransack'
 gem "twitter-bootstrap-rails"
 # gem "font-awesome-rails"  # Replaced with Font Awesome 5 CDN
-gem 'fontello_rails_converter', group: :development
 # gem 'magnific-popup-rails'
 # gem 'owlcarousel-rails'
 # gem "animate-rails"
