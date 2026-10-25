@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
   def search
     @query = params[:q]
     @kind = params[:k] if SEARCH_KINDS.key?(params[:k])
-    articles = Article.published.where.not(kind: 'system').ransack(title_or_content_cont: @query).result
+    articles = Article.published.not_system.ransack(title_or_content_cont: @query).result
     articles = articles.where(kind: SEARCH_KINDS[@kind]) if @kind
     @articles = articles.page(params[:page])
     # @videos = Video.published.ransack(title_or_content_cont: q).result.page(params[:videos_page])
@@ -107,7 +107,7 @@ class StaticPagesController < ApplicationController
 
   def sitemap
     # 系統頁（關於我們、捐款）有自己的網址，不重複列 /articles/:id
-    @articles = Article.published.where.not(kind: 'system')
+    @articles = Article.published.not_system
     @keywords = Keyword.published
     @system_articles = %w(about donate).filter_map do |system_type|
       article = Article.find_by(kind: 'system', system_type: system_type)

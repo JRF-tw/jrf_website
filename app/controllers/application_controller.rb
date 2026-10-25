@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception, unless: :ckeditor_request?
   before_action :set_catalog, :set_article_q, :set_keywords, unless: :ckeditor_request?
+  before_action :sanitize_page_param
 
   def append_info_to_payload(payload)
     super
@@ -55,6 +56,11 @@ class ApplicationController < ActionController::Base
 
   def sanitize(html)
     Nokogiri::HTML(html).text.strip
+  end
+
+  # ?page[]=1 這類格式不對的頁碼會讓 Kaminari 與 canonical 的 to_i 丟例外，當作沒有給頁碼
+  def sanitize_page_param
+    params.delete(:page) unless params[:page].nil? || params[:page].is_a?(String)
   end
 
   def not_found

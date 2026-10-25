@@ -21,7 +21,8 @@ xml.tag! 'urlset', "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
 
   xml.url do
     xml.loc "#{base_url}/articles"
-    xml.lastmod @articles.maximum(:updated_at)&.to_date
+    last_updated = @articles.maximum(:updated_at)
+    xml.lastmod last_updated.to_date if last_updated
     xml.changefreq "daily"
     xml.priority 1.0
   end

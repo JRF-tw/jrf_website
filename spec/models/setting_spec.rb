@@ -32,6 +32,18 @@ describe Setting do
     file&.unlink
   end
 
+  # Ruby 2.7 的 YAML.load 不限制型別；正式站的 config.yml 若有沒加引號的日期也要讀得到
+  it "reads dates and symbols like Ruby 2.7 did" do
+    file = Tempfile.new(["config", ".yml"])
+    file.write("#{Rails.env}:\n  launched_on: 2015-05-11\n  mode: :full\n")
+    file.close
+    setting = Setting.new(file.path)
+    expect(setting.launched_on).to eq(Date.new(2015, 5, 11))
+    expect(setting.mode).to eq(:full)
+  ensure
+    file&.unlink
+  end
+
   it "reads config.yml.default" do
     setting = Setting.new(Rails.root.join("config", "config.yml.default").to_s)
     expect(setting.url).to respond_to(:host)

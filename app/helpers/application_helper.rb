@@ -37,7 +37,7 @@ module ApplicationHelper
   # 只保留路徑與頁碼：追蹤參數（utm_*、fbclid）、專案頁的分類篩選、搜尋條件都指回同一頁
   def canonical_url
     url = "#{request.base_url.sub(/\Ahttps?:/, "#{Setting.url.protocol}:")}#{request.path}"
-    page = params[:page].to_i
+    page = params[:page].is_a?(String) ? params[:page].to_i : 0
     page > 1 ? "#{url}?page=#{page}" : url
   end
 

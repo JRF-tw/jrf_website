@@ -6,6 +6,8 @@ class Article < ApplicationRecord
   # 同一天的文章再依 id 排，順序才固定（分頁不會重複或漏掉）
   default_scope { order(published_at: :desc, id: :desc) }
   scope :published, -> { where(published: true) }
+  # kind != 'system' 在 SQL 會連 kind 是 NULL 的也排除，所以要另外加回來
+  scope :not_system, -> { where(kind: nil).or(where.not(kind: 'system')) }
   mount_uploader :image, ImageUploader
   paginates_per 15
 
