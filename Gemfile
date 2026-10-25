@@ -39,7 +39,7 @@ gem 'chosen-rails', require: ['chosen-rails', 'chosen-rails/engine']
 gem 'carrierwave', '~> 3.1'
 gem 'mini_magick'
 gem 'settingslogic'
-gem 'ckeditor', '5.1.2'
+gem 'ckeditor', '5.1.3'
 gem 'pg'
 gem 'ransack'
 gem "twitter-bootstrap-rails"
