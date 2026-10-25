@@ -59,7 +59,7 @@ gem 'sprockets', '~> 3.7.0'
 gem 'lograge'
 gem "rails-i18n", '~> 7.0'
 gem 'mail', '< 2.8.0'
-gem 'nokogiri', '1.15.7'
+gem 'nokogiri'
 source 'https://rails-assets.org' do
   gem 'rails-assets-magnific-popup'
   gem 'rails-assets-animate.css'
@@ -71,6 +71,13 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-mhuggins--jquery-countTo'
   gem 'rails-assets-jquery.parallax'
   gem 'rails-assets-jquery.validate'
+  # isotope 的間接依賴；新版 bundler 要求在同一個 source 區塊列出才會從 rails-assets.org 找
+  gem 'rails-assets-desandro-matches-selector'
+  gem 'rails-assets-ev-emitter'
+  gem 'rails-assets-fizzy-ui-utils'
+  gem 'rails-assets-get-size'
+  gem 'rails-assets-masonry-layout'
+  gem 'rails-assets-outlayer'
 end
 
 # Use ActiveModel has_secure_password
@@ -83,6 +90,8 @@ gem 'unicorn'
 # gem 'capistrano-rails', group: :development
 
 gem 'web-console', '>= 4.0', group: :development
+# Ruby 3 起不再內建 WEBrick，開發用的 rails server 需要它（正式站用 unicorn）
+gem 'webrick', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
