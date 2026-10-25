@@ -38,12 +38,10 @@ gem 'mini_magick'
 gem 'settingslogic'
 gem 'ckeditor', '5.1.2'
 gem 'pg'
-gem 'compass'
 gem 'ransack'
 gem "twitter-bootstrap-rails"
-gem 'iconv'
 # gem "font-awesome-rails"  # Replaced with Font Awesome 5 CDN
-gem 'fontello_rails_converter'
+gem 'fontello_rails_converter', group: :development
 # gem 'magnific-popup-rails'
 # gem 'owlcarousel-rails'
 # gem "animate-rails"
