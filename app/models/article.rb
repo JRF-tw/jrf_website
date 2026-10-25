@@ -3,7 +3,8 @@ class Article < ApplicationRecord
   has_and_belongs_to_many :keywords, index: { unique: true }
   has_many :slides, as: :slideable, dependent: :destroy
   accepts_nested_attributes_for :slides, reject_if: proc { |attributes| attributes['image'].blank? }, allow_destroy: true
-  default_scope { order(published_at: :desc) }
+  # 同一天的文章再依 id 排，順序才固定（分頁不會重複或漏掉）
+  default_scope { order(published_at: :desc, id: :desc) }
   scope :published, -> { where(published: true) }
   mount_uploader :image, ImageUploader
   paginates_per 15

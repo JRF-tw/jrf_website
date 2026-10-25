@@ -105,4 +105,11 @@ describe Article do
     article = FactoryBot.create(:press_article)
     expect(article).to respond_to(:slides)
   end
+
+  it "同一天發布的文章依建立順序新到舊排列，分頁才不會重複或漏掉" do
+    day = Date.new(2026, 1, 1)
+    articles = 3.times.map { FactoryBot.create(:press_article, published_at: day) }
+    expect(Article.where(id: articles).to_a).to eq(articles.reverse)
+    expect(Article.where(id: articles).page(1).per(2) + Article.where(id: articles).page(2).per(2)).to eq(articles.reverse)
+  end
 end
