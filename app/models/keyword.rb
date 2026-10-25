@@ -32,4 +32,13 @@ class Keyword < ApplicationRecord
   def fix_content
     self.content = self.content.gsub("href=\"#{Setting.url.protocol}://#{Setting.url.host}", "href=\"/") if self.content.present?
   end
+
+  # Ransack 只允許搜尋這些欄位（專案：前台以關鍵字名稱搜尋文章、API 搜尋名稱、後台依目錄篩選）
+  def self.ransackable_attributes(auth_object = nil)
+    %w[name title content category_id]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
 end

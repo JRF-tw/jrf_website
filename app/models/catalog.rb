@@ -32,4 +32,13 @@ class Catalog < ApplicationRecord
       throw(:abort)
     end
   end
+
+  # Ransack 只允許搜尋這些欄位（主目錄：API 依名稱搜尋）
+  def self.ransackable_attributes(auth_object = nil)
+    %w[name]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
 end
