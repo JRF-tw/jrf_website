@@ -3,12 +3,6 @@ require "rails_helper"
 describe "RSS／Atom 與錯誤頁" do
   let!(:article) { FactoryBot.create(:article) }
 
-  it "Facebook Instant Articles RSS" do
-    get "/instant_articles.rss"
-    expect(response).to have_http_status(:ok)
-    expect(response.body).to include(article.published_at.to_fs(:iso8601))
-  end
-
   it "Atom feed" do
     get "/feed.atom"
     expect(response).to have_http_status(:ok)

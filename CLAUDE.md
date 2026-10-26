@@ -34,7 +34,7 @@ rake db:rollback
 ## Architecture Overview
 
 ### Core Models and Relationships
-- **Article**: Central content model with polymorphic relationships to slides, YouTube integration, and Facebook Instant Articles support
+- **Article**: Central content model with polymorphic relationships to slides and YouTube integration
 - **Keyword**: Content categorization system with many-to-many relationship to articles
 - **User**: Authentication via Devise with OAuth (Google/Facebook) and admin role system
 - **Catalog/Category**: Hierarchical content organization
@@ -51,7 +51,6 @@ rake db:rollback
 - **Kaminari pagination** (15 items per page default)
 - **Ransack** for advanced search functionality
 - **YouTube integration** with automatic ID extraction and playlist support
-- **Facebook Instant Articles** content transformation
 - **Social sharing** via social-share-button gem
 - **Multilingual support** with i18n (Chinese Traditional default, timezone: Taipei)
 

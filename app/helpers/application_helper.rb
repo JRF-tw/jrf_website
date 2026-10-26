@@ -116,20 +116,4 @@ module ApplicationHelper
       text
     end
   end
-
-  def instant_article_content(content)
-    html = Nokogiri::HTML(content)
-    elements = html.css('h1,h2,h3,h4,h5,h6,p,img,p+ul,p+ol')
-    result = ''
-    elements.each do |e|
-      if ['h1','h2','h3','h4','h5','h6','p'].include? e.node_name
-        result += "<#{e.node_name}>#{e.text}</#{e.node_name}>"
-      elsif ['ul', 'ol'].include? e.node_name
-        result += e.to_html
-      elsif e.node_name == 'img'
-        result += "<figure><img src=\"#{Setting.url.protocol}://#{Setting.url.host}#{e.attr('src')}\" /></figure>"
-      end
-    end
-    return result
-  end
 end

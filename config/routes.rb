@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   match '/search',    to: 'static_pages#search',    via: 'get'
   match '/thanks',    to: 'static_pages#thanks',    via: 'get'
   match '/feed',      to: 'static_pages#feed',      format: 'atom', via: 'get'
-  match '/instant_articles', to: 'static_pages#instant_articles',      format: 'rss', via: 'get'
   match "/sitemap",   to: 'static_pages#sitemap',   format: 'xml',  via: 'get'
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }

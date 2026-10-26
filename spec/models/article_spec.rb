@@ -89,13 +89,6 @@ describe Article do
     expect(article.youtube_embed_url).to include('test123')
   end
 
-  it "should process fb_ia_content before save" do
-    article = FactoryBot.build(:press_article)
-    article.content = '<p>Test content</p>'
-    article.save
-    expect(article.fb_ia_content).to be_present
-  end
-
   it "should belong to user" do
     article = FactoryBot.create(:press_article)
     expect(article.user).to be_present

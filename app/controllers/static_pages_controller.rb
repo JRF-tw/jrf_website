@@ -125,11 +125,4 @@ class StaticPagesController < ApplicationController
       format.atom { render layout: false }
     end
   end
-
-  def instant_articles
-    @articles = Article.published
-    respond_to do |format|
-      format.rss { render layout: false }
-    end
-  end
 end
