@@ -15,6 +15,23 @@ describe "RSS／Atom 與錯誤頁" do
     expect(response.body).to include(article.title)
   end
 
+  it "Atom feed 只放最新的文章，不放系統頁" do
+    about = FactoryBot.create(:article, kind: 'system', system_type: 'about', published_at: 1.hour.from_now)
+    article.update_column(:published_at, 1.year.ago)
+    FactoryBot.create_list(:article, StaticPagesController::FEED_SIZE, published_at: 1.day.ago)
+    get "/feed.atom"
+    expect(response.body.scan("<entry>").size).to eq(StaticPagesController::FEED_SIZE)
+    expect(response.body).not_to include("<title>#{about.title}</title>")
+    # 最舊的那篇被擠出去
+    expect(response.body).not_to include("<title>#{article.title}</title>")
+  end
+
+  it "Atom feed 沒有變動時回 304" do
+    get "/feed.atom"
+    get "/feed.atom", headers: { "If-None-Match" => response.headers["ETag"] }
+    expect(response).to have_http_status(:not_modified)
+  end
+
   describe "錯誤頁" do
     around do |example|
       env = Rails.application.env_config

@@ -1,6 +1,6 @@
 atom_feed ({language: 'zh-TW'}) do |feed|
   feed.title "民間司法改革基金會"
-  feed.updated @articles.maximum(:published_at)
+  feed.updated @articles.map(&:updated_at).max
 
   @articles.each do |article|
     feed.entry article, {published: article.published_at, updated: article.updated_at} do |entry|

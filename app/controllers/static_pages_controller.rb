@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   # 搜尋頁分類分頁的 k 參數對應到 Article#kind
   SEARCH_KINDS = { 'presses' => 'press', 'activities' => 'activity', 'comments' => 'comment', 'epapers' => 'epaper', 'books' => 'book' }.freeze
+  FEED_SIZE = 20
 
   def home
     @showed_keywords = Keyword.showed
@@ -116,7 +117,10 @@ class StaticPagesController < ApplicationController
   end
 
   def feed
-    @articles = Article.published
+    # 閱讀器會定期抓、用文章 id 去重，只需要最新幾篇，不必每次輸出全部文章全文
+    @articles = Article.published.not_system.limit(FEED_SIZE)
+    # 沒有新文章或更新時回 304，閱讀器不用重新下載
+    return unless stale?(@articles)
     respond_to do |format|
       format.atom { render layout: false }
     end
