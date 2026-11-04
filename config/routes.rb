@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   root 'static_pages#home'
+  # 英文版在 www.jrf.org.tw/en，沒有 www 的網址導過去
+  constraints host: 'jrf.org.tw' do
+    get '/en(/*path)', to: redirect { |params, _req| "https://www.jrf.org.tw/en#{"/#{params[:path]}" if params[:path]}" }, format: false
+  end
   match '/about',     to: 'static_pages#about',     via: 'get'
   match '/donate',    to: 'static_pages#donate',    via: 'get'
   match '/privacy',   to: 'static_pages#privacy',    via: 'get'
