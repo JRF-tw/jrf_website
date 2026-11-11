@@ -30,9 +30,8 @@ html lang="zh-Hant-TW"
   body.front.no-trans
     .scrollToTop
       i.icon-up-open-big
-    = link_to donate_path
-      .icon-donate
-        i.fas.fa-donate
+    = link_to donate_path, class: 'icon-donate', aria: { label: '支持司改：前往捐款頁' } do
+      i.fas.fa-donate aria-hidden="true"
     .page-wrapper
       - if notice
         p class="alert alert-success" = notice

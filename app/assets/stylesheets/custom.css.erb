@@ -151,22 +151,31 @@ h2 i {
 
 .icon-donate {
     position: fixed;
-    bottom: 350px;
-    right: 8px;
-    width: 44px;
-    height: 44px;
+    bottom: calc(350px + env(safe-area-inset-bottom, 0px));
+    right: calc(8px + env(safe-area-inset-right, 0px));
+    width: 60px;
+    height: 60px;
     text-align: center;
     cursor: pointer;
     z-index: 1005;
-    display: block;
-    background-color: #b73c5a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #9B1F24;
     color: #ffffff;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .icon-donate i {
-    line-height: 50px;
-    font-size: 30px;
+    line-height: 1;
+    font-size: 40px;
+}
+
+.icon-donate:hover,
+.icon-donate:focus {
+    background-color: #76171C;
+    color: #ffffff;
 }
 
 /* Keep TWNIC's official artwork and separate the badge from donate/back-to-top. */
@@ -176,6 +185,7 @@ h2 i {
     z-index: 1005;
 }
 
+.icon-donate:focus-visible,
 .jrf-domain-badge a:focus-visible {
     outline: 3px solid #9B1F24;
     outline-offset: 4px;
@@ -185,13 +195,6 @@ h2 i {
 @media only screen and (max-width: 767px) {
     .icon-donate {
         bottom: calc(140px + env(safe-area-inset-bottom, 0px));
-        width: 34px;
-        height: 34px;
-    }
-
-    .icon-donate i {
-        line-height: 40px;
-        font-size: 20px;
     }
 
     .jrf-domain-badge.floating-container-83476125 {
