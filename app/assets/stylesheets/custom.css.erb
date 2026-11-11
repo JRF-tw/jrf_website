@@ -8,6 +8,13 @@ Created: August 2014
 License URI: http://support.wrapbootstrap.com/
 File Description: Place here your custom CSS styles
 */
+.header-small .logo .jrf-header-logo {
+    width: 100%;
+    max-width: 270px;
+    height: auto;
+    max-height: none;
+}
+
 .tp-caption.small_thin_white {
     font-size: 18px;
     line-height: 1.9;
@@ -144,63 +151,64 @@ h2 i {
 
 .icon-donate {
     position: fixed;
-    bottom: 350px;
-    right: 8px;
-    width: 44px;
-    height: 44px;
+    bottom: calc(350px + env(safe-area-inset-bottom, 0px));
+    right: calc(8px + env(safe-area-inset-right, 0px));
+    width: 60px;
+    height: 60px;
     text-align: center;
     cursor: pointer;
     z-index: 1005;
-    display: block;
-    background-color: #b73c5a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #9B1F24;
     color: #ffffff;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .icon-donate i {
-    line-height: 50px;
-    font-size: 30px;
+    line-height: 1;
+    font-size: 40px;
 }
 
-.icon-line-me {
-    position: fixed;
-    bottom: 300px;
-    right: 5px;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    cursor: pointer;
+.icon-donate:hover,
+.icon-donate:focus {
+    background-color: #76171C;
+    color: #ffffff;
+}
+
+/* Keep TWNIC's official artwork and separate the badge from donate/back-to-top. */
+.jrf-domain-badge.floating-container-83476125 {
+    bottom: calc(280px + env(safe-area-inset-bottom, 0px));
+    right: calc(8px + env(safe-area-inset-right, 0px));
     z-index: 1005;
-    display: block;
-    color: #06C755
 }
 
-.icon-line-me i {
-    line-height: 50px;
-    font-size: 50px;
+.icon-donate:focus-visible,
+.jrf-domain-badge a:focus-visible {
+    outline: 3px solid #9B1F24;
+    outline-offset: 4px;
+    border-radius: 8px;
 }
 
 @media only screen and (max-width: 767px) {
     .icon-donate {
-        bottom: 125px;
-        width: 34px;
-        height: 34px;
+        bottom: calc(140px + env(safe-area-inset-bottom, 0px));
     }
 
-    .icon-donate i {
-        line-height: 40px;
-        font-size: 20px;
+    .jrf-domain-badge.floating-container-83476125 {
+        bottom: calc(65px + env(safe-area-inset-bottom, 0px));
+    }
+}
+
+@media only screen and (max-height: 480px) and (min-width: 768px) {
+    .icon-donate {
+        bottom: calc(140px + env(safe-area-inset-bottom, 0px));
     }
 
-    .icon-line-me {
-        bottom: 85px;
-        width: 40px;
-        height: 40px;
-    }
-
-    .icon-line-me i {
-        line-height: 40px;
-        font-size: 40px;
+    .jrf-domain-badge.floating-container-83476125 {
+        bottom: calc(65px + env(safe-area-inset-bottom, 0px));
     }
 }
 /* button_to 產生的表單（例如登入頁的 Google / Facebook 按鈕）不套用佈景主題的 form 上下間距 */

@@ -21,6 +21,8 @@ html lang="zh-Hant-TW"
       = stylesheet_link_tag  'application', media: 'all'
     = display_meta_tags(default_meta_tags)
     = yield(:json_ld)
+    script src="https://greendn.tw/js/cert.js?alert=0" defer=true
+    = javascript_include_tag 'jrf_domain_badge', defer: true
     /[if lt IE 9]
       script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"
       script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"
@@ -28,12 +30,8 @@ html lang="zh-Hant-TW"
   body.front.no-trans
     .scrollToTop
       i.icon-up-open-big
-    = link_to donate_path
-      .icon-donate
-        i.fas.fa-donate
-    = link_to "http://line.me/ti/p/%40rkh0402z", target: "_blank" do
-      .icon-line-me
-        i.fab.fa-line
+    = link_to donate_path, class: 'icon-donate', aria: { label: '支持司改：前往捐款頁' } do
+      i.fas.fa-donate aria-hidden="true"
     .page-wrapper
       - if notice
         p class="alert alert-success" = notice
