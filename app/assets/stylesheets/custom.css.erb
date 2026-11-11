@@ -162,27 +162,22 @@ h2 i {
     font-size: 30px;
 }
 
-.icon-line-me {
-    position: fixed;
-    bottom: 300px;
-    right: 5px;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    cursor: pointer;
+/* Keep TWNIC's official artwork and separate the badge from donate/back-to-top. */
+.jrf-domain-badge.floating-container-83476125 {
+    bottom: calc(280px + env(safe-area-inset-bottom, 0px));
+    right: calc(8px + env(safe-area-inset-right, 0px));
     z-index: 1005;
-    display: block;
-    color: #06C755
 }
 
-.icon-line-me i {
-    line-height: 50px;
-    font-size: 50px;
+.jrf-domain-badge a:focus-visible {
+    outline: 3px solid #9B1F24;
+    outline-offset: 4px;
+    border-radius: 8px;
 }
 
 @media only screen and (max-width: 767px) {
     .icon-donate {
-        bottom: 125px;
+        bottom: calc(140px + env(safe-area-inset-bottom, 0px));
         width: 34px;
         height: 34px;
     }
@@ -192,15 +187,18 @@ h2 i {
         font-size: 20px;
     }
 
-    .icon-line-me {
-        bottom: 85px;
-        width: 40px;
-        height: 40px;
+    .jrf-domain-badge.floating-container-83476125 {
+        bottom: calc(65px + env(safe-area-inset-bottom, 0px));
+    }
+}
+
+@media only screen and (max-height: 480px) and (min-width: 768px) {
+    .icon-donate {
+        bottom: calc(140px + env(safe-area-inset-bottom, 0px));
     }
 
-    .icon-line-me i {
-        line-height: 40px;
-        font-size: 40px;
+    .jrf-domain-badge.floating-container-83476125 {
+        bottom: calc(65px + env(safe-area-inset-bottom, 0px));
     }
 }
 /* button_to 產生的表單（例如登入頁的 Google / Facebook 按鈕）不套用佈景主題的 form 上下間距 */
