@@ -18,6 +18,20 @@ File Description: Place here your custom CSS styles
 /* 中文沒有斜體，佈景主題預設的 italic 會變成電腦斜拉的假斜體 */
 .site-slogan {
     font-style: normal;
+    margin-top: 4px;
+}
+
+.site-slogan .badge {
+    margin-left: 0.5em;
+    vertical-align: middle;
+}
+
+/* 桌機版標語往右挪一個字、維持一行；右欄的選單在上方，延伸過去不會重疊 */
+@media (min-width: 992px) {
+    .site-slogan {
+        padding-left: 1em;
+        white-space: nowrap;
+    }
 }
 
 .tp-caption.small_thin_white {
